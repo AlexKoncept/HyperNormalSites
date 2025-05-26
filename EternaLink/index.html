@@ -1,1 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EternaLink - Votre Connexion Vitale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1c23; /* Bleu nuit profond */
+            color: #e0e0e0; /* Gris clair pour le texte */
+        }
+
+        .font-exo {
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(26, 28, 35, 0.8), rgba(26, 28, 35, 0.8)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .vitality-gradient {
+            background: linear-gradient(90deg, #10B981 0%, #3B82F6 100%); /* Vert vers Bleu */
+        }
+        .time-gradient {
+            background: linear-gradient(90deg, #F59E0B 0%, #EF4444 100%); /* Orange vers Rouge */
+        }
+
+        .btn-primary {
+            background-color: #3B82F6; /* Bleu EternaLink */
+        }
+        .btn-primary:hover {
+            background-color: #2563EB;
+        }
+
+        .card {
+            background-color: #292d3e; /* Un peu plus clair que le fond */
+            border: 1px solid #3b3f50;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Barres de progression stylisées */
+        .progress-bar-container {
+            height: 24px;
+            background-color: #3b3f50;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+        }
+        .progress-bar-avatar { background: linear-gradient(90deg, #10B981, #059669); } /* Vert */
+        .progress-bar-lifespan { background: linear-gradient(90deg, #F59E0B, #D97706); } /* Orange */
+        .progress-bar-critical { background: linear-gradient(90deg, #EF4444, #DC2626); animation: pulse-bg 1.5s infinite; } /* Rouge pulsant */
+
+        @keyframes pulse-bg {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-slate-900/80 backdrop-blur-md shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="flex items-center">
+                    <i class="fas fa-infinity text-blue-400 text-3xl mr-2"></i>
+                    <span class="font-exo text-2xl font-bold text-white">Eterna<span class="text-blue-400">Link</span></span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#fonctionnement" class="text-gray-300 hover:text-white transition duration-300">Comment Ça Marche</a>
+                    <a href="#avantages" class="text-gray-300 hover:text-white transition duration-300">Vos Avantages</a>
+                    <a href="#statut" class="text-gray-300 hover:text-white transition duration-300">Mon Statut Vital</a>
+                    <a href="#communiquer" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold transition duration-300 shadow-md">Publier Maintenant</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button p-2 text-gray-300 hover:text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-slate-800 pb-3">
+            <a href="#fonctionnement" class="block py-3 px-4 text-sm text-gray-300 hover:bg-slate-700 hover:text-white">Comment Ça Marche</a>
+            <a href="#avantages" class="block py-3 px-4 text-sm text-gray-300 hover:bg-slate-700 hover:text-white">Vos Avantages</a>
+            <a href="#statut" class="block py-3 px-4 text-sm text-gray-300 hover:bg-slate-700 hover:text-white">Mon Statut Vital</a>
+            <a href="#communiquer" class="block py-3 px-4 text-sm text-blue-400 font-semibold hover:bg-slate-700">Publier Maintenant</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg text-white pt-40 pb-24 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="font-exo text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                Votre Écho Numérique. Votre Devoir Civique.
+            </h1>
+            <p class="text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
+                Sur EternaLink, chaque interaction compte. Publiez pour persister. Soyez aimé pour exister.
+                C'est plus qu'un réseau, c'est votre empreinte vitale.
+            </p>
+            <a href="#statut" class="btn-primary text-white font-semibold py-3.5 px-10 rounded-full text-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                <i class="fas fa-heartbeat mr-2"></i> Vérifier Ma Vitalité
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section Fonctionnement -->
+        <section id="fonctionnement" class="py-20 bg-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="font-exo text-3xl sm:text-4xl font-bold text-white mb-4">Les Piliers de Votre Existence Numérique</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">Comprendre les mécaniques d'EternaLink est essentiel pour votre pérennité.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="card p-8 rounded-xl">
+                        <div class="flex items-center mb-5">
+                            <div class="vitality-gradient p-3 rounded-full mr-4 shadow-lg">
+                                <i class="fas fa-user-astronaut text-3xl text-white"></i>
+                            </div>
+                            <h3 class="font-exo text-2xl font-semibold text-white">Votre Avatar : Le Reflet de Votre Activité</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Chaque publication pertinente et chaque interaction constructive que vous initiez contribue à la <strong class="text-green-400">maintenance et au rajeunissement</strong> de votre avatar numérique.
+                            Un avatar dégradé signale une faible contribution.
+                        </p>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Publications régulières = Avatar optimal.</li>
+                            <li><i class="fas fa-redo-alt text-blue-400 mr-2"></i>Contenu de qualité = Rajeunissement accéléré.</li>
+                            <li><i class="fas fa-exclamation-triangle text-yellow-400 mr-2"></i>Inactivité prolongée = Dégradation visible.</li>
+                        </ul>
+                    </div>
+                    <div class="card p-8 rounded-xl">
+                        <div class="flex items-center mb-5">
+                            <div class="time-gradient p-3 rounded-full mr-4 shadow-lg">
+                                <i class="fas fa-hourglass-half text-3xl text-white"></i>
+                            </div>
+                            <h3 class="font-exo text-2xl font-semibold text-white">Votre Profil : Le Temps est Votre Monnaie</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            La durée de vie de votre profil EternaLink est directement proportionnelle à l'engagement que vous suscitez. Chaque "J'aime" (ou "Chrono-Crédit") reçu <strong class="text-orange-400">prolonge votre présence active</strong> sur le réseau.
+                        </p>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li><i class="fas fa-thumbs-up text-orange-400 mr-2"></i>Likes reçus = Temps de profil étendu.</li>
+                            <li><i class="fas fa-users text-blue-400 mr-2"></i>Engagement communautaire = Multiplicateur de temps.</li>
+                            <li><i class="fas fa-stopwatch text-red-400 mr-2"></i>Faible popularité = Compte à rebours accéléré.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Vos Avantages (selon la plateforme) -->
+        <section id="avantages" class="py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="font-exo text-3xl sm:text-4xl font-bold text-white mb-4">EternaLink : Plus qu'une Obligation, une Opportunité</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">En participant activement, vous ne faites pas que survivre, vous vous épanouissez numériquement.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card p-6 rounded-lg text-center">
+                        <i class="fas fa-brain text-5xl text-blue-400 mb-6"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Préservation Mémorielle</h3>
+                        <p class="text-gray-400 text-sm">Assurez la continuité de votre identité numérique. Vos pensées, vos créations, votre essence sont archivées et maintenues actives par votre engagement.</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center">
+                        <i class="fas fa-network-wired text-5xl text-green-400 mb-6"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Connexion Collective</h3>
+                        <p class="text-gray-400 text-sm">Faites partie intégrante du Grand Réseau. Votre participation active renforce la cohésion sociale et la vitalité de notre société interconnectée.</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center">
+                        <i class="fas fa-chart-line text-5xl text-orange-400 mb-6"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Reconnaissance & Statut</h3>
+                        <p class="text-gray-400 text-sm">Un avatar florissant et un profil à longue durée de vie sont des symboles de votre contribution et de votre valeur au sein d'EternaLink.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Mon Statut Vital -->
+        <section id="statut" class="py-20 bg-slate-900">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-exo text-3xl sm:text-4xl font-bold text-white mb-4">Mon Tableau de Bord Vital</h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">Consultez en temps réel l'état de votre présence sur EternaLink. Chaque seconde compte.</p>
+                </div>
+
+                <div class="card p-8 rounded-xl shadow-2xl">
+                    <div class="flex flex-col md:flex-row items-center md:items-start mb-8">
+                        <div class="mb-6 md:mb-0 md:mr-8 text-center">
+                            <!-- Placeholder for User Avatar Image - could be dynamically updated -->
+                            <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full vitality-gradient mx-auto flex items-center justify-center shadow-xl mb-3">
+                                <i class="fas fa-user-circle text-6xl sm:text-7xl text-white opacity-80"></i>
+                            </div>
+                            <p class="text-lg font-semibold text-white">Citoyen #EL-7345X</p>
+                            <p class="text-xs text-blue-400">Secteur Gamma-7</p>
+                        </div>
+
+                        <div class="flex-grow w-full">
+                            <div class="mb-6">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <label class="text-sm font-medium text-gray-300">Intégrité de l'Avatar :</label>
+                                    <span id="avatarIntegrityValue" class="text-sm font-semibold text-green-400">85%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div id="avatarIntegrityBar" class="progress-bar progress-bar-avatar" style="width: 85%;">85%</div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Objectif : Maintenir > 70% pour éviter la dégradation.</p>
+                            </div>
+
+                            <div class="mb-6">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <label class="text-sm font-medium text-gray-300">Temps de Profil Restant :</label>
+                                    <span id="profileLifespanValue" class="text-sm font-semibold text-orange-400">17 Jours, 8 Heures</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div id="profileLifespanBar" class="progress-bar progress-bar-lifespan" style="width: 60%;">17 J : 08 H</div>
+                                </div>
+                                 <p class="text-xs text-gray-500 mt-1">Gagnez des Chrono-Crédits (Likes) pour recharger.</p>
+                            </div>
+                            
+                            <div id="criticalWarning" class="hidden mt-4 p-4 bg-red-700/30 border border-red-600 rounded-lg text-center animate-pulse">
+                                <i class="fas fa-exclamation-triangle text-red-400 text-2xl mr-3"></i>
+                                <span class="font-semibold text-red-300">ALERTE CRITIQUE : Votre présence est en danger. Agissez immédiatement !</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="#communiquer" class="btn-primary text-white font-semibold py-3 px-8 rounded-full hover:shadow-lg transition duration-300">
+                            <i class="fas fa-plus-circle mr-2"></i> Créer une Nouvelle Publication
+                        </a>
+                        <p class="text-xs text-gray-500 mt-4">Rappel : La non-publication pendant 72h entraîne une pénalité d'intégrité.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Communiquer -->
+        <section id="communiquer" class="py-20 hero-bg">
+            <div class="max-w-3xl mx-auto px-4 text-center text-white">
+                <h2 class="font-exo text-3xl sm:text-4xl font-bold mb-6">Exprimez-vous. Existez.</h2>
+                <p class="text-lg text-gray-200 mb-10">
+                    Votre prochaine publication pourrait être celle qui rajeunit votre avatar, celle qui vous accorde des jours précieux de présence.
+                    Ne laissez pas votre écho s'éteindre. Partagez, interagissez, vivez numériquement.
+                </p>
+                <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full text-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-pen-fancy mr-3"></i> Publier et Renforcer Ma Présence
+                </button>
+                 <p class="text-sm text-gray-400 mt-6">Chaque publication est scannée pour conformité aux directives communautaires (Protocole 7.4.2).</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-gray-500 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center text-sm">
+            <div class="mb-4">
+                 <i class="fas fa-infinity text-blue-500 text-2xl mr-1"></i>
+                 <span class="font-exo text-lg font-semibold">EternaLink Global Network</span>
+            </div>
+            <p>© Cycle de Stabilité Actuel - EternaLink Corp. Tous droits de gestion de présence réservés.</p>
+            <p>Votre connexion est votre survie. Ne la rompez jamais.</p>
+            <div class="mt-6 space-x-6">
+                <a href="#" class="hover:text-blue-400 transition duration-300">Directives de Présence</a>
+                <a href="#" class="hover:text-blue-400 transition duration-300">Protocole de Confidentialité Vitale</a>
+                <a href="#" class="hover:text-blue-400 transition duration-300">Support Technique Citoyen</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') return;
+
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    e.preventDefault();
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    window.scrollTo({
+                        top: targetElement.offsetTop - navHeight,
+                        behavior: 'smooth'
+                    });
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Simulation pour le tableau de bord vital
+        const avatarIntegrityBar = document.getElementById('avatarIntegrityBar');
+        const avatarIntegrityValue = document.getElementById('avatarIntegrityValue');
+        const profileLifespanBar = document.getElementById('profileLifespanBar');
+        const profileLifespanValue = document.getElementById('profileLifespanValue');
+        const criticalWarning = document.getElementById('criticalWarning');
+
+        let currentAvatarIntegrity = 85; // pourcentage
+        let currentLifespanDays = 17;
+        let currentLifespanHours = 8;
+
+        function updateDashboard() {
+            // Avatar Integrity
+            avatarIntegrityBar.style.width = currentAvatarIntegrity + '%';
+            avatarIntegrityBar.textContent = currentAvatarIntegrity + '%';
+            avatarIntegrityValue.textContent = currentAvatarIntegrity + '%';
+            
+            if (currentAvatarIntegrity < 30) {
+                avatarIntegrityBar.className = 'progress-bar progress-bar-critical';
+                avatarIntegrityValue.className = 'text-sm font-semibold text-red-400';
+            } else if (currentAvatarIntegrity < 60) {
+                avatarIntegrityBar.className = 'progress-bar progress-bar-lifespan'; // Orange/Yellow
+                 avatarIntegrityValue.className = 'text-sm font-semibold text-orange-400';
+            } else {
+                avatarIntegrityBar.className = 'progress-bar progress-bar-avatar'; // Green
+                 avatarIntegrityValue.className = 'text-sm font-semibold text-green-400';
+            }
+
+            // Profile Lifespan
+            const totalHours = currentLifespanDays * 24 + currentLifespanHours;
+            // Max lifespan for display, e.g., 30 days = 720 hours
+            const maxDisplayHours = 30 * 24; 
+            const lifespanPercentage = Math.min(100, (totalHours / maxDisplayHours) * 100);
+            
+            profileLifespanBar.style.width = lifespanPercentage + '%';
+            profileLifespanValue.textContent = `${currentLifespanDays} J, ${currentLifespanHours} H`;
+            profileLifespanBar.textContent = `${currentLifespanDays}J ${currentLifespanHours}H`;
+
+            if (totalHours < (5 * 24)) { // Moins de 5 jours
+                profileLifespanBar.className = 'progress-bar progress-bar-critical';
+                profileLifespanValue.className = 'text-sm font-semibold text-red-400';
+            } else if (totalHours < (15 * 24)) { // Moins de 15 jours
+                profileLifespanBar.className = 'progress-bar progress-bar-lifespan'; // Orange
+                profileLifespanValue.className = 'text-sm font-semibold text-orange-400';
+            } else {
+                profileLifespanBar.className = 'progress-bar progress-bar-lifespan'; // Using orange as a base, could be more nuanced
+                profileLifespanValue.className = 'text-sm font-semibold text-orange-400';
+            }
+
+
+            // Critical Warning
+            if (currentAvatarIntegrity < 20 || totalHours < (2*24)) {
+                criticalWarning.classList.remove('hidden');
+            } else {
+                criticalWarning.classList.add('hidden');
+            }
+        }
+        
+        // Simuler une dégradation lente (pour la démo)
+        /*
+        setInterval(() => {
+            currentAvatarIntegrity = Math.max(0, currentAvatarIntegrity - 0.1);
+            
+            currentLifespanHours -= 0.2; // Dégradation plus rapide du temps
+            if (currentLifespanHours < 0) {
+                currentLifespanHours += 24;
+                currentLifespanDays = Math.max(0, currentLifespanDays - 1);
+            }
+            if(currentLifespanDays === 0 && currentLifespanHours <=0) {
+                currentLifespanHours = 0; // Stop at 0
+            }
+
+            updateDashboard();
+        }, 2000); // Toutes les 2 secondes
+        */
+
+        // Initial call
+        updateDashboard();
+
+    </script>
+
+</body>
+</html>
