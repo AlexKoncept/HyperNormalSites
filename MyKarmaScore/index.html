@@ -1,1 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyKarmaScore - Vos Actions Comptent</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef1f5; /* Bleu très clair/gris */
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        header {
+            background-color: #4CAF50; /* Vert positif */
+            color: #fff;
+            padding: 1.5em 0;
+            text-align: center;
+            border-bottom: 5px solid #388E3C; /* Vert plus foncé */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 300;
+        }
+        nav {
+            background-color: #388E3C; /* Vert plus foncé */
+            padding: 0.7em;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #C8E6C9; /* Vert très clair */
+        }
+        .section-title {
+            color: #4CAF50;
+            border-bottom: 2px solid #81C784; /* Vert clair */
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 25px;
+            font-size: 2em;
+            font-weight: normal;
+        }
 
+        /* Profil Utilisateur & Historique */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .profile-pic-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #81C784;
+        }
+        .karma-score-display {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .karma-score-display.negative {
+            color: #D32F2F; /* Rouge pour score négatif */
+        }
+        .action-history table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .action-history th, .action-history td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .action-history th {
+            background-color: #f2f2f2;
+            color: #555;
+        }
+        .points-gain { color: #2E7D32; /* Vert foncé */ font-weight: bold; }
+        .points-loss { color: #C62828; /* Rouge foncé */ font-weight: bold; }
+        .action-details-link {
+            color: #1976D2; /* Bleu */
+            text-decoration: none;
+        }
+        .action-details-link:hover { text-decoration: underline; }
+
+        /* Galerie des Bons Citoyens */
+        .citizen-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .citizen-card {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .citizen-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .citizen-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid #4CAF50;
+        }
+        .citizen-card h4 { margin: 10px 0 5px 0; color: #388E3C; }
+        .citizen-card .karma-value { font-weight: bold; color: #4CAF50; }
+        .citizen-card .action-highlight { font-style: italic; color: #555; font-size: 0.9em; margin-top: 5px; }
+
+        /* Marketplace Karma */
+        .marketplace {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .market-item {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .market-item img {
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: contain; /* 'contain' est mieux pour les objets/produits */
+            margin-bottom: 10px;
+        }
+        .market-item h4 { margin: 10px 0 5px 0; color: #333; }
+        .item-price {
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 5px 0 10px 0;
+            font-size: 1.2em;
+        }
+        .redeem-button {
+            background-color: #FF9800; /* Orange pour action */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .redeem-button:hover {
+            background-color: #F57C00; /* Orange foncé */
+        }
+        .redeem-button:disabled {
+            background-color: #BDBDBD; /* Gris pour désactivé */
+            cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #333;
+            color: #f1f1f1;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MyKarmaScore</h1>
+        <p>Chaque bonne action dans notre ville est récompensée.</p>
+    </header>
+
+    <nav>
+        <a href="#profile">Mon Profil</a>
+        <a href="#gallery">Galerie des Citoyens</a>
+        <a href="#marketplace">Marché Karma</a>
+        <a href="#how-it-works">Comment ça marche ?</a>
+    </nav>
+
+    <div class="container">
+        <!-- Section Profil Utilisateur -->
+        <section id="profile">
+            <h2 class="section-title">Mon Profil Karma</h2>
+            <div class="profile-header">
+                <!-- Image Utilisateur: picsum.photos avec seed pour consistance -->
+                <img src="https://picsum.photos/seed/userAlexandre/120/120" alt="Photo de profil Alexandre Bienveillant" class="profile-pic-large" id="userProfilePic">
+                <div>
+                    <h3 id="userName" style="margin-top:0; margin-bottom:5px; font-size: 1.8em;">Alexandre Bienveillant</h3>
+                    <p style="margin:0; color: #555;">Membre depuis : <span id="userJoinDate">15 Mars 2024</span></p>
+                    <p style="margin-top:10px; font-size: 1.2em;">Votre Score Karma Actuel :</p>
+                    <div class="karma-score-display" id="userKarmaScore">785</div>
+                </div>
+            </div>
+
+            <h3>Historique de mes Actions :</h3>
+            <div class="action-history">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Action Signalée</th>
+                            <th>Points</th>
+                            <th>Lieu (si applicable)</th>
+                            <th>Validateur</th>
+                            <th>Détails/Preuve</th>
+                        </tr>
+                    </thead>
+                    <tbody id="actionHistoryTableBody">
+                        <tr>
+                            <td>25 Mai 2024</td>
+                            <td>Aide à une personne âgée à traverser</td>
+                            <td class="points-gain">+15</td>
+                            <td>Rue Principale</td>
+                            <td>Observateur Citoyen #12</td>
+                            <td><a href="#" class="action-details-link">Voir vidéo</a></td>
+                        </tr>
+                        <tr>
+                            <td>23 Mai 2024</td>
+                            <td>Ramassage de déchets au parc</td>
+                            <td class="points-gain">+10</td>
+                            <td>Parc Fleuri</td>
+                            <td>Système Caméras IA</td>
+                            <td><a href="#" class="action-details-link">Rapport IA</a></td>
+                        </tr>
+                        <tr>
+                            <td>20 Mai 2024</td>
+                            <td>Stationnement sur place handicapée (signalé)</td>
+                            <td class="points-loss">-50</td>
+                            <td>Parking Supermarché</td>
+                            <td>Agent Municipal #03</td>
+                            <td><a href="#" class="action-details-link">Voir photo</a></td>
+                        </tr>
+                         <tr>
+                            <td>18 Mai 2024</td>
+                            <td>Politesse exemplaire envers un agent public</td>
+                            <td class="points-gain">+5</td>
+                            <td>Mairie</td>
+                            <td>Agent Municipal #07</td>
+                            <td><a href="#" class="action-details-link">Rapport Agent</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section Galerie des Bons Citoyens -->
+        <section id="gallery">
+            <h2 class="section-title">Galerie des Citoyens Exemplaires</h2>
+            <div class="citizen-gallery">
+                <div class="citizen-card">
+                    <img src="https://picsum.photos/seed/citoyenBravo/100/100" alt="Photo de Citoyen Bravo">
+                    <h4>Citoyen Bravo</h4>
+                    <p>Score Karma: <span class="karma-value">1250</span></p>
+                    <p class="action-highlight">"A organisé une collecte de jouets pour les enfants défavorisés."</p>
+                    <a href="#" class="action-details-link">Voir la preuve</a>
+                </div>
+                <div class="citizen-card">
+                    <img src="https://picsum.photos/seed/samaritaineEmerite/100/100" alt="Photo de Samaritaine Émérite">
+                    <h4>Samaritaine Émérite</h4>
+                    <p>Score Karma: <span class="karma-value">980</span></p>
+                    <p class="action-highlight">"Intervenue rapidement pour premiers secours lors d'un incident mineur."</p>
+                     <a href="#" class="action-details-link">Voir la preuve</a>
+                </div>
+                <div class="citizen-card">
+                    <img src="https://picsum.photos/seed/jardinierPropre/100/100" alt="Photo de Jardinier Propre">
+                    <h4>Jardinier Propre</h4>
+                    <p>Score Karma: <span class="karma-value">750</span></p>
+                    <p class="action-highlight">"Entretient bénévolement un parterre de fleurs public depuis 1 an."</p>
+                     <a href="#" class="action-details-link">Voir la preuve</a>
+                </div>
+                <div class="citizen-card">
+                    <img src="https://picsum.photos/seed/volontaireActif/100/100" alt="Photo de Volontaire Actif">
+                    <h4>Volontaire Actif</h4>
+                    <p>Score Karma: <span class="karma-value">820</span></p>
+                    <p class="action-highlight">"Aide à la distribution de repas aux sans-abris chaque semaine."</p>
+                     <a href="#" class="action-details-link">Voir la preuve</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Marketplace Karma -->
+        <section id="marketplace">
+            <h2 class="section-title">Marché Karma - Échangez vos Points !</h2>
+            <div class="marketplace">
+                <div class="market-item">
+                    <!-- Pour les objets, on peut chercher des images thématiques si on veut être plus précis -->
+                    <!-- Exemple: https://picsum.photos/seed/coffeeCup/100/100 -->
+                    <img src="https://picsum.photos/seed/itemCafe/100/100" alt="Bon pour un café">
+                    <h4>Bon pour un Café Gratuit</h4>
+                    <p>Chez "Le P'tit Bistrot"</p>
+                    <p class="item-price">100 Points Karma</p>
+                    <button class="redeem-button" onclick="redeemItem(100, 'Bon pour un Café')">Échanger</button>
+                </div>
+                <div class="market-item">
+                    <img src="https://picsum.photos/seed/itemArbre/100/100" alt="Plante pour la ville">
+                    <h4>Faire Planter un Arbre en Votre Nom</h4>
+                    <p>Contribuez à la verdure locale.</p>
+                    <p class="item-price">500 Points Karma</p>
+                    <button class="redeem-button" onclick="redeemItem(500, 'Plantation Arbre')">Échanger</button>
+                </div>
+                <div class="market-item">
+                    <img src="https://picsum.photos/seed/itemMusee/100/100" alt="Ticket Musée">
+                    <h4>Ticket d'Entrée Musée Local</h4>
+                    <p>Découvrez la culture de votre ville.</p>
+                    <p class="item-price">250 Points Karma</p>
+                    <button class="redeem-button" onclick="redeemItem(250, 'Ticket Musée')">Échanger</button>
+                </div>
+                <div class="market-item">
+                    <img src="https://picsum.photos/seed/itemDon/100/100" alt="Don caritatif">
+                    <h4>Don de 5€ à une Association Locale</h4>
+                    <p>Soutenez une cause qui vous tient à cœur.</p>
+                    <p class="item-price">300 Points Karma</p>
+                    <button class="redeem-button" onclick="redeemItem(300, 'Don Association')">Échanger</button>
+                </div>
+                 <div class="market-item">
+                    <img src="https://picsum.photos/seed/itemVelo/100/100" alt="Location vélo">
+                    <h4>1h de Location Vélo en libre-service</h4>
+                    <p>Pour vos déplacements écologiques.</p>
+                    <p class="item-price">150 Points Karma</p>
+                    <button class="redeem-button" onclick="redeemItem(150, 'Location Vélo')" disabled>Stock Épuisé</button>
+                </div>
+                <div class="market-item">
+                    <img src="https://picsum.photos/seed/itemYoga/100/100" alt="Cours de Yoga">
+                    <h4>Cours de Yoga en Plein Air (1 séance)</h4>
+                    <p>Détente et bien-être en ville.</p>
+                    <p class="item-price">200 Points Karma</p>
+                    <button class="redeem-button" onclick="redeemItem(200, 'Cours de Yoga')">Échanger</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Comment ça marche ? -->
+        <section id="how-it-works">
+            <h2 class="section-title">Comment fonctionne MyKarmaScore ?</h2>
+            <p><strong>MyKarmaScore</strong> valorise et récompense les comportements civiques positifs au sein de notre communauté :</p>
+            <ul>
+                <li><strong>Actions Filmées et Signalées :</strong> Des actions positives (propreté, politesse, aide, respect des règles) ou négatives peuvent être signalées. Les preuves peuvent provenir de citoyens (via une app dédiée), de caméras de surveillance urbaine analysées par IA (dans le respect de la vie privée), ou d'agents municipaux.</li>
+                <li><strong>Validation Transparente :</strong> Chaque action signalée est examinée par un comité de validation (mix de citoyens volontaires, d'officiels, et potentiellement d'IA pour les cas évidents) pour assurer l'équité et éviter les abus.</li>
+                <li><strong>Score Karma Dynamique :</strong> Votre score augmente avec les actions positives validées et diminue avec les négatives. Il reflète votre contribution civique.</li>
+                <li><strong>Galerie des Citoyens :</strong> Les actions particulièrement exemplaires et les citoyens avec un haut score Karma peuvent être mis à l'honneur (avec leur consentement) pour inspirer les autres.</li>
+                <li><strong>Marché Karma :</strong> Vos points Karma durement gagnés peuvent être échangés contre des récompenses offertes par la ville, des commerçants locaux partenaires, ou des associations : réductions, biens, services, dons, etc.</li>
+            </ul>
+            <p>L'objectif est de promouvoir une culture de respect mutuel, de propreté et d'entraide, rendant notre ville plus agréable pour tous.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 MyKarmaScore. Ensemble pour une ville meilleure.</p>
+        <p><a href="#privacy" style="color:#C8E6C9;">Politique de confidentialité et Éthique</a> | <a href="#terms" style="color:#C8E6C9;">Conditions d'utilisation</a></p>
+    </footer>
+
+    <script>
+        function redeemItem(cost, itemName) {
+            let currentScoreElement = document.getElementById('userKarmaScore');
+            let currentScore = parseInt(currentScoreElement.textContent);
+
+            if (currentScore >= cost) {
+                let newScore = currentScore - cost;
+                currentScoreElement.textContent = newScore;
+                alert(`Félicitations ! Vous avez échangé ${cost} points contre "${itemName}". Votre nouveau score est de ${newScore}.`);
+                
+                if (newScore < 0) {
+                    currentScoreElement.classList.add('negative');
+                } else {
+                    currentScoreElement.classList.remove('negative');
+                }
+            } else {
+                alert(`Désolé, vous n'avez pas assez de points Karma pour "${itemName}". Il vous manque ${cost - currentScore} points.`);
+            }
+        }
+    </script>
+
+</body>
+</html>
