@@ -1,7 +1,7 @@
 
 # HyperNormalSites
 
-**Une collection de sites web dystopiques interactifs — inspirés de Black Mirror et de notre monde trop normalisé.**  
+**Une collection de sites web dystopiques interactifs — inspirés de séries comme Black Mirror ou Altered Carbon et de notre monde trop normalisé.**  
 Imaginés pour déranger, questionner ou simplement fasciner.
 
 ---
