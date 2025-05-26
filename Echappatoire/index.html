@@ -1,1 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echappatoire - Votre Portail vers une Réalité Alternative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        .glitch-effect {
+            animation: glitch 0.5s infinite;
+        }
+        .portal-glow {
+            box-shadow: 0 0 30px rgba(110, 231, 183, 0.7);
+            animation: pulse-glow 3s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px rgba(110, 231, 183, 0.5); }
+            to { box-shadow: 0 0 40px rgba(110, 231, 183, 0.9); }
+        }
+        .flicker {
+            animation: flicker 8s infinite alternate;
+        }
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 22%, 24%, 55% {
+                opacity: 0.3;
+            }
+        }
+        .scanline {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanline::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(110, 231, 183, 0.8);
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .world-distortion {
+            filter: hue-rotate(90deg) contrast(1.2) saturate(1.5);
+            transition: filter 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-black text-green-400 min-h-screen flex flex-col overflow-hidden">
+    <!-- Interface de chargement -->
+    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
+        <div class="text-4xl font-mono mb-8 flicker">
+            <span class="text-green-400">ECHAPPATOIRE</span>
+            <span class="text-gray-400">.exe</span>
+        </div>
+        <div class="w-64 h-1 bg-gray-800 rounded-full mb-4">
+            <div id="loading-bar" class="h-full bg-green-500 rounded-full w-0"></div>
+        </div>
+        <p class="text-gray-400 font-mono text-sm">Initialisation du portail dimensionnel...</p>
+        <p id="loading-text" class="text-gray-500 font-mono text-xs mt-8">Analyse de votre insatisfaction: 0%</p>
+    </div>
 
+    <!-- Interface principale (cachée au départ) -->
+    <div id="main-interface" class="hidden flex-grow container mx-auto px-4 py-8 flex flex-col">
+        <!-- En-tête dystopique -->
+        <header class="flex justify-between items-center mb-8 border-b border-green-800 pb-4">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-green-900 flex items-center justify-center mr-3">
+                    <i class="fas fa-door-open text-green-400"></i>
+                </div>
+                <h1 class="text-2xl font-mono">
+                    <span class="text-green-400">ECHAPPATOIRE</span>
+                    <span class="text-gray-500">v2.4.7</span>
+                </h1>
+            </div>
+            <div class="text-right">
+                <p class="text-xs text-gray-500 font-mono">STATUT: <span id="reality-status" class="text-green-400">RÉALITÉ PRIMAIRE</span></p>
+                <p class="text-xs text-gray-500 font-mono">SATISFACTION: <span id="satisfaction-meter" class="text-red-400">23%</span></p>
+            </div>
+        </header>
+
+        <!-- Zone de réalité augmentée -->
+        <div class="flex-grow grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Flux vidéo -->
+            <div class="lg:col-span-2 relative">
+                <div id="video-container" class="relative bg-black border-2 border-green-800 rounded-lg overflow-hidden aspect-video">
+                    <video id="webcam-feed" autoplay playsinline class="w-full h-full object-cover hidden"></video>
+                    <canvas id="alternate-reality" class="absolute inset-0 w-full h-full hidden"></canvas>
+                    <div id="permission-prompt" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-24 h-24 mb-6 rounded-full bg-green-900 flex items-center justify-center portal-glow">
+                            <i class="fas fa-eye text-3xl text-green-400"></i>
+                        </div>
+                        <h2 class="text-xl font-mono mb-3 text-green-400">ACCÈS AU PORTAL REQUIS</h2>
+                        <p class="text-gray-400 mb-6">Pour voir au-delà de votre réalité, nous avons besoin d'accéder à votre dispositif de capture visuelle.</p>
+                        <button id="enable-webcam" class="bg-green-800 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-mono transition-all border border-green-600">
+                            <i class="fas fa-unlock mr-2"></i> AUTORISER L'ACCÈS
+                        </button>
+                    </div>
+                    <div id="reality-overlay" class="absolute inset-0 hidden flex flex-col items-center justify-center">
+                        <div class="text-center mb-6">
+                            <p class="text-green-400 font-mono mb-1">NIVEAU DE DISTORSION:</p>
+                            <input type="range" id="reality-slider" min="0" max="100" value="0" class="w-64 accent-green-500">
+                        </div>
+                        <div class="flex space-x-4">
+                            <button id="enhance-reality" class="bg-green-800 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-mono text-sm transition-all border border-green-600">
+                                <i class="fas fa-plus-circle mr-1"></i> AUGMENTER
+                            </button>
+                            <button id="reset-reality" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-mono text-sm transition-all border border-gray-600">
+                                <i class="fas fa-undo mr-1"></i> RÉINITIALISER
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panneau de contrôle -->
+            <div class="bg-black bg-opacity-70 border border-green-800 rounded-lg p-6 font-mono scanline">
+                <h2 class="text-lg text-green-400 mb-4 border-b border-green-800 pb-2">
+                    <i class="fas fa-sliders-h mr-2"></i> CONTRÔLES DIMENSIONNELS
+                </h2>
+                
+                <div class="mb-6">
+                    <p class="text-gray-400 text-sm mb-2">RÉALITÉ ALTERNATIVE:</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button data-reality="cyberpunk" class="bg-gray-800 hover:bg-green-900 text-gray-300 hover:text-green-300 p-3 rounded border border-gray-700 hover:border-green-600 transition-all text-xs">
+                            <i class="fas fa-city mr-1"></i> URBANISME CYBER
+                        </button>
+                        <button data-reality="fantasy" class="bg-gray-800 hover:bg-green-900 text-gray-300 hover:text-green-300 p-3 rounded border border-gray-700 hover:border-green-600 transition-all text-xs">
+                            <i class="fas fa-dragon mr-1"></i> ROYAUME FANTASTIQUE
+                        </button>
+                        <button data-reality="utopia" class="bg-gray-800 hover:bg-green-900 text-gray-300 hover:text-green-300 p-3 rounded border border-gray-700 hover:border-green-600 transition-all text-xs">
+                            <i class="fas fa-sun mr-1"></i> UTOPIE PARFAITE
+                        </button>
+                        <button data-reality="apocalypse" class="bg-gray-800 hover:bg-green-900 text-gray-300 hover:text-green-300 p-3 rounded border border-gray-700 hover:border-green-600 transition-all text-xs">
+                            <i class="fas fa-skull mr-1"></i> APOCALYPSE
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-gray-400 text-sm mb-2">FILTRES D'ÉCHAPPATOIRE:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button data-filter="none" class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-xs border border-green-600">
+                            AUCUN
+                        </button>
+                        <button data-filter="glitch" class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded-full text-xs border border-gray-600 hover:border-green-600">
+                            EFFET GLITCH
+                        </button>
+                        <button data-filter="noir" class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded-full text-xs border border-gray-600 hover:border-green-600">
+                            NOIR & VERT
+                        </button>
+                        <button data-filter="vaporwave" class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded-full text-xs border border-gray-600 hover:border-green-600">
+                            VAPORWAVE
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-green-800">
+                    <p class="text-xs text-gray-500 mb-3">VOTRE RÉALITÉ ACTUELLE:</p>
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-gray-400">INSATISFAIT</span>
+                        <div class="w-24 h-1 mx-2 bg-gradient-to-r from-red-500 to-green-500 rounded-full"></div>
+                        <span class="text-gray-400">ÉPANOUI</span>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button id="full-escape" class="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded-lg font-mono text-sm transition-all border border-red-600 w-full">
+                            <i class="fas fa-running mr-1"></i> ÉCHAPPATOIRE COMPLET
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Console de diagnostic -->
+        <div class="bg-black bg-opacity-80 border border-green-800 rounded-lg p-4 font-mono text-xs mb-4 h-32 overflow-y-auto">
+            <div id="reality-console">
+                <p>> Système Echappatoire initialisé...</p>
+                <p>> Analyse de la réalité primaire en cours...</p>
+                <p>> Détection des niveaux d'insatisfaction...</p>
+                <p>> En attente de connexion au dispositif visuel...</p>
+            </div>
+        </div>
+
+        <!-- Avertissement -->
+        <div class="text-center text-gray-500 text-xs border-t border-gray-800 pt-4">
+            <p class="flicker">ATTENTION: La prolongation de l'échappatoire peut entraîner une difficulté à revenir à votre réalité primaire.</p>
+        </div>
+    </div>
+
+    <!-- Modal d'avertissement -->
+    <div id="warning-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
+        <div class="bg-gray-900 border-2 border-red-500 rounded-lg max-w-md w-full p-6">
+            <div class="flex items-start mb-4">
+                <div class="text-red-500 text-2xl mr-3">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3 class="text-xl font-mono text-red-400">AVERTISSEMENT DIMENSIONNEL</h3>
+            </div>
+            <p class="text-gray-300 mb-6 text-sm">L'échappatoire complet vous transportera dans une réalité alternative permanente. Cette action est irréversible. Voulez-vous vraiment abandonner votre réalité actuelle?</p>
+            <div class="flex justify-end space-x-3">
+                <button id="cancel-escape" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded font-mono text-sm border border-gray-600">
+                    Annuler
+                </button>
+                <button id="confirm-escape" class="bg-red-900 hover:bg-red-800 text-white px-4 py-2 rounded font-mono text-sm border border-red-600">
+                    Confirmer l'Échappatoire
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulation de chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            let progress = 0;
+            const loadingInterval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress > 100) progress = 100;
+                
+                document.getElementById('loading-bar').style.width = `${progress}%`;
+                document.getElementById('loading-text').textContent = `Analyse de votre insatisfaction: ${Math.floor(progress)}%`;
+                
+                if (progress === 100) {
+                    clearInterval(loadingInterval);
+                    setTimeout(() => {
+                        document.getElementById('loading-screen').classList.add('hidden');
+                        document.getElementById('main-interface').classList.remove('hidden');
+                        addConsoleMessage("> Système prêt. En attente d'accès au flux visuel...");
+                    }, 800);
+                }
+            }, 200);
+        });
+
+        // Gestion de la webcam
+        let videoStream = null;
+        let currentFilter = 'none';
+        let currentReality = 'none';
+        let distortionLevel = 0;
+
+        document.getElementById('enable-webcam').addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                videoStream = stream;
+                const video = document.getElementById('webcam-feed');
+                video.srcObject = stream;
+                video.classList.remove('hidden');
+                
+                document.getElementById('permission-prompt').classList.add('hidden');
+                document.getElementById('reality-overlay').classList.remove('hidden');
+                
+                addConsoleMessage("> Flux visuel connecté. Accès autorisé.");
+                addConsoleMessage("> Chargement des modules de distorsion...");
+                
+                // Initialiser le canvas pour les effets
+                const videoElement = document.getElementById('webcam-feed');
+                const canvas = document.getElementById('alternate-reality');
+                const ctx = canvas.getContext('2d');
+                
+                canvas.width = videoElement.offsetWidth;
+                canvas.height = videoElement.offsetHeight;
+                canvas.classList.remove('hidden');
+                
+                // Dessiner le flux avec effets
+                function processFrame() {
+                    if (videoElement.readyState === videoElement.HAVE_ENOUGH_DATA) {
+                        canvas.width = videoElement.videoWidth;
+                        canvas.height = videoElement.videoHeight;
+                        
+                        ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                        
+                        // Appliquer les effets en fonction des paramètres
+                        if (currentFilter === 'glitch') {
+                            applyGlitchEffect();
+                        } else if (currentFilter === 'noir') {
+                            applyNoirEffect();
+                        } else if (currentFilter === 'vaporwave') {
+                            applyVaporwaveEffect();
+                        }
+                        
+                        if (currentReality !== 'none') {
+                            applyRealityEffect();
+                        }
+                    }
+                    requestAnimationFrame(processFrame);
+                }
+                
+                videoElement.addEventListener('play', () => {
+                    processFrame();
+                });
+                
+            } catch (err) {
+                console.error("Erreur d'accès à la webcam:", err);
+                addConsoleMessage("> ERREUR: Accès au flux visuel refusé.");
+                addConsoleMessage("> Cause possible: Permissions insuffisantes.");
+            }
+        });
+
+        // Effets de filtres
+        function applyGlitchEffect() {
+            const canvas = document.getElementById('alternate-reality');
+            const ctx = canvas.getContext('2d');
+            
+            // Simuler un effet de glitch aléatoire
+            if (Math.random() > 0.7) {
+                const sliceHeight = Math.random() * 20 + 5;
+                const sliceY = Math.random() * canvas.height;
+                const sliceX = Math.random() * 20 - 10;
+                
+                ctx.drawImage(
+                    canvas, 
+                    0, sliceY, canvas.width, sliceHeight,
+                    sliceX, sliceY, canvas.width, sliceHeight
+                );
+            }
+        }
+
+        function applyNoirEffect() {
+            const canvas = document.getElementById('alternate-reality');
+            const ctx = canvas.getContext('2d');
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            
+            for (let i = 0; i < data.length; i += 4) {
+                const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                data[i] = 0;        // R
+                data[i + 1] = avg;  // G
+                data[i + 2] = 0;    // B
+            }
+            
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        function applyVaporwaveEffect() {
+            const canvas = document.getElementById('alternate-reality');
+            const ctx = canvas.getContext('2d');
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            
+            for (let i = 0; i < data.length; i += 4) {
+                data[i] = 255 - data[i + 1];     // R
+                data[i + 1] = data[i + 2];       // G
+                data[i + 2] = 255 - data[i];     // B
+            }
+            
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        // Effets de réalité alternative
+        function applyRealityEffect() {
+            const canvas = document.getElementById('alternate-reality');
+            const ctx = canvas.getContext('2d');
+            
+            // Appliquer différents effets selon la réalité choisie
+            if (currentReality === 'cyberpunk') {
+                ctx.fillStyle = 'rgba(255, 0, 255, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Ajouter des éléments cyberpunk
+                if (Math.random() > 0.9) {
+                    ctx.fillStyle = '#00ffff';
+                    ctx.font = '20px Arial';
+                    ctx.fillText('>_', Math.random() * canvas.width, Math.random() * canvas.height);
+                }
+                
+            } else if (currentReality === 'fantasy') {
+                // Effet de flou féerique
+                ctx.filter = 'blur(1px) brightness(1.2)';
+                ctx.drawImage(canvas, 0, 0);
+                ctx.filter = 'none';
+                
+                // Ajouter des particules magiques
+                if (Math.random() > 0.8) {
+                    ctx.fillStyle = 'rgba(255, 255, 0, 0.7)';
+                    for (let i = 0; i < 5; i++) {
+                        const x = Math.random() * canvas.width;
+                        const y = Math.random() * canvas.height;
+                        const size = Math.random() * 5 + 2;
+                        ctx.beginPath();
+                        ctx.arc(x, y, size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+                
+            } else if (currentReality === 'utopia') {
+                // Effet de surbrillance
+                ctx.globalCompositeOperation = 'lighter';
+                ctx.drawImage(canvas, 0, 0);
+                ctx.globalCompositeOperation = 'source-over';
+                
+            } else if (currentReality === 'apocalypse') {
+                // Effet de sépia et de grain
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const data = imageData.data;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    const r = data[i];
+                    const g = data[i + 1];
+                    const b = data[i + 2];
+                    
+                    data[i] = Math.min(r * 0.8 + g * 0.2 + b * 0.1, 255);
+                    data[i + 1] = Math.min(r * 0.3 + g * 0.6 + b * 0.1, 255);
+                    data[i + 2] = Math.min(r * 0.2 + g * 0.3 + b * 0.5, 255);
+                    
+                    // Ajouter du grain
+                    const grain = Math.random() * 40 - 20;
+                    data[i] += grain;
+                    data[i + 1] += grain;
+                    data[i + 2] += grain;
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+            }
+        }
+
+        // Gestion des boutons de filtres
+        document.querySelectorAll('[data-filter]').forEach(button => {
+            button.addEventListener('click', () => {
+                currentFilter = button.dataset.filter;
+                addConsoleMessage(`> Filtre appliqué: ${button.textContent.trim()}`);
+                
+                // Mettre en surbrillance le bouton sélectionné
+                document.querySelectorAll('[data-filter]').forEach(btn => {
+                    btn.classList.remove('bg-green-900', 'text-green-300', 'border-green-600');
+                    btn.classList.add('bg-gray-800', 'border-gray-600');
+                });
+                
+                button.classList.remove('bg-gray-800', 'border-gray-600');
+                button.classList.add('bg-green-900', 'text-green-300', 'border-green-600');
+            });
+        });
+
+        // Gestion des réalités alternatives
+        document.querySelectorAll('[data-reality]').forEach(button => {
+            button.addEventListener('click', () => {
+                currentReality = button.dataset.reality;
+                document.getElementById('reality-status').textContent = button.textContent.trim().toUpperCase();
+                
+                // Augmenter le niveau de satisfaction aléatoirement
+                const satisfaction = Math.min(Math.floor(Math.random() * 30) + 30, 95);
+                document.getElementById('satisfaction-meter').textContent = `${satisfaction}%`;
+                document.getElementById('satisfaction-meter').className = satisfaction > 50 ? 
+                    'text-green-400' : satisfaction > 30 ? 'text-yellow-400' : 'text-red-400';
+                
+                addConsoleMessage(`> Chargement de la réalité: ${button.textContent.trim()}`);
+                addConsoleMessage(`> Niveau de satisfaction augmenté à ${satisfaction}%`);
+            });
+        });
+
+        // Gestion du slider de distorsion
+        document.getElementById('reality-slider').addEventListener('input', (e) => {
+            distortionLevel = e.target.value;
+            const video = document.getElementById('webcam-feed');
+            video.style.filter = `hue-rotate(${distortionLevel * 3.6}deg) contrast(${1 + distortionLevel/100}) saturate(${1 + distortionLevel/50})`;
+        });
+
+        // Gestion de l'échappatoire complet
+        document.getElementById('full-escape').addEventListener('click', () => {
+            document.getElementById('warning-modal').classList.remove('hidden');
+        });
+
+        document.getElementById('cancel-escape').addEventListener('click', () => {
+            document.getElementById('warning-modal').classList.add('hidden');
+        });
+
+        document.getElementById('confirm-escape').addEventListener('click', () => {
+            document.getElementById('warning-modal').classList.add('hidden');
+            
+            // Effet de transition
+            document.body.classList.add('world-distortion');
+            addConsoleMessage("> INITIALISATION DE L'ÉCHAPPATOIRE COMPLET");
+            addConsoleMessage("> DÉCONNEXION DE LA RÉALITÉ PRIMAIRE...");
+            
+            setTimeout(() => {
+                document.body.innerHTML = `
+                <div class="fixed inset-0 bg-black flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-5xl font-mono text-green-400 mb-6">
+                            BIENVENUE DANS VOTRE NOUVELLE RÉALITÉ
+                        </div>
+                        <p class="text-gray-400 mb-8">Votre ancienne vie n'est plus qu'un lointain souvenir...</p>
+                        <button onclick="window.location.reload()" class="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-mono border border-gray-600">
+                            <i class="fas fa-sign-out-alt mr-2"></i> REVENIR À LA RÉALITÉ
+                        </button>
+                    </div>
+                </div>
+                `;
+            }, 3000);
+        });
+
+        // Fonction utilitaire pour ajouter des messages à la console
+        function addConsoleMessage(message) {
+            const consoleElement = document.getElementById('reality-console');
+            const messageElement = document.createElement('p');
+            messageElement.textContent = message;
+            consoleElement.appendChild(messageElement);
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+        }
+    </script>
+</body>
+</html>
