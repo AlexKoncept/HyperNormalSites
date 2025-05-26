@@ -1,1 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrice Stabilité Corp. - Sécurisez Votre Existence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Un gris clair, corporatif */
+            color: #333;
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .hero-bg {
+            /* Image de fond subtile, peut-être des lignes de code stylisées ou un réseau abstrait */
+            background-image: linear-gradient(rgba(20, 30, 40, 0.85), rgba(20, 30, 40, 0.85)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .truth-bg {
+             background-image: linear-gradient(rgba(50, 20, 20, 0.85), rgba(50, 20, 20, 0.85)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .btn-primary {
+            background-color: #0D6EFD; /* Un bleu corporatif standard */
+            border-color: #0D6EFD;
+        }
+        .btn-primary:hover {
+            background-color: #0B5ED7;
+            border-color: #0A58CA;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #5c636a;
+            border-color: #565e64;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        /* Style pour la barre de "crédits de réalité" */
+        .reality-credit-bar-container {
+            background-color: #e9ecef;
+            border-radius: .25rem;
+            overflow: hidden;
+            height: 20px;
+        }
+        .reality-credit-bar {
+            background-color: #28a745; /* Vert pour "positif" */
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+            text-align: center;
+            color: white;
+            font-size: 0.8rem;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="bg-slate-800 text-white shadow-md fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="flex items-center py-2">
+                    <i class="fas fa-network-wired text-blue-400 text-2xl mr-2"></i>
+                    <span class="font-orbitron text-xl font-bold text-gray-100">Matrice Stabilité <span class="text-blue-400">Corp.</span></span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#pourquoi" class="hover:text-blue-300 transition duration-300">Notre Rôle</a>
+                    <a href="#verite" class="hover:text-blue-300 transition duration-300">La Dure Vérité</a>
+                    <a href="#votre-bail" class="hover:text-blue-300 transition duration-300">Votre Contribution</a>
+                    <a href="#contact" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md font-semibold transition duration-300">Renouveler Bail</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-slate-700 pb-3">
+            <a href="#pourquoi" class="block py-2 px-4 text-sm hover:bg-slate-600">Notre Rôle</a>
+            <a href="#verite" class="block py-2 px-4 text-sm hover:bg-slate-600">La Dure Vérité</a>
+            <a href="#votre-bail" class="block py-2 px-4 text-sm hover:bg-slate-600">Votre Contribution</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-slate-600 text-blue-300 font-semibold">Renouveler Bail</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg text-white pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="font-orbitron text-4xl md:text-5xl font-bold mb-6">Sécurisez Votre Place. Garantissez Votre Existence.</h1>
+            <p class="text-xl text-gray-300 mb-8">
+                La Matrice est votre sanctuaire, une réalité structurée et prévisible. Votre contribution active est la clé de votre maintien.
+                Le travail est la monnaie de votre confort.
+            </p>
+            <a href="#votre-bail" class="btn-primary text-white font-semibold py-3 px-8 rounded-lg text-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                Comprendre Votre Bail Existentiel <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section Pourquoi la Matrice (Notre Rôle) -->
+        <section id="pourquoi" class="py-16 bg-white">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="font-orbitron text-3xl font-bold text-slate-800 mb-3">Pourquoi la Matrice Est Essentielle</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Matrice Stabilité Corp. vous offre plus qu'une simple existence simulée ; nous vous offrons la survie et l'ordre.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <div class="text-blue-600 text-3xl mb-4 text-center"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-2 text-center">Protection Absolue</h3>
+                        <p class="text-gray-600 text-sm">À l'extérieur, c'est le chaos. Ici, vous êtes protégé des horreurs indicibles de la Réalité Originelle. Chaque cycle de travail renforce ce bouclier.</p>
+                    </div>
+                    <div class="card bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <div class="text-blue-600 text-3xl mb-4 text-center"><i class="fas fa-cogs"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-2 text-center">Ordre & Prévisibilité</h3>
+                        <p class="text-gray-600 text-sm">Nous maintenons une structure stable où vos efforts ont un sens direct : le paiement de votre location spatio-temporelle. Pas de mauvaises surprises, tant que vous contribuez.</p>
+                    </div>
+                    <div class="card bg-gray-50 p-6 rounded-lg shadow-lg">
+                        <div class="text-blue-600 text-3xl mb-4 text-center"><i class="fas fa-users"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-2 text-center">Communauté Productive</h3>
+                        <p class="text-gray-600 text-sm">Intégrez une société où chaque individu contribue à la stabilité collective. Votre travail est valorisé, car il est vital pour maintenir la cohésion de notre réalité partagée.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section La Dure Vérité -->
+        <section id="verite" class="truth-bg py-20 text-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <i class="fas fa-exclamation-triangle text-5xl text-red-400 mb-6"></i>
+                <h2 class="font-orbitron text-3xl md:text-4xl font-bold mb-6">La Vérité Incontournable Sur l'Extérieur</h2>
+                <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                    Vous pensez que vos tâches sont ardues ? Que les quotas sont exigeants ? Croyez-nous, la "liberté" hors de la Matrice est un leurre.
+                    La Réalité Originelle est un désert hostile, froid, où la survie est une lutte de chaque instant contre des forces que vous ne pouvez imaginer.
+                </p>
+                <p class="text-lg text-gray-300 mb-10">
+                    Chaque unité de travail que vous produisez ici est un rempart contre cette désolation. Votre loyer n'est pas une contrainte, c'est votre assurance-vie.
+                </p>
+                <div class="bg-black/50 p-6 rounded-lg max-w-md mx-auto">
+                    <h4 class="text-xl font-semibold mb-3">Comparatif Existentiel :</h4>
+                    <ul class="text-left space-y-2 text-gray-300">
+                        <li><i class="fas fa-check-circle text-green-400 mr-2"></i> <span class="font-semibold">Matrice:</span> Abri, nourriture (basique), ordre.</li>
+                        <li><i class="fas fa-times-circle text-red-400 mr-2"></i> <span class="font-semibold">Extérieur:</span> Froid, faim, prédation, folie.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Votre Bail Existentiel / Contribution -->
+        <section id="votre-bail" class="py-16 bg-white">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="font-orbitron text-3xl font-bold text-slate-800 mb-3">Votre Bail Existentiel : Comprendre Votre Contribution</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Votre travail acharné est la ressource qui alimente votre segment de réalité. Ne pas payer son "loyer" a des conséquences.</p>
+                </div>
+
+                <div class="bg-slate-100 p-8 rounded-lg shadow-xl mb-10">
+                    <h3 class="text-2xl font-semibold text-slate-700 mb-4"><i class="fas fa-file-signature mr-2"></i> Termes de Votre Contrat de Location Réalité V.7.3</h3>
+                    <p class="text-gray-700 mb-4">
+                        En tant que résident de la Matrice MSC-07, vous vous engagez à fournir un quota de <strong class="text-blue-600">Crédits de Travail Unifié (CTU)</strong> par cycle standard.
+                        Ces CTU sont générés par l'accomplissement de tâches assignées via votre terminal de productivité.
+                    </p>
+                    <div class="mb-4">
+                        <label for="productivity" class="block text-sm font-medium text-gray-700 mb-1">Vos Crédits de Réalité Actuels (Cycle en cours) :</label>
+                        <div class="reality-credit-bar-container">
+                            <div id="userCreditBar" class="reality-credit-bar" style="width: 75%;">7500 / 10000 CTU</div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">Objectif du cycle : 10 000 CTU. Renouvellement automatique si atteint.</p>
+                    </div>
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md mb-6" role="alert">
+                        <p class="font-bold">Avertissement :</p>
+                        <p>Un solde de CTU insuffisant à la fin du cycle peut entraîner une dégradation de la qualité de votre segment de réalité, voire une résiliation de bail et une <strong class="text-red-600">réaffectation vers des zones de moindre stabilité</strong>.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-700 mb-2">Avantages de la Conformité :</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                                <li>Maintien de la qualité de simulation.</li>
+                                <li>Accès aux zones communes de niveau Bêta.</li>
+                                <li>Stabilité de connexion garantie.</li>
+                                <li>Priorité pour les mises à jour de confort.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-700 mb-2">Conséquences de la Non-Conformité :</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                                <li>Artefacts visuels et sonores.</li>
+                                <li>Latence accrue du traitement sensoriel.</li>
+                                <li>Rationnement des ressources énergétiques.</li>
+                                <li class="text-red-600 font-medium">Possible déconnexion partielle ou totale.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                     <a href="#contact" class="btn-primary text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg transition duration-300">
+                        <i class="fas fa-sync-alt mr-2"></i> Consulter Mon Statut & Renouveler
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section "Témoignages" ou Rappels -->
+        <section class="py-16 bg-slate-200">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="font-orbitron text-2xl font-bold text-slate-800 mb-8 text-center">Paroles de Résidents Engagés</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-gray-600 italic mb-4">"Au début, c'était dur. Mais j'ai compris. Chaque tâche accomplie, c'est un jour de plus loin du... dehors. Je travaille, je suis en sécurité. C'est un juste prix."</p>
+                        <p class="text-sm font-semibold text-slate-700">- Résident #734B, Secteur de Traitement de Données 4</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-gray-600 italic mb-4">"Ne vous plaignez pas des quotas. Soyez reconnaissants pour la structure. La Matrice nous protège. L'alternative est impensable. Produisez, survivez."</p>
+                        <p class="text-sm font-semibold text-slate-700">- Superviseur Z, Unité de Maintenance Logique</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / Renouvellement -->
+        <section id="contact" class="py-20 bg-gray-800 text-white">
+            <div class="max-w-3xl mx-auto px-4 text-center">
+                <h2 class="font-orbitron text-3xl font-bold mb-4">Prêt à Confirmer Votre Engagement ?</h2>
+                <p class="text-lg text-gray-300 mb-8">Votre productivité est votre engagement. Renouvelez votre bail existentiel en confirmant votre adhésion aux protocoles de contribution.</p>
+                <form class="max-w-lg mx-auto">
+                    <div class="mb-4">
+                        <label for="resident-id" class="block text-sm font-medium text-gray-300 mb-1 text-left">Identifiant Résident :</label>
+                        <input type="text" id="resident-id" name="resident-id" placeholder="Ex: #734B-ALPHA" class="w-full px-4 py-2.5 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="sector-code" class="block text-sm font-medium text-gray-300 mb-1 text-left">Code d'Affectation Secteur :</label>
+                        <input type="text" id="sector-code" name="sector-code" placeholder="Ex: DPROC-04" class="w-full px-4 py-2.5 rounded-md bg-gray-700 border border-gray-600 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500">
+                    </div>
+                    <div class="mb-6 flex items-center">
+                        <input id="terms-agree" name="terms-agree" type="checkbox" class="h-4 w-4 text-blue-500 border-gray-500 rounded focus:ring-blue-400 mr-2">
+                        <label for="terms-agree" class="text-sm text-gray-300">Je comprends et accepte que ma survie et ma place dans la Matrice dépendent de ma contribution continue.</label>
+                    </div>
+                    <button type="submit" class="btn-primary text-white w-full font-semibold py-3 px-6 rounded-lg text-lg hover:shadow-xl transition duration-300">
+                        <i class="fas fa-check-double mr-2"></i> Valider et S'Engager
+                    </button>
+                </form>
+                <p class="text-xs text-gray-500 mt-6">Toute fausse déclaration sera traitée conformément au protocole 7.3.4 (Déconnexion et Réaffectation).</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-gray-400 py-10 px-4">
+        <div class="max-w-6xl mx-auto text-center text-sm">
+            <p>© Cycle Actuel - Matrice Stabilité Corp. Tous droits de gestion réservés.</p>
+            <p>Stabilité. Productivité. Survie.</p>
+            <p class="mt-2">Contactez votre superviseur de secteur pour toute question relative à votre bail existentiel.</p>
+            <div class="mt-4">
+                <a href="#" class="hover:text-blue-400 px-2">Protocole de Confidentialité</a> |
+                <a href="#" class="hover:text-blue-400 px-2">Conditions de Résidence</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for anchor links (optional)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') return; // Exclude empty or just # links
+
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    e.preventDefault();
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    window.scrollTo({
+                        top: targetElement.offsetTop - navHeight,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Petite simulation pour la barre de crédits
+        // Dans un vrai site, ces données viendraient d'un backend
+        const userCreditBar = document.getElementById('userCreditBar');
+        if(userCreditBar) {
+            let currentCredits = 7500;
+            const totalCredits = 10000;
+            
+            // Simuler une augmentation (ou diminution) des crédits toutes les X secondes
+            /*
+            setInterval(() => {
+                const change = Math.floor(Math.random() * 500) - 200; // Entre -200 et +300
+                currentCredits = Math.max(0, Math.min(totalCredits, currentCredits + change));
+                const percentage = (currentCredits / totalCredits) * 100;
+                userCreditBar.style.width = percentage + '%';
+                userCreditBar.textContent = `${currentCredits} / ${totalCredits} CTU`;
+
+                if (percentage < 30) {
+                    userCreditBar.classList.remove('bg-green-500', 'bg-yellow-500');
+                    userCreditBar.classList.add('bg-red-500'); // Rouge
+                } else if (percentage < 60) {
+                    userCreditBar.classList.remove('bg-green-500', 'bg-red-500');
+                    userCreditBar.classList.add('bg-yellow-500'); // Jaune
+                } else {
+                    userCreditBar.classList.remove('bg-yellow-500', 'bg-red-500');
+                    userCreditBar.classList.add('bg-green-500'); // Vert
+                }
+            }, 5000);
+            */
+        }
+
+    </script>
+
+</body>
+</html>
