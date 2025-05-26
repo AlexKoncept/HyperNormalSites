@@ -40,7 +40,7 @@ Chaque Koncept = un futur plausible au vue du monde d'aujourd'hui.
 
 ## 🚀 Accès
 
-🔗 [alexkoncept.github.io/HyperNormalSites](https://alexkoncept.github.io/HyperNormalSites)
+🔗 https://github.com/AlexKoncept/HyperNormalSites 
 
 Tu peux consulter chaque site individuellement depuis le dossier correspondant.
 
