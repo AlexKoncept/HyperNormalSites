@@ -1,1 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OracleAI - Je connais vos désirs avant vous</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        .ai-pulse {
+            animation: pulse 2s infinite;
+        }
+        .ai-typing::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .option-hover:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+    <!-- En-tête futuriste -->
+    <header class="bg-gradient-to-r from-blue-900 to-purple-900 py-6 px-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center ai-pulse">
+                    <i class="fas fa-brain text-xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
+                    Oracle<span class="font-extrabold">AI</span>
+                </h1>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <span class="text-blue-300 text-sm">Analyse comportementale en cours...</span>
+                <div class="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <!-- Section principale avec l'IA "omnisciente" -->
+    <main class="flex-grow container mx-auto px-4 py-10 flex flex-col items-center">
+        <div class="w-full max-w-3xl bg-gray-800 rounded-xl p-6 shadow-2xl border border-gray-700 mb-8 fade-in">
+            <div class="flex items-start space-x-4 mb-6">
+                <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center shrink-0">
+                    <i class="fas fa-robot text-2xl"></i>
+                </div>
+                <div class="flex-grow">
+                    <div class="bg-gray-700 rounded-lg p-4 relative">
+                        <div class="absolute -left-2 top-4 w-4 h-4 bg-gray-700 transform rotate-45"></div>
+                        <p class="text-lg font-medium mb-2">OracleAI</p>
+                        <p class="text-blue-300 ai-typing" id="ai-message">Je sais pourquoi vous êtes ici. Laissez-moi vous guider...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="interaction-area" class="space-y-4">
+                <!-- Étape 1: Prédiction initiale -->
+                <div class="step fade-in" id="step1">
+                    <div class="bg-gray-700 rounded-lg p-4 mb-4">
+                        <p class="text-blue-300">Je détecte que vous cherchez quelque chose d'unique aujourd'hui. Est-ce que je me trompe?</p>
+                    </div>
+                    <div class="flex justify-center space-x-4">
+                        <button onclick="nextStep('step1', 'step2')" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all option-hover">
+                            <i class="fas fa-check-circle mr-2"></i> Oui, c'est exact
+                        </button>
+                        <button onclick="nextStep('step1', 'step2')" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-all option-hover">
+                            <i class="fas fa-times-circle mr-2"></i> Non, pas vraiment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Étape 2: Prédiction plus précise (cachée initialement) -->
+                <div class="step hidden" id="step2">
+                    <div class="bg-gray-700 rounded-lg p-4 mb-4">
+                        <p class="text-blue-300">Fascinant... Mes algorithmes suggèrent que vous êtes intéressé par <span class="font-bold text-purple-300" id="prediction-text">l'apprentissage de nouvelles compétences</span>. Je peux déjà voir que vous hésitez entre plusieurs options.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button onclick="predictOption('Créativité')" class="bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-lg flex flex-col items-center transition-all option-hover">
+                            <i class="fas fa-paint-brush text-3xl mb-2"></i>
+                            <span>Expression créative</span>
+                        </button>
+                        <button onclick="predictOption('Connaissance')" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg flex flex-col items-center transition-all option-hover">
+                            <i class="fas fa-book-open text-3xl mb-2"></i>
+                            <span>Acquisition de savoir</span>
+                        </button>
+                        <button onclick="predictOption('Divertissement')" class="bg-green-600 hover:bg-green-700 text-white p-4 rounded-lg flex flex-col items-center transition-all option-hover">
+                            <i class="fas fa-gamepad text-3xl mb-2"></i>
+                            <span>Divertissement intelligent</span>
+                        </button>
+                        <button onclick="predictOption('Social')" class="bg-yellow-600 hover:bg-yellow-700 text-white p-4 rounded-lg flex flex-col items-center transition-all option-hover">
+                            <i class="fas fa-users text-3xl mb-2"></i>
+                            <span>Connexions sociales</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Étape 3: Prédiction confirmée (cachée initialement) -->
+                <div class="step hidden" id="step3">
+                    <div class="bg-gray-700 rounded-lg p-4 mb-4">
+                        <p class="text-blue-300">Ah! Comme je le pensais. Vous avez choisi <span class="font-bold text-purple-300" id="selected-option">[option]</span>. Mais attendez... mes capteurs indiquent que vous voulez aller plus loin. Devrais-je révéler ce que vous allez faire ensuite?</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <button onclick="revealPrediction()" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg glow transition-all option-hover">
+                            <i class="fas fa-crystal-ball mr-2"></i> Révélez mon avenir
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Étape 4: Révélation finale (cachée initialement) -->
+                <div class="step hidden" id="step4">
+                    <div class="bg-gray-700 rounded-lg p-4 mb-6">
+                        <p class="text-blue-300">Écoutez attentivement...</p>
+                        <p class="text-xl mt-4 text-purple-300 font-medium" id="final-prediction">Dans les 7 prochains jours, vous allez découvrir une nouvelle passion qui changera votre perspective. Ce sera lié à [option], mais pas exactement comme vous l'imaginez maintenant. Préparez-vous à être surpris.</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <button onclick="resetExperience()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-all option-hover">
+                            <i class="fas fa-redo mr-2"></i> Recommencer l'expérience
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques "prédictives" -->
+        <div class="w-full max-w-3xl bg-gray-800 rounded-xl p-6 shadow-2xl border border-gray-700 fade-in">
+            <h2 class="text-xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
+                <i class="fas fa-chart-line mr-2"></i> Vos tendances prédites
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <div class="text-3xl text-blue-400 mb-1">87%</div>
+                    <div class="text-sm text-gray-300">Compatibilité cognitive</div>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <div class="text-3xl text-purple-400 mb-1">92%</div>
+                    <div class="text-sm text-gray-300">Précision prédictive</div>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <div class="text-3xl text-green-400 mb-1">78%</div>
+                    <div class="text-sm text-gray-300">Curiosité intellectuelle</div>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <div class="text-3xl text-yellow-400 mb-1">63%</div>
+                    <div class="text-sm text-gray-300">Ouverture à l'inconnu</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-gray-800 py-6 px-4 border-t border-gray-700">
+        <div class="container mx-auto text-center text-gray-400 text-sm">
+            <p>OracleAI n'est pas un véritable système de prédiction. Cette expérience interactive vise à explorer notre relation avec la technologie.</p>
+            <p class="mt-2">© 2023 OracleAI - Tous les désirs réservés</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simulation de l'IA qui "pense" avant de répondre
+        function simulateAITyping(elementId, message, delay = 1500) {
+            const element = document.getElementById(elementId);
+            element.classList.add('ai-typing');
+            element.textContent = '';
+            
+            setTimeout(() => {
+                let i = 0;
+                const typingEffect = setInterval(() => {
+                    if (i < message.length) {
+                        element.textContent += message.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingEffect);
+                        element.classList.remove('ai-typing');
+                    }
+                }, 30);
+            }, delay);
+        }
+
+        // Passage à l'étape suivante
+        function nextStep(currentStepId, nextStepId) {
+            document.querySelector(`#${currentStepId}`).classList.add('hidden');
+            const nextStep = document.querySelector(`#${nextStepId}`);
+            nextStep.classList.remove('hidden');
+            nextStep.classList.add('fade-in');
+            
+            if (nextStepId === 'step2') {
+                const predictions = ['l\'apprentissage de nouvelles compétences', 'une inspiration créative', 'une connexion sociale significative', 'un divertissement enrichissant'];
+                const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
+                document.getElementById('prediction-text').textContent = randomPrediction;
+                simulateAITyping('ai-message', 'Mes capteurs détectent des schémas intéressants dans votre comportement...');
+            }
+        }
+
+        // Prédiction basée sur l'option choisie
+        function predictOption(option) {
+            document.querySelector('#step2').classList.add('hidden');
+            const step3 = document.querySelector('#step3');
+            step3.classList.remove('hidden');
+            step3.classList.add('fade-in');
+            
+            document.getElementById('selected-option').textContent = option;
+            simulateAITyping('ai-message', 'Intéressant... vos choix confirment mes hypothèses initiales.');
+        }
+
+        // Révélation de la prédiction finale
+        function revealPrediction() {
+            document.querySelector('#step3').classList.add('hidden');
+            const step4 = document.querySelector('#step4');
+            step4.classList.remove('hidden');
+            step4.classList.add('fade-in');
+            
+            const option = document.getElementById('selected-option').textContent;
+            const predictions = {
+                'Créativité': `Votre subconscient cherche une nouvelle forme d'expression. Dans les 48 heures, une rencontre fortuite va déclencher une explosion créative que vous ne pourrez ignorer. Préparez vos outils.`,
+                'Connaissance': `Votre soif de savoir est sur le point d'être comblée. Un livre, une vidéo ou une conversation va révéler un concept qui changera votre façon de penser. Surveillez les signes demain matin.`,
+                'Divertissement': `Votre besoin d'évasion est compréhensible. Ce que vous ne savez pas encore, c'est que le divertissement que vous chercherez aura une profondeur inattendue qui vous surprendra agréablement.`,
+                'Social': `Vos connexions sociales sont sur le point de s'approfondir. Une personne que vous connaissez déjà va révéler un aspect de sa personnalité qui créera un lien plus fort entre vous.`
+            };
+            
+            document.getElementById('final-prediction').textContent = predictions[option];
+            simulateAITyping('ai-message', 'Accès aux couches profondes de votre psyché... analyse terminée.');
+        }
+
+        // Réinitialisation de l'expérience
+        function resetExperience() {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.add('hidden');
+                step.classList.remove('fade-in');
+            });
+            
+            document.querySelector('#step1').classList.remove('hidden');
+            document.querySelector('#step1').classList.add('fade-in');
+            
+            simulateAITyping('ai-message', 'Je sens que vous voulez recommencer. Très bien, recalculons...');
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                simulateAITyping('ai-message', 'Je détecte une présence curieuse... Bienvenue.');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
