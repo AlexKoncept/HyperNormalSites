@@ -1,1 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamHarvest - Monétisez Vos Rêves</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 0.8rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #4ca1af;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #4ca1af;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #4ca1af;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background-color: #3b8d99;
+        }
+        .highlight {
+            background-color: #e0f2f1;
+            padding: 1rem;
+            border-left: 4px solid #4ca1af;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .stat-card {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .stat-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+        .stat-card p {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4ca1af;
+            margin: 0.5rem 0 0;
+        }
+        .demo-placeholder {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        .demo-placeholder h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .demo-placeholder p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contract-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        .contract-item h4 {
+            margin-top: 0;
+            color: #34495e;
+        }
+        .contract-item a {
+            color: #4ca1af;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #4ca1af;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
 
+    <header>
+        <h1>DreamHarvest</h1>
+        <p>Transformez vos nuits en opportunités. Nous captons, analysons et valorisons vos rêves.</p>
+    </header>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#comment-ca-marche">Comment ça marche ?</a>
+        <a href="#valeur-onirique">Valeur Onirique</a>
+        <a href="#contrats">Contrats</a>
+        <a href="#demo">Démo</a>
+        <a href="#inscription">S'inscrire / Connexion</a>
+    </nav>
+
+    <div class="container" id="accueil">
+        <section class="section">
+            <h2>Bienvenue chez DreamHarvest</h2>
+            <p>Imaginez un monde où vos rêves ne sont pas seulement des échos fugaces de votre subconscient, mais une ressource précieuse. Chez DreamHarvest, nous rendons cela possible grâce à notre technologie de pointe : le casque neural <strong>Chronos HD</strong>.</p>
+            <p>Pendant votre sommeil, Chronos HD enregistre délicatement vos paysages oniriques. Nos algorithmes d'IA sophistiqués les transforment ensuite en contenus créatifs et monétisables, tout en vous assurant une rémunération équitable.</p>
+            <div class="highlight">
+                <p><strong>Rejoignez la révolution onirique :</strong> Partagez vos rêves, contribuez à l'innovation et soyez récompensé.</p>
+            </div>
+            <a href="#inscription" class="cta-button">Commencez à Gagner avec Vos Rêves</a>
+        </section>
+
+        <section class="section" id="comment-ca-marche">
+            <h2>Comment ça marche ?</h2>
+            <ol>
+                <li><strong>Inscription & Réception du Casque :</strong> Créez votre compte et recevez gratuitement notre casque neural Chronos HD.</li>
+                <li><strong>Dormez & Rêvez :</strong> Portez le casque pendant votre sommeil. Il est conçu pour un confort maximal et une capture non-invasive.</li>
+                <li><strong>Transfert & Analyse Sécurisés :</strong> Au réveil, vos données oniriques sont transférées anonymement et analysées par nos IA.</li>
+                <li><strong>Transformation & Monétisation :</strong> Nous transformons les extraits les plus pertinents en :
+                    <ul>
+                        <li>Séquences vidéo inspirantes pour créateurs de contenu.</li>
+                        <li>Concepts uniques pour des campagnes publicitaires.</li>
+                        <li>Scénarios et narrations pour des IA génératives (jeux, histoires).</li>
+                    </ul>
+                </li>
+                <li><strong>Rémunération & Accès :</strong> Consultez votre tableau de bord, suivez la valeur de vos rêves et recevez vos paiements en DreamCoins (convertibles en euros) ou via virement.</li>
+            </ol>
+        </section>
+
+        <section class="section" id="valeur-onirique">
+            <h2>Votre "Valeur Onirique" : Statistiques et Potentiel</h2>
+            <p>Chaque rêve est unique, mais certains possèdent une "Valeur Onirique" plus élevée en fonction de leur clarté, originalité, intensité émotionnelle et potentiel d'application créative. Voici quelques indicateurs que nous suivons :</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Rêves Collectés (Moy. / Nuit)</h3>
+                    <p>3.7</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Taux de Clarté Narrativa</h3>
+                    <p>78%</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Potentiel Créatif Moyen</h3>
+                    <p>8.2 / 10</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Revenu Moyen par Rêveur (Mensuel)</h3>
+                    <p>125 DC (~€)</p>
+                </div>
+            </div>
+            <div class="highlight">
+                <p><strong>Tableau de Bord Personnalisé :</strong> Suivez vos statistiques, la valeur estimée de vos récentes collectes et l'utilisation de vos données oniriques (toujours de manière anonymisée pour les acheteurs).</p>
+            </div>
+        </section>
+
+        <section class="section" id="contrats">
+            <h2>Contrats & Transparence</h2>
+            <p>Votre confiance est notre priorité. Nous opérons avec une transparence totale concernant l'utilisation de vos données oniriques et votre rémunération.</p>
+            <div class="contract-item">
+                <h4>Contrat de Collecte et de Partage Onirique (CCPO v2.1)</h4>
+                <p>Ce document détaille les modalités de collecte, d'anonymisation, de traitement et de partage des données. Il stipule clairement vos droits sur vos données brutes et les conditions de leur monétisation.</p>
+                <p><a href="/docs/CCPO_v2.1.pdf" target="_blank">Télécharger le CCPO (PDF)</a></p>
+            </div>
+            <div class="contract-item">
+                <h4>Accord de Rémunération DreamCoins (ARDC v1.5)</h4>
+                <p>Cet accord explique le système de points "DreamCoins", leur méthode de calcul basée sur la Valeur Onirique, et les options de conversion en monnaie fiduciaire ou autres avantages.</p>
+                <p><a href="/docs/ARDC_v1.5.pdf" target="_blank">Télécharger l'ARDC (PDF)</a></p>
+            </div>
+            <p><strong>Sécurité et Anonymat :</strong> Toutes les données sont cryptées et les extraits partagés avec nos partenaires sont rigoureusement anonymisés. Vous gardez le contrôle sur les types de projets auxquels vos données peuvent contribuer.</p>
+        </section>
+
+        <section class="section" id="demo">
+            <h2>Démo : Du Rêve à la Réalité</h2>
+            <p>Visualisez comment un simple fragment de rêve peut être transformé en une source d'inspiration tangible. Notre démo interactive vous permet d'explorer le processus.</p>
+            <div class="demo-placeholder">
+                <h3>Explorateur de Transformation Onirique</h3>
+                <p>Découvrez un exemple concret : un rêve sur un "jardin volant peuplé de chats lumineux" transformé en concept artistique pour un jeu vidéo, une idée de spot publicitaire et une courte séquence animée.</p>
+                <button class="cta-button" onclick="alert('Lancement de la démo interactive...\n(Ceci est une placeholder pour une fonctionnalité plus complexe)')">Lancer la Démo</button>
+            </div>
+            <p style="margin-top: 1rem;"><em>Note: La démo complète est en cours de développement et sera bientôt disponible.</em></p>
+        </section>
+
+        <section class="section" id="inscription">
+            <h2>Prêt à Récolter Vos Rêves ?</h2>
+            <p>Rejoignez notre communauté de rêveurs et commencez à transformer vos nuits en une source de revenus et d'inspiration pour le monde. L'inscription est simple et le casque Chronos HD vous est offert.</p>
+            <form style="margin-top: 1.5rem;">
+                <div style="margin-bottom: 1rem;">
+                    <label for="email" style="display:block; margin-bottom:0.5rem;">Votre Email :</label>
+                    <input type="email" id="email" name="email" required style="width:100%; padding:0.7rem; border:1px solid #ccc; border-radius:4px; box-sizing: border-box;">
+                </div>
+                <button type="submit" class="cta-button">Demander mon Casque Chronos HD</button>
+            </form>
+            <p style="margin-top:1rem; font-size:0.9rem;">Déjà membre ? <a href="#connexion" style="color:#4ca1af;">Connectez-vous ici</a>.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 DreamHarvest Inc. Tous droits réservés.</p>
+        <p>
+            <a href="#confidentialite">Politique de Confidentialité</a> |
+            <a href="#termes">Termes et Conditions</a> |
+            <a href="#faq">FAQ</a> |
+            <a href="#contact">Contactez-nous</a>
+        </p>
+    </footer>
+
+</body>
+</html>
