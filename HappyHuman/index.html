@@ -1,1 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Human - Trouvez votre bonheur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #f97316, #ec4899, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .transition-slow {
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gradient-to-br from-amber-50 to-rose-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <div class="h-10 w-10 rounded-full bg-gradient-to-r from-amber-400 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-smile text-white text-xl"></i>
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gray-800">Happy<span class="gradient-text">Human</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#" class="text-gray-900 px-3 py-2 rounded-md text-sm font-medium hover:text-amber-600 transition-slow">Accueil</a>
+                        <a href="#" class="text-gray-600 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition-slow">Services</a>
+                        <a href="#" class="text-gray-600 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition-slow">Blog</a>
+                        <a href="#" class="text-gray-600 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition-slow">À propos</a>
+                        <a href="#" class="text-gray-600 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition-slow">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <button class="bg-gradient-to-r from-amber-400 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg transition-slow">
+                        Essayez gratuitement
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-b-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-amber-50">Accueil</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-amber-50">Services</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-amber-50">Blog</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-amber-50">À propos</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-amber-50">Contact</a>
+                <button class="w-full mt-2 bg-gradient-to-r from-amber-400 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-medium">
+                    Essayez gratuitement
+                </button>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                    Devenez une version plus <span class="gradient-text">heureuse</span> de vous-même
+                </h1>
+                <p class="mt-6 text-lg text-gray-600">
+                    Happy Human vous aide à trouver l'équilibre, la joie et l'épanouissement dans votre vie quotidienne. 
+                    Nos programmes personnalisés transforment votre bien-être en une expérience joyeuse.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <button class="bg-gradient-to-r from-amber-400 to-pink-500 text-white px-8 py-3 rounded-full text-lg font-medium hover:shadow-lg transition-slow transform hover:scale-105">
+                        Commencer maintenant
+                    </button>
+                    <button class="border-2 border-amber-400 text-amber-600 px-8 py-3 rounded-full text-lg font-medium hover:bg-amber-50 transition-slow transform hover:scale-105">
+                        <i class="fas fa-play-circle mr-2"></i> Voir la démo
+                    </button>
+                </div>
+                <div class="mt-8 flex items-center">
+                    <div class="flex -space-x-2">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Rejoint par plus de <span class="text-amber-600">10,000+</span> personnes</p>
+                        <div class="flex items-center mt-1">
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <span class="ml-2 text-sm text-gray-600">5.0 (2K avis)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="relative floating">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                         alt="Femme souriante" 
+                         class="rounded-3xl shadow-2xl w-full max-w-md mx-auto border-8 border-white">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                        <div class="flex items-center">
+                            <div class="bg-amber-100 p-2 rounded-full">
+                                <i class="fas fa-heart text-amber-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-xs text-gray-500">Satisfaction</p>
+                                <p class="font-bold text-gray-800">98%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
+                        <div class="flex items-center">
+                            <div class="bg-pink-100 p-2 rounded-full">
+                                <i class="fas fa-users text-pink-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-xs text-gray-500">Membres</p>
+                                <p class="font-bold text-gray-800">10K+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white/50 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Comment nous vous rendons <span class="gradient-text">plus heureux</span></h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600">
+                    Nos méthodes scientifiquement prouvées vous aident à cultiver le bonheur au quotidien
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-slow card-hover">
+                    <div class="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-amber-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pleine conscience</h3>
+                    <p class="text-gray-600">
+                        Apprenez des techniques de méditation simples mais puissantes pour calmer votre esprit et réduire le stress.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-amber-600 font-medium">
+                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-slow card-hover">
+                    <div class="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-pink-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Bien-être physique</h3>
+                    <p class="text-gray-600">
+                        Des exercices adaptés à votre niveau pour améliorer votre énergie et votre santé globale.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-pink-600 font-medium">
+                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-slow card-hover">
+                    <div class="w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-indigo-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Communauté</h3>
+                    <p class="text-gray-600">
+                        Rejoignez une communauté bienveillante qui vous soutiendra dans votre parcours vers le bonheur.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-indigo-600 font-medium">
+                        En savoir plus <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gradient-to-r from-amber-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Ce que nos <span class="gradient-text">Happy Humans</span> disent</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600">
+                    Des vies transformées, des sourires partagés
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sophie" class="w-14 h-14 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Sophie Martin</h4>
+                            <p class="text-amber-600 text-sm">Membre depuis 1 an</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">
+                        "Happy Human a complètement changé ma perspective sur la vie. Les exercices quotidiens m'ont aidée à gérer mon anxiété et à trouver de la joie dans les petites choses. Je recommande à 100% !"
+                    </p>
+                    <div class="flex">
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Thomas" class="w-14 h-14 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Thomas Leroy</h4>
+                            <p class="text-pink-600 text-sm">Membre depuis 8 mois</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">
+                        "En tant qu'homme, je n'étais pas sûr que ça marcherait pour moi. Mais les conseils pratiques et la communauté m'ont vraiment aidé à m'ouvrir et à être plus heureux au quotidien. Merci Happy Human !"
+                    </p>
+                    <div class="flex">
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button class="border-2 border-amber-400 text-amber-600 px-8 py-3 rounded-full text-lg font-medium hover:bg-amber-50 transition-slow">
+                    Voir plus de témoignages
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-amber-400 to-pink-500 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Prêt à commencer votre voyage vers le bonheur ?</h2>
+                <p class="text-xl max-w-3xl mx-auto mb-8 text-amber-100">
+                    Rejoignez des milliers de personnes qui ont déjà transformé leur vie avec Happy Human
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="bg-white text-amber-600 px-8 py-3 rounded-full text-lg font-bold hover:bg-amber-50 transition-slow transform hover:scale-105">
+                        Essai gratuit de 7 jours
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-white/10 transition-slow transform hover:scale-105">
+                        <i class="fas fa-comment-dots mr-2"></i> Parler à un expert
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-gradient-to-r from-amber-400 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-smile text-white text-xl"></i>
+                        </div>
+                        <span class="ml-3 text-xl font-bold">Happy<span class="gradient-text">Human</span></span>
+                    </div>
+                    <p class="mt-4 text-gray-400">
+                        Aider les gens à trouver le bonheur et l'épanouissement dans leur vie quotidienne.
+                    </p>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Entreprise</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">À propos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Carrières</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Presse</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Ressources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Centre d'aide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Guides</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Événements</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Recherche</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">123 Rue du Bonheur</li>
+                        <li class="text-gray-400">75000 Paris, France</li>
+                        <li class="text-gray-400">contact@happyhuman.com</li>
+                        <li class="text-gray-400">+33 1 23 45 67 89</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2023 Happy Human. Tous droits réservés.
+                </p>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Conditions</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
