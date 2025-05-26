@@ -1,1 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaJustice - Le Peuple Juge en Direct</title>
+    <link rel="stylesheet" href="style.css"> <!-- Fichier CSS (à créer séparément) -->
+    <style>
+        /* Styles de base pour la démo - à mettre dans style.css idéalement */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1em 0;
+            text-align: center;
+            border-bottom: 5px solid #e74c3c;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header .tagline {
+            font-size: 1.1em;
+            color: #bdc3c7;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 0.5em;
+            text-align: center;
+        }
+        nav a {
+            color: #ecf0f1;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #e74c3c;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .live-streams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .stream-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        .video-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            position: relative;
+        }
+        .video-placeholder .live-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8em;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .stream-info {
+            padding: 15px;
+        }
+        .stream-info h3 {
+            margin-top: 0;
+            color: #e74c3c;
+        }
+        .voting-area button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .voting-area button.guilty { background-color: #c0392b; }
+        .voting-area button.innocent { background-color: #27ae60; }
+        .voting-area button:hover { opacity: 0.8; }
+        .verdict-realtime {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .verdict-bar-container {
+            width: 100%;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+            height: 20px;
+        }
+        .verdict-bar {
+            height: 100%;
+            background-color: #27ae60; /* Vert pour non-coupable par défaut */
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            font-size: 0.8em;
+            transition: width 0.5s ease-in-out;
+        }
+        #leaderboard table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        #leaderboard th, #leaderboard td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        #leaderboard th {
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+        #leaderboard tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
 
+    <header>
+        <h1>InstaJustice</h1>
+        <p class="tagline">Le Peuple Juge en Direct : Votre Verdict Compte !</p>
+    </header>
+
+    <nav>
+        <a href="#live-streams">Flux en Direct</a>
+        <a href="#leaderboard">Palmarès des Juges</a>
+        <a href="#how-it-works">Comment ça Marche ?</a>
+        <a href="#login">Connexion / Inscription</a>
+    </nav>
+
+    <main>
+        <section id="live-streams" class="container">
+            <h2>Flux en Direct des Incidents</h2>
+            <div class="live-streams-grid">
+                <!-- Exemple de carte de stream 1 -->
+                <article class="stream-card">
+                    <div class="video-placeholder">
+                        <span class="live-badge">LIVE</span>
+                        <span>[Vidéo du Cas #IJ78952]</span>
+                    </div>
+                    <div class="stream-info">
+                        <h3>Cas #IJ78952 - Vol à l'étalage présumé</h3>
+                        <p>Localisation : Supermarché CentreVille</p>
+                        <p>Description : Un individu est suspecté d'avoir dissimulé des articles sous ses vêtements.</p>
+                        <div class="voting-area">
+                            <p><strong>Votre verdict :</strong></p>
+                            <button class="vote-guilty" onclick="castVote('IJ78952', 'guilty')">Coupable</button>
+                            <button class="vote-innocent" onclick="castVote('IJ78952', 'innocent')">Non Coupable</button>
+                        </div>
+                        <div class="verdict-realtime">
+                            <p>Résultats Actuels :</p>
+                            <div class="verdict-bar-container">
+                                <div id="verdict-bar-IJ78952" class="verdict-bar" style="width: 65%; background-color: #c0392b;">Coupable (65%)</div>
+                                <!-- La barre opposée (non-coupable) serait implicitement le reste des 100% -->
+                            </div>
+                            <p id="verdict-text-IJ78952">Coupable : 65% | Non Coupable : 35% (1204 votes)</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exemple de carte de stream 2 -->
+                <article class="stream-card">
+                    <div class="video-placeholder">
+                        <span class="live-badge">LIVE</span>
+                        <span>[Vidéo du Cas #IJ10347]</span>
+                    </div>
+                    <div class="stream-info">
+                        <h3>Cas #IJ10347 - Vandalisme sur mobilier urbain</h3>
+                        <p>Localisation : Parc des Lilas</p>
+                        <p>Description : Un groupe de jeunes est filmé en train de taguer un banc public.</p>
+                        <div class="voting-area">
+                            <p><strong>Votre verdict :</strong></p>
+                            <button class="vote-guilty" onclick="castVote('IJ10347', 'guilty')">Coupable</button>
+                            <button class="vote-innocent" onclick="castVote('IJ10347', 'innocent')">Non Coupable</button>
+                        </div>
+                        <div class="verdict-realtime">
+                            <p>Résultats Actuels :</p>
+                            <div class="verdict-bar-container">
+                                <div id="verdict-bar-IJ10347" class="verdict-bar" style="width: 20%; background-color: #27ae60;">Non Coupable (20%)</div>
+                            </div>
+                            <p id="verdict-text-IJ10347">Coupable : 80% | Non Coupable : 20% (876 votes)</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exemple de carte de stream 3 - Verdict clos -->
+                <article class="stream-card">
+                    <div class="video-placeholder" style="background-color: #555;">
+                        <span class="live-badge" style="background-color: grey;">TERMINÉ</span>
+                        <span>[Replay Cas #IJ00981]</span>
+                    </div>
+                    <div class="stream-info">
+                        <h3>Cas #IJ00981 - Excès de vitesse dangereux</h3>
+                        <p>Localisation : Avenue Principale</p>
+                        <p>Description : Véhicule filmé à haute vitesse, mettant en danger des piétons.</p>
+                        <div class="voting-area">
+                            <p><strong>Verdict final (votes clos) :</strong></p>
+                        </div>
+                        <div class="verdict-realtime">
+                             <p id="verdict-text-IJ00981" style="color: #c0392b; font-size:1.2em;">Verdict : Coupable (92%)</p>
+                             <p>Total des votes : 2530</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="leaderboard" class="container">
+            <h2>Palmarès des Juges Citoyens (Top 10 Hebdomadaire)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rang</th>
+                        <th>Pseudo du Juge</th>
+                        <th>Cas Jugés</th>
+                        <th>Taux de Consensus*</th>
+                        <th>Points d'Honneur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>JusticeMan92</td>
+                        <td>157</td>
+                        <td>85%</td>
+                        <td>12560</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>LadyLex</td>
+                        <td>142</td>
+                        <td>91%</td>
+                        <td>12200</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>OeilDeLynx75</td>
+                        <td>130</td>
+                        <td>78%</td>
+                        <td>10140</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>VerdictVortex</td>
+                        <td>125</td>
+                        <td>88%</td>
+                        <td>10050</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>LeJusticierDuNet</td>
+                        <td>110</td>
+                        <td>82%</td>
+                        <td>9020</td>
+                    </tr>
+                    <!-- ... autres juges ... -->
+                    <tr>
+                        <td>10</td>
+                        <td>CitoyenLambda</td>
+                        <td>85</td>
+                        <td>75%</td>
+                        <td>6375</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.9em; color: #555;">*Taux de consensus : Pourcentage de fois où le juge a voté avec la majorité.</p>
+        </section>
+
+        <section id="how-it-works" class="container">
+            <h2>Comment ça Marche ?</h2>
+            <ol>
+                <li><strong>Observation :</strong> Regardez les flux vidéo en direct d'incidents signalés.</li>
+                <li><strong>Analyse :</strong> Prenez connaissance des faits, des descriptions et des éléments disponibles.</li>
+                <li><strong>Vote :</strong> Exprimez votre jugement : "Coupable" ou "Non Coupable" basé sur votre intime conviction.</li>
+                <li><strong>Verdict Communautaire :</strong> Le verdict est déterminé par la majorité des votes des citoyens juges.</li>
+                <li><strong>Impact :</strong> Les verdicts communautaires sont transmis aux autorités compétentes à titre consultatif et peuvent aider à orienter les enquêtes ou les actions. (Note : InstaJustice est une plateforme citoyenne, les verdicts n'ont pas de valeur légale contraignante).</li>
+                <li><strong>Gagnez des Points :</strong> Plus vous participez et votez en accord avec le consensus, plus vous gagnez de points et montez dans le palmarès !</li>
+            </ol>
+            <p><strong>Important :</strong> InstaJustice promeut une justice citoyenne responsable. Veuillez juger avec objectivité et éthique.</p>
+        </section>
+
+        <section id="login" class="container">
+            <h2>Rejoignez la Communauté InstaJustice</h2>
+            <p>Créez un compte pour commencer à juger ou connectez-vous si vous êtes déjà membre.</p>
+            <form action="#" method="post" style="max-width:400px; margin:auto;">
+                <div style="margin-bottom:10px;">
+                    <label for="email">Email :</label><br>
+                    <input type="email" id="email" name="email" required style="width:100%; padding:8px; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom:10px;">
+                    <label for="password">Mot de passe :</label><br>
+                    <input type="password" id="password" name="password" required style="width:100%; padding:8px; box-sizing: border-box;">
+                </div>
+                <button type="submit" style="background-color: #e74c3c; color:white; padding:10px 20px; border:none; border-radius:3px; cursor:pointer;">Connexion</button>
+                <a href="#register" style="margin-left:10px; color:#3498db;">Pas encore de compte ? S'inscrire</a>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2023 InstaJustice. Tous droits réservés.</p>
+        <p><a href="#privacy" style="color:#bdc3c7;">Politique de confidentialité</a> | <a href="#terms" style="color:#bdc3c7;">Conditions d'utilisation</a></p>
+        <p style="font-size:0.8em; color: #bdc3c7;">AVERTISSEMENT : InstaJustice est un concept fictif. Participer à des jugements populaires sans cadre légal peut avoir des conséquences graves.</p>
+    </footer>
+
+    <script>
+        // Script JavaScript fictif pour la démo (à mettre dans un fichier .js séparé idéalement)
+        function castVote(caseId, vote) {
+            console.log(`Vote enregistré pour le cas ${caseId}: ${vote}`);
+            // Ici, on simulerait un appel AJAX vers un backend pour enregistrer le vote
+            // Et on mettrait à jour l'interface en conséquence.
+
+            // Simulation de mise à jour de l'interface pour la démo
+            const verdictTextElement = document.getElementById(`verdict-text-${caseId}`);
+            const verdictBarElement = document.getElementById(`verdict-bar-${caseId}`);
+
+            if (verdictTextElement && verdictBarElement) {
+                // Simuler une augmentation des votes et un changement de pourcentage
+                // Ceci est très simplifié et ne reflète pas un vrai calcul de pourcentage
+                let currentVotesText = verdictTextElement.textContent;
+                let currentTotalVotes = parseInt(currentVotesText.match(/\((\d+) votes\)/)[1]);
+                currentTotalVotes++;
+
+                let guiltyPercent, innocentPercent;
+                if (vote === 'guilty') {
+                    // Augmenter légèrement le % coupable
+                    let currentGuiltyPercent = parseFloat(verdictBarElement.style.width);
+                    if (verdictBarElement.style.backgroundColor.includes('c0392b')) { // Si la barre affiche déjà coupable
+                        guiltyPercent = Math.min(100, currentGuiltyPercent + Math.random() * 5);
+                    } else { // Si la barre affiche non-coupable, on inverse
+                         guiltyPercent = 100 - parseFloat(verdictBarElement.style.width) + Math.random() * 5;
+                    }
+
+                } else { // vote === 'innocent'
+                    // Augmenter légèrement le % innocent
+                    let currentInnocentPercent;
+                     if (verdictBarElement.style.backgroundColor.includes('27ae60')) { // Si la barre affiche déjà non-coupable
+                        currentInnocentPercent = parseFloat(verdictBarElement.style.width);
+                        innocentPercent = Math.min(100, currentInnocentPercent + Math.random() * 5);
+                    } else { // Si la barre affiche coupable, on inverse
+                         innocentPercent = 100 - parseFloat(verdictBarElement.style.width) + Math.random() * 5;
+                    }
+                    guiltyPercent = 100 - innocentPercent;
+                }
+                
+                guiltyPercent = Math.max(0, Math.min(100, guiltyPercent)).toFixed(1);
+                innocentPercent = (100 - guiltyPercent).toFixed(1);
+
+                if (parseFloat(guiltyPercent) >= parseFloat(innocentPercent)) {
+                    verdictBarElement.style.width = `${guiltyPercent}%`;
+                    verdictBarElement.style.backgroundColor = '#c0392b';
+                    verdictBarElement.textContent = `Coupable (${guiltyPercent}%)`;
+                } else {
+                    verdictBarElement.style.width = `${innocentPercent}%`;
+                    verdictBarElement.style.backgroundColor = '#27ae60';
+                    verdictBarElement.textContent = `Non Coupable (${innocentPercent}%)`;
+                }
+                
+                verdictTextElement.textContent = `Coupable : ${guiltyPercent}% | Non Coupable : ${innocentPercent}% (${currentTotalVotes} votes)`;
+                
+                alert(`Votre vote "${vote}" pour le cas ${caseId} a été pris en compte (simulation).`);
+            }
+        }
+    </script>
+
+</body>
+</html>
