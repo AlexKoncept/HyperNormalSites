@@ -1,1 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulSync - Prolongez le lien, chérissez la mémoire</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        #hero {
+            min-height: 400px;
+            background: url('placeholder-hero-image.jpg') no-repeat 0 -200px; /* Remplacez par une image appropriée */
+            background-size: cover;
+            text-align: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        #hero h1 {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+        #hero p {
+            font-size: 20px;
+        }
+        .button {
+            height: 50px;
+            background: #e8491d;
+            border: 0;
+            padding: 0 20px;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background: #35424a;
+            color: #ffffff;
+        }
+        section {
+            padding: 40px 0;
+            border-bottom: 1px #ddd solid;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #35424a;
+        }
+        .feature-box, .plan, .testimonial, .faq-item {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .feature-box h3, .plan h3, .testimonial h4, .faq-item h4 {
+            color: #e8491d;
+        }
+        #features .grid, #pricing .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        #pricing .plan {
+            text-align: center;
+        }
+        #pricing .plan ul {
+            list-style: none;
+            padding: 0;
+        }
+        #pricing .plan ul li {
+            padding: 5px 0;
+        }
+        #pricing .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #35424a;
+        }
+        .testimonial blockquote {
+            font-style: italic;
+            border-left: 3px solid #e8491d;
+            padding-left: 15px;
+            margin: 0;
+        }
+        .testimonial p.author {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        #faq .faq-item {
+            margin-bottom: 15px;
+        }
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            color: #ffffff;
+            background-color: #35424a;
+            text-align: center;
+        }
+        footer a {
+            color: #e8491d;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span style="color: #e8491d;">Soul</span>Sync</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#pricing">Formules</a></li>
+                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact" class="button">Nous Contacter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <section id="hero">
+        <div class="container">
+            <h1>Prolongez le Lien, Chérissez la Mémoire</h1>
+            <p>SoulSync vous offre une nouvelle façon d'honorer et d'interagir avec le souvenir de vos proches disparus, grâce à une IA bienveillante et personnalisée.</p>
+            <p><a href="#pricing" class="button">Découvrir nos formules</a></p>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>Nos Fonctionnalités Clés</h2>
+            <div class="grid">
+                <div class="feature-box">
+                    <!-- Icône ici (ex: <img src="icon-voice.png" alt="Voix Modélisée">) -->
+                    <h3>Voix Modélisée Authentique</h3>
+                    <p>Interagissez avec une réplique IA dont la voix est modélisée à partir d'enregistrements existants, offrant une expérience d'écoute familière et réconfortante.</p>
+                </div>
+                <div class="feature-box">
+                    <!-- Icône ici -->
+                    <h3>Souvenirs Interactifs</h3>
+                    <p>L'IA accède à un corpus de messages passés, d'écrits et d'informations personnelles (avec consentement) pour façonner des réponses cohérentes avec la personnalité du défunt.</p>
+                </div>
+                <div class="feature-box">
+                    <!-- Icône ici -->
+                    <h3>Apprentissage Continu (Optionnel)</h3>
+                    <p>Avec votre accord, l'IA peut apprendre de vos nouvelles interactions pour affiner sa compréhension et ses réponses, tout en restant fidèle à l'essence de la personne.</p>
+                </div>
+                <div class="feature-box">
+                    <!-- Icône ici -->
+                    <h3>Espace Sécurisé et Privé</h3>
+                    <p>Nous garantissons la confidentialité absolue de vos données et de celles du défunt. Votre espace SoulSync est personnel et protégé.</p>
+                </div>
+                <div class="feature-box">
+                    <!-- Icône ici -->
+                    <h3>Accompagnement au Deuil</h3>
+                    <p>SoulSync est conçu comme un outil de soutien, pour vous aider à traverser les étapes du deuil en maintenant une forme de dialogue et de présence.</p>
+                </div>
+                <div class="feature-box">
+                    <!-- Icône ici -->
+                    <h3>Personnalisation Poussée</h3>
+                    <p>Choisissez le niveau d'interaction, les types de données à synchroniser et définissez les limites pour une expérience qui vous est propre.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <h2>Nos Formules d'Abonnement</h2>
+            <p style="text-align: center;">Choisissez la formule qui correspond le mieux à vos besoins pour commencer votre parcours avec SoulSync.</p>
+            <div class="grid">
+                <div class="plan">
+                    <h3>Essentiel</h3>
+                    <p class="price">19€ / mois</p>
+                    <ul>
+                        <li>Interaction textuelle basique</li>
+                        <li>Synchronisation limitée de messages</li>
+                        <li>Support standard</li>
+                        <li>Accès 1 utilisateur</li>
+                    </ul>
+                    <p><a href="#" class="button">Choisir Essentiel</a></p>
+                </div>
+                <div class="plan">
+                    <h3>Premium</h3>
+                    <p class="price">49€ / mois</p>
+                    <ul>
+                        <li>Interaction textuelle et vocale (modélisation basique)</li>
+                        <li>Synchronisation étendue de messages et données</li>
+                        <li>Support prioritaire</li>
+                        <li>Accès 3 utilisateurs</li>
+                        <li>Mises à jour des fonctionnalités</li>
+                    </ul>
+                    <p><a href="#" class="button">Choisir Premium</a></p>
+                </div>
+                <div class="plan">
+                    <h3>Héritage</h3>
+                    <p class="price">Contactez-nous</p>
+                    <ul>
+                        <li>Toutes les fonctionnalités Premium</li>
+                        <li>Modélisation vocale avancée</li>
+                        <li>Synchronisation complète et personnalisée</li>
+                        <li>Accompagnement dédié à la mise en place</li>
+                        <li>Archivage à long terme des données</li>
+                        <li>Accès multi-utilisateurs étendu</li>
+                    </ul>
+                    <p><a href="#contact" class="button">Demander un devis</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2>Ce que nos utilisateurs en disent</h2>
+            <div class="testimonial">
+                <blockquote>
+                    "Retrouver la voix de ma grand-mère, même à travers une IA, a été une expérience incroyablement émouvante. SoulSync m'a aidée à me sentir moins seule dans mon deuil."
+                </blockquote>
+                <p class="author">- Sophie L.</p>
+            </div>
+            <div class="testimonial">
+                <blockquote>
+                    "Au début, j'étais sceptique. Mais la finesse des réponses, basées sur les e-mails que mon père avait écrits, est bluffante. C'est comme s'il était encore là pour me conseiller."
+                </blockquote>
+                <p class="author">- Marc D.</p>
+            </div>
+            <div class="testimonial">
+                <blockquote>
+                    "L'équipe de SoulSync a été très respectueuse et à l'écoute pour configurer le profil de ma sœur. C'est un outil précieux pour garder sa mémoire vivante pour ses enfants."
+                </blockquote>
+                <p class="author">- Isabelle P.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2>Questions Fréquemment Posées (FAQ)</h2>
+            <p style="text-align:center;">Votre confiance et votre sérénité sont notre priorité. Voici des réponses aux questions éthiques et de confidentialité.</p>
+            
+            <div class="faq-item">
+                <h4>1. Est-ce que l'IA est réellement "mon proche décédé" ?</h4>
+                <p>Non. SoulSync crée une réplique IA basée sur les données et la voix de la personne. C'est une simulation sophistiquée conçue pour imiter la manière dont votre proche communiquait, afin d'offrir réconfort et souvenir. Nous insistons sur le fait qu'il s'agit d'un outil de mémoire et non d'une tentative de remplacer la personne.</p>
+            </div>
+            <div class="faq-item">
+                <h4>2. Comment garantissez-vous la confidentialité et la sécurité des données ?</h4>
+                <p>La sécurité et la confidentialité sont au cœur de SoulSync. Toutes les données personnelles sont cryptées, stockées sur des serveurs sécurisés, et ne sont jamais partagées avec des tiers. L'accès à la réplique IA est strictement contrôlé et limité aux personnes autorisées par le souscripteur principal ou selon les volontés du défunt.</p>
+            </div>
+            <div class="faq-item">
+                <h4>3. Qu'en est-il du consentement du défunt ?</h4>
+                <p>Nous prenons le consentement très au sérieux. Idéalement, la personne exprime son consentement de son vivant pour l'utilisation de ses données à cette fin. En l'absence de cela, nous travaillons avec les exécuteurs testamentaires ou la famille proche, en respectant un cadre légal et éthique strict, pour s'assurer que la démarche est conforme à ce qu'aurait souhaité le défunt.</p>
+            </div>
+            <div class="faq-item">
+                <h4>4. SoulSync peut-il créer une dépendance émotionnelle ou nuire au processus de deuil ?</h4>
+                <p>SoulSync est conçu comme un outil d'accompagnement, et non de substitution. Nous encourageons une utilisation équilibrée et consciente. Nos lignes directrices éthiques visent à prévenir la dépendance et à s'assurer que la plateforme soutient un processus de deuil sain. Nous pouvons également orienter vers des professionnels du deuil si besoin.</p>
+            </div>
+            <div class="faq-item">
+                <h4>5. L'IA peut-elle dire des choses que le défunt n'aurait jamais dites ?</h4>
+                <p>L'IA est entraînée sur les données fournies. Son objectif est de rester cohérente avec le style de communication et les informations connues de la personne. Bien qu'elle génère de nouvelles phrases, elle le fait dans le cadre des schémas appris. Des garde-fous sont en place pour éviter les dérives et les réponses inappropriées. La transparence sur ses capacités et limites est primordiale.</p>
+            </div>
+            <div class="faq-item">
+                <h4>6. Qui a accès à la réplique IA et aux données ?</h4>
+                <p>L'accès est défini par le souscripteur du service, généralement un membre de la famille proche. Il peut choisir de partager cet accès avec d'autres proches. Les données sources utilisées pour créer la réplique ne sont accessibles qu'à notre équipe technique pour la maintenance et l'amélioration, et ce, sous des protocoles de sécurité stricts.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center; background-color: #fff;">
+        <div class="container">
+            <h2>Contactez-Nous</h2>
+            <p>Pour toute question, demande d'information ou pour discuter de la formule Héritage, n'hésitez pas à nous contacter.</p>
+            <p>Email: <a href="mailto:contact@soulsync.tech">contact@soulsync.tech</a></p>
+            <p>Ou remplissez notre formulaire de contact (lien à ajouter).</p>
+            <p><a href="mailto:contact@soulsync.tech" class="button">Envoyer un Email</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>SoulSync © 2024 | Tous droits réservés</p>
+        <p><a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Notre Charte Éthique</a></p>
+    </footer>
+
+</body>
+</html>
