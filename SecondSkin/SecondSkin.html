@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecondSkin - Réinventez Votre Peau (Version HTML Pure)</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <!-- Un logo image, qui s'affichera à sa taille naturelle -->
+            <img src="images/logo.png" alt="Logo SecondSkin" width="100"> <!-- Ajout d'un width pour la démo -->
+            <h1>SecondSkin</h1>
+            <ul>
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="#visuals">Visuels</a></li>
+                <li><a href="#customization">Personnalisation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <!-- Pas d'image de fond possible sans CSS -->
+            <h2>SecondSkin: L'Avenir de l'Épiderme.</h2>
+            <p>Une révolution dermique qui fusionne technologie et biologie pour une expérience corporelle augmentée.</p>
+            <a href="#features">Découvrir Plus</a> <!-- Ceci sera un simple lien -->
+        </section>
+
+        <hr> <!-- Séparateur visuel simple -->
+
+        <section id="features">
+            <h2>Capacités Révolutionnaires</h2>
+            
+            <div>
+                <!-- Les images s'afficheront à leur taille naturelle -->
+                <img src="images/feature-appearance.svg" alt="Icône Apparence" width="50"> 
+                <h3>Apparence Dynamique</h3>
+                <p>Changez de style à volonté. Adaptez votre peau à votre humeur, votre tenue ou votre environnement.</p>
+            </div>
+
+            <div>
+                <img src="images/feature-health.svg" alt="Icône Santé" width="50">
+                <h3>Diagnostic Continu</h3>
+                <p>Surveillez vos signes vitaux en temps réel et recevez des alertes proactives pour une santé optimisée.</p>
+            </div>
+
+            <div>
+                <img src="images/feature-notif.svg" alt="Icône Notifications" width="50">
+                <h3>Notifications Intégrées</h3>
+                <p>Restez connecté discrètement. Recevez des informations importantes directement sur votre peau.</p>
+            </div>
+
+            <div>
+                <img src="images/feature-antivirus.svg" alt="Icône Antivirus" width="50">
+                <h3>Bouclier Biologique</h3>
+                <p>Une protection active contre les agents pathogènes et les menaces environnementales.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="visuals">
+            <h2>Visualisez SecondSkin</h2>
+            <p>Découvrez l'intégration parfaite de SecondSkin avec le corps humain.</p>
+            
+            <div>
+                <img src="images/3d-render1.jpg" alt="Rendu 3D de SecondSkin sur un bras" width="300"> <!-- Taille arbitraire pour la démo -->
+                <p>Texture Métallique Brossée</p>
+            </div>
+
+            <div>
+                <img src="images/3d-render2.jpg" alt="Rendu 3D de SecondSkin changeant de couleur" width="300">
+                <p>Transition Chromatique</p>
+            </div>
+            
+            <div>
+                <p>Modèle 3D Interactif (Non disponible en HTML pur)</p>
+                <!-- Pas de viewer 3D possible ici -->
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="customization">
+            <h2>Personnalisez Votre SecondSkin</h2>
+            <p>Note: L'interface ci-dessous est structurelle. Sans JavaScript, les changements ne seront pas appliqués visuellement sur un aperçu.</p>
+
+            <div>
+                <h3>Aperçu (Statique)</h3>
+                <div style="border: 1px solid #ccc; padding: 20px; min-height: 150px; text-align: center; background-color: #f0f0f0;">
+                    <p>Zone d'aperçu de votre SecondSkin</p>
+                    <p>(L'apparence ne changera pas ici)</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>Options de Style</h3>
+                <form> <!-- Un formulaire pour regrouper les contrôles, même s'il ne soumet rien activement -->
+                    <div>
+                        <label for="skin-color">Couleur Principale:</label>
+                        <input type="color" id="skin-color" value="#cccccc">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="skin-texture">Texture:</label>
+                        <select id="skin-texture">
+                            <option value="default">Lisse (Défaut)</option>
+                            <option value="mat">Mat</option>
+                            <option value="glossy">Brillant</option>
+                            <option value="organic">Organique</option>
+                            <option value="cyber">Cyber</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="pattern-opacity">Intensité du Motif (si applicable):</label>
+                        <input type="range" id="pattern-opacity" min="0" max="1" step="0.1" value="0.5">
+                    </div>
+                    <br>
+                    <h4>Styles de Notification:</h4>
+                    <div>
+                        <input type="radio" id="notif-subtle" name="notification_style" value="subtle" checked>
+                        <label for="notif-subtle">Subtil (Pulsation légère)</label><br>
+                        <input type="radio" id="notif-glow" name="notification_style" value="glow">
+                        <label for="notif-glow">Lumineux (Halo discret)</label><br>
+                        <input type="radio" id="notif-pattern" name="notification_style" value="pattern">
+                        <label for="notif-pattern">Motif (Affichage de motif)</label>
+                    </div>
+                    <br>
+                    <button type="button">Appliquer les Changements (non fonctionnel)</button> 
+                    <!-- type="button" pour éviter une soumission de page -->
+                </form>
+            </div>
+        </section>
+
+        <hr>
+        
+        <section id="contact">
+            <h2>Prêt à Entrer dans le Futur ?</h2>
+            <p>Contactez-nous pour en savoir plus ou pour être parmi les premiers à adopter SecondSkin.</p>
+            <form action="#" method="post"> <!-- L'attribut action est nécessaire pour un formulaire valide, même si on ne le traite pas ici -->
+                <div>
+                    <label for="name">Votre Nom:</label><br>
+                    <input type="text" id="name" name="name" placeholder="Votre Nom" required>
+                </div>
+                <br>
+                <div>
+                    <label for="email">Votre Email:</label><br>
+                    <input type="email" id="email" name="email" placeholder="Votre Email" required>
+                </div>
+                <br>
+                <div>
+                    <label for="message">Votre Message:</label><br>
+                    <textarea id="message" name="message" placeholder="Votre Message" rows="4" cols="50"></textarea>
+                </div>
+                <br>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>© 2024 SecondSkin Technologies. Tous droits réservés.</p>
+        <p>Suivez-nous : 
+            <a href="#">Twitter</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">LinkedIn</a>
+        </p>
+    </footer>
+
+</body>
+</html>
