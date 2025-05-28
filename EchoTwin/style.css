@@ -1,0 +1,462 @@
+/* Réinitialisation de base et styles globaux */
+:root {
+    --primary-color: #007bff; /* Bleu principal */
+    --secondary-color: #6c757d; /* Gris secondaire */
+    --light-color: #f8f9fa; /* Fond clair */
+    --dark-color: #343a40; /* Fond sombre */
+    --text-color: #212529; /* Couleur de texte principale */
+    --text-light: #f8f9fa; /* Texte sur fond sombre */
+    --font-family: 'Roboto', sans-serif;
+    --border-radius: 5px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden; /* Pour les flottants si utilisés */
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.8em;
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.5em; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: darken(var(--primary-color), 10%);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.bg-light {
+    background-color: var(--light-color);
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+.bg-dark {
+    background-color: var(--dark-color);
+    color: var(--text-light);
+}
+.bg-dark a {
+    color: #b0c4de; /* Un bleu clair pour les liens sur fond sombre */
+}
+.bg-dark a:hover {
+    color: var(--light-color);
+}
+.text-center {
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Centrer le sous-titre */
+}
+h2 + .section-subtitle { /* Si le sous-titre suit directement un h2 */
+    margin-top: -0.5em; /* Rapproche un peu le sous-titre du titre */
+}
+
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: darken(var(--secondary-color), 10%);
+    color: #fff;
+}
+
+
+/* Header et Navigation */
+header {
+    background-color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky; /* Barre de nav fixe */
+    top: 0;
+    z-index: 1000;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+.logo-img {
+    height: 40px; /* Ajustez selon votre logo */
+    margin-right: 10px;
+}
+.logo-text {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.logo-text:hover {
+    color: var(--primary-color);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 25px;
+}
+
+header nav ul li a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+header nav ul li a:hover,
+header nav ul li a.active { /* Classe active pour la page courante (JS nécessaire) */
+    color: var(--primary-color);
+}
+header nav ul li a::after { /* Soulignement animé au survol */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 2px;
+    right: 0;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+header nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+    background-color: var(--primary-color);
+}
+
+
+/* Section Héros */
+.hero {
+    background: url('images/hero-background.jpg') no-repeat center center/cover; /* Remplacez par votre image */
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+    position: relative; /* Pour le pseudo-élément d'overlay */
+}
+.hero::before { /* Overlay sombre pour la lisibilité du texte */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.hero-content {
+    position: relative; /* Pour être au-dessus de l'overlay */
+    z-index: 2;
+    max-width: 700px;
+}
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+}
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+}
+
+/* Section Aperçus */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+.gallery-item {
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.gallery-item img {
+    width: 100%;
+    height: 200px; /* Hauteur fixe pour uniformité */
+    object-fit: cover; /* Assure que l'image couvre sans se déformer */
+}
+.gallery-caption {
+    padding: 15px;
+    font-size: 0.9em;
+    text-align: center;
+    background-color: var(--light-color);
+}
+
+/* Section Témoignages */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.testimonial {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-color);
+}
+.testimonial blockquote {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Pour que les boîtes aient la même hauteur */
+}
+.testimonial blockquote::before,
+.testimonial blockquote::after {
+    content: '"';
+    font-size: 1.5em;
+    color: var(--primary-color);
+    opacity: 0.7;
+}
+.testimonial cite {
+    font-weight: bold;
+    color: var(--secondary-color);
+    font-size: 0.9em;
+}
+
+
+/* Section Abonnements */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.plan {
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Pour le badge */
+}
+.plan:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.plan h3 {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espace entre l'icône et le texte */
+}
+/* Icônes de plan (à styliser ou remplacer par de vraies icônes) */
+.icon-school::before, .icon-social::before, .icon-work::before {
+    /* Exemple de style, remplacez par des SVG, Font Awesome, etc. */
+    display: inline-block;
+    font-family: "Font Awesome 5 Free"; /* Si vous utilisez Font Awesome */
+    font-weight: 900;
+    font-size: 1.2em;
+    margin-right: 8px;
+}
+.icon-school::before { content: "\f549"; /* fa-school (exemple FA) */ }
+.icon-social::before { content: "\f0c0"; /* fa-users (exemple FA) */ }
+.icon-work::before { content: "\f0b1"; /* fa-briefcase (exemple FA) */ }
+
+.plan-price {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+.plan-price strong {
+    font-size: 1.8em;
+    color: var(--primary-color);
+}
+.plan ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+    text-align: left;
+}
+.plan ul li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+.plan ul li::before {
+    content: '✔'; /* Checkmark */
+    color: green;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+.plan .btn {
+    width: 80%;
+    margin-top: auto; /* Pousse le bouton en bas si la carte a une hauteur fixe */
+}
+
+.plan-featured {
+    border: 2px solid var(--primary-color);
+    transform: scale(1.05); /* Met en évidence le plan populaire */
+}
+.featured-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.plan-custom-offer {
+    text-align: center;
+    margin-top: 40px;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+/* Section Contact */
+.contact-info {
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+#contact h2 {
+    color: var(--light-color); /* Titre sur fond sombre */
+}
+
+/* Pied de page */
+footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+footer p {
+    margin-bottom: 5px;
+}
+footer a {
+    color: #aaa;
+}
+footer a:hover {
+    color: var(--light-color);
+}
+
+/* Styles responsives */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2em; }
+    .hero h1 { font-size: 2.5em; }
+    h2 { font-size: 1.8em; }
+
+    header nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    header nav .logo-text {
+        margin-bottom: 10px;
+    }
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    header nav ul li {
+        margin: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+    header nav ul li a::after { /* Désactiver l'effet de soulignement sur mobile pour éviter confusion */
+        display:none;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .gallery, .testimonials-grid, .plans-grid {
+        grid-template-columns: 1fr; /* Une colonne sur mobile */
+    }
+    .plan-featured {
+        transform: scale(1); /* Pas de mise à l'échelle sur mobile */
+    }
+}
