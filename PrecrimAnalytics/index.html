@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreCrime Analytics - Anticipez les Risques</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <!-- <img src="images/logo.png" alt="PreCrime Analytics Logo"> -->
+                <h1>PreCrime Analytics</h1>
+            </div>
+            <ul>
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="#dashboard-section">Tableau de Bord</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="btn btn-login">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h2>Anticipez et Neutralisez les Risques Avant qu'ils ne se Concrétisent.</h2>
+                <p>PreCrime Analytics offre une plateforme d'analyse prédictive de pointe pour les entreprises et les gouvernements, identifiant les comportements à risque pour une sécurité proactive.</p>
+                <a href="#dashboard-section" class="btn btn-primary">Voir la Démo du Dashboard</a>
+            </div>
+        </section>
+
+        <section id="features" class="container">
+            <h2>Fonctionnalités Clés</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-brain"></i>
+                    <h3>Analyse Comportementale IA</h3>
+                    <p>Notre IA analyse les publications, interactions et schémas comportementaux pour évaluer les risques.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Cartographie des Risques Géospatiaux</h3>
+                    <p>Visualisez les zones à haute probabilité de risque sur des cartes thermiques dynamiques.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-users-cog"></i>
+                    <h3>Analyse des Interactions Sociales</h3>
+                    <p>Identifiez les réseaux d'influence et les dynamiques de groupe potentiellement dangereuses.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Tableaux de Bord Intuitifs</h3>
+                    <p>Accédez à des indicateurs clairs et des rapports personnalisés pour une prise de décision rapide.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard-section">
+            <div class="container">
+                <h2>Tableau de Bord - Aperçu en Temps Réel</h2>
+                <p class="ethical-warning">
+                    <strong>AVERTISSEMENT ÉTHIQUE :</strong> Ce tableau de bord est une simulation.
+                    L'utilisation de telles technologies pour prédire le comportement individuel soulève
+                    d'importantes questions éthiques et de respect de la vie privée.
+                    PreCrime Analytics (fictif) s'engagerait à un usage responsable et encadré.
+                </p>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-widget widget-profile">
+                        <h3>Profil Individuel - Sujet #48XF09</h3>
+                        <div class="profile-info">
+                            <p><strong>Nom :</strong> John Doe (Anonymisé)</p>
+                            <p><strong>ID :</strong> 48XF09</p>
+                            <p><strong>Score de Risque :</strong> <span id="risk-score" class="risk-high">82%</span> <i class="fas fa-arrow-up"></i></p>
+                            <p><strong>Dernière Alerte :</strong> Activité suspecte sur réseau social (1h ago)</p>
+                            <p><strong>Tendances Comportementales :</strong> Augmentation de l'agressivité verbale, isolement social récent.</p>
+                        </div>
+                        <button class="btn btn-secondary">Voir Dossier Complet</button>
+                    </div>
+
+                    <div class="dashboard-widget widget-heatmap">
+                        <h3>Carte Thermique de Dangerosité - Secteur Urbain Alpha</h3>
+                        <!-- Placeholder for a real map. Using an image for now. -->
+                        <!-- Ideally, this would be an interactive map like Leaflet.js or Google Maps API -->
+                        <div id="heatmap-container">
+                            <!-- This div will be styled to show a pseudo heatmap -->
+                            <p>Chargement de la carte thermique...</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-widget widget-stats">
+                        <h3>Statistiques Globales</h3>
+                        <p><strong>Individus surveillés :</strong> <span id="monitored-individuals">1,258</span></p>
+                        <p><strong>Alertes Actives :</strong> <span id="active-alerts">17</span></p>
+                        <p><strong>Risques Élevés (>75%) :</strong> <span id="high-risk-count">42</span></p>
+                        <img src="images/dashboard_graph_placeholder.png" alt="Graphique de tendance des risques" style="width:100%; max-width:300px; margin-top:15px;">
+                    </div>
+
+                    <div class="dashboard-widget widget-feed">
+                        <h3>Flux d'Alertes Récentes</h3>
+                        <ul id="alert-feed">
+                            <li><span class="timestamp">10:32</span> Sujet #72BD11 - Déplacement inhabituel zone sensible.</li>
+                            <li><span class="timestamp">10:15</span> Sujet #48XF09 - Publication à contenu extrémiste détectée.</li>
+                            <li><span class="timestamp">09:58</span> Sujet #11AC30 - Interaction suspecte avec individu à risque.</li>
+                            <li><span class="timestamp">09:20</span> Sujet #99PQ77 - Diminution anormale de l'activité en ligne.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2>Contactez-Nous</h2>
+            <p>Pour une démonstration personnalisée ou pour en savoir plus sur nos solutions, contactez notre équipe.</p>
+            <form action="#" method="POST">
+                <input type="text" name="name" placeholder="Votre Nom" required>
+                <input type="email" name="email" placeholder="Votre Email" required>
+                <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 PreCrime Analytics. Tous droits réservés. (Site Fictif)</p>
+            <p><a href="#">Politique de confidentialité</a> | <a href="#">Termes d'utilisation</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
