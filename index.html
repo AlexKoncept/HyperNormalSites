@@ -2,198 +2,148 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>HyperNormalSites – Galerie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌐 HyperNormalSites</title>
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fb;
+      color: #333;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f3f7fa;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
       color: #111;
     }
-
-    header {
-      text-align: center;
-      padding: 3rem 1rem 1rem;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      color: #1a1a1a;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      color: #444;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
-    }
-
-    .grid {
+    .site-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
-
-    .card {
+    .site-item {
       background: #ffffff;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
-      border: 1px solid #e0e0e0;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease-in-out;
     }
-
-    .card:hover {
+    .site-item:hover {
       transform: translateY(-5px);
     }
-
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .card-content {
-      padding: 1rem;
-    }
-
-    .card-title {
-      font-size: 1.2rem;
-      margin-bottom: 0.4rem;
-      font-weight: bold;
-      color: #0077b6;
-    }
-
-    .card-description {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    .card a {
+    a {
       text-decoration: none;
-      color: inherit;
+      color: #1e88e5;
+      font-weight: bold;
       display: block;
+      margin-bottom: 0.5rem;
     }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
+    p {
       font-size: 0.9rem;
-      color: #666;
+      color: #555;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>HyperNormalSites</h1>
-    <p>Une collection de sites dystopiques conçus pour se questionner sur le futur à travers la technologie, la société… et l’absurde qui nous entoure chaque jour un peu plus.</p>
-  </header>
-
-  <section class="grid">
-
-    <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/EternaLink/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">EternaLink</div>
-          <div class="card-description">Réseau social post-mortem : connectés pour l’éternité.</div>
-        </div>
-      </a>
+  <h1>🌐 HyperNormalSites</h1>
+  <div class="site-list">
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/EternaLink/">🔗 EternaLink</a>
+      <p>Connexion éternelle avec vos proches... même après leur mort.</p>
     </div>
-
-    <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/DreamHarvest/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">DreamHarvest</div>
-          <div class="card-description">Vos rêves ne vous appartiennent plus. Ils sont monétisés.</div>
-        </div>
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/DreamHarvest/">💤 DreamHarvest</a>
+      <p>Collecte et exploitation de vos rêves pour le marketing ciblé.</p>
     </div>
-
-    <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/HappyHuman/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">HappyHuman</div>
-          <div class="card-description">Le bonheur forcé comme standard social imposé.</div>
-        </div>
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/HappyHuman/">😊 HappyHuman</a>
+      <p>Un assistant qui vous oblige à rester heureux en toutes circonstances.</p>
     </div>
-
-    <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/Echappatoire/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">Échappatoire</div>
-          <div class="card-description">Vivez dans un rêve généré par IA… sans en sortir.</div>
-        </div>
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/Echappatoire/">🚪 Echappatoire</a>
+      <p>Le portail numérique pour fuir une réalité devenue insupportable.</p>
     </div>
-
-    <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/MatriceCorp/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">MatriceCorp</div>
-          <div class="card-description">Quand la vie elle-même devient un abonnement.</div>
-        </div>
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/MatriceCorp/">🏢 MatriceCorp</a>
+      <p>L'entreprise qui vous propose une vie totalement simulée... en mieux.</p>
     </div>
-
-    <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/MyKarmaScore/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">MyKarmaScore</div>
-          <div class="card-description">Votre score moral influence votre quotidien… en temps réel.</div>
-        </div>
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/MyKarmaScore/">⚖️ MyKarmaScore</a>
+      <p>Votre score de karma social calculé en temps réel, public et traçable.</p>
     </div>
-
-    <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/OracleAI/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">OracleAI</div>
-          <div class="card-description">Une IA prédit vos décisions... et les influence subtilement.</div>
-        </div>
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/OracleAI/">🔮 OracleAI</a>
+      <p>L'IA omnisciente qui prédit vos décisions... mieux que vous-même.</p>
     </div>
-
-    <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/ParentOptik/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">ParentOptik</div>
-          <div class="card-description">Un service qui permet aux parents de filtrer la réalité visuelle de leurs enfants.</div>
-        </div>
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/ParentOptik/">👁️ ParentOptik</a>
+      <p>Une surveillance continue de vos enfants grâce à des implants connectés.</p>
     </div>
-
-        <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/InstaJustice/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">InstaJustice</div>
-          <div class="card-description">Le Peuple Juge en Direct</div>
-        </div>
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/InstaJustice/">⚔️ InstaJustice</a>
+      <p>Le jugement instantané de vos actes, diffusé en live sur les réseaux.</p>
     </div>
-
-            <div class="card">
-      <a href="https://alexkoncept.github.io/HyperNormalSites/SoulSync/" target="_blank">
-        <div class="card-content">
-          <div class="card-title">SoulSync</div>
-          <div class="card-description">Prolongez le Lien, Chérissez la Mémoire</div>
-        </div>
-        
-      </a>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/SoulSync/">🧬 SoulSync</a>
+      <p>Synchronisation émotionnelle totale entre humains et machines.</p>
     </div>
-  </section>
-
-  <footer>
-    © 2025 Alex Koncept – HyperNormalSites
-  </footer>
-
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/EchoTwin/">👯‍♂️ EchoTwin</a>
+      <p>Créez votre double numérique, prêt à vous remplacer dans toutes vos tâches.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/PrecrimAnalytics/">🧠 PrecrimAnalytics</a>
+      <p>Analyse prédictive des comportements pour prévenir les crimes... avant qu’ils n’aient lieu.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/ThoughtSponsor/">📢 ThoughtSponsor</a>
+      <p>Vos pensées deviennent des espaces publicitaires personnalisés.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/BioMetricDating/">❤️ BioMetricDating</a>
+      <p>Trouvez l'amour grâce à vos données biologiques et votre ADN.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/CancelMeNow/">🚫 CancelMeNow</a>
+      <p>Simulez votre propre annulation publique avant que ça vous arrive pour de vrai.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/DeepNanny/">🍼 DeepNanny</a>
+      <p>L'IA nounou qui élève vos enfants mieux que vous.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/EchoBaby/">👶 EchoBaby</a>
+      <p>Un bébé numérique évolutif selon vos désirs.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/LifeSwap/">🔄 LifeSwap</a>
+      <p>Échangez votre vie avec un inconnu pour une immersion totale.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/MindLease/">🧠 MindLease</a>
+      <p>Monétisez votre esprit en le louant à des entreprises innovantes.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/RewindMe/">⏪ RewindMe</a>
+      <p>Revivez vos souvenirs les plus marquants à la demande, en HD.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/SafeMood/">🌈 SafeMood</a>
+      <p>Un bracelet intelligent qui ajuste l'environnement à votre humeur.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/SecondSkin/">🧥 SecondSkin</a>
+      <p>Une peau connectée qui adapte votre apparence en temps réel.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/SimuPartner/">💑 SimuPartner</a>
+      <p>Créez un compagnon de vie virtuel parfaitement calibré pour vous.</p>
+    </div>
+    <div class="site-item">
+      <a href="https://alexkoncept.github.io/HyperNormalSites/SiteRealiteAlternative/">🌀 Réalité Alternative</a>
+      <p>Entrez dans une version alternative de notre société pour mieux la comprendre.</p>
+    </div>
+  </div>
 </body>
 </html>
-
