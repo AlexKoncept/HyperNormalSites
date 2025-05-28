@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioMetricDating - L'Amour Optimisé par la Science</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5em 0;
+            text-align: center;
+            border-bottom: 5px solid #1abc9c;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        header h1 span {
+            font-weight: 700;
+            color: #1abc9c;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 0.5em 0;
+            text-align: center;
+        }
+        nav a {
+            color: #ecf0f1;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover, nav a.active {
+            background-color: #1abc9c;
+            color: #2c3e50;
+        }
+        .container {
+            width: 85%;
+            margin: 20px auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        .hero {
+            background: #16a085 url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; /* Image de fond plus générique */
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 20px;
+        }
+        .hero h2 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .cta-button {
+            background-color: #e67e22;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #d35400;
+        }
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .section h3 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 5px;
+        }
+        .how-it-works-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .step {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            flex-basis: calc(25% - 20px); /* 4 steps */
+            box-sizing: border-box;
+            border: 1px solid #bdc3c7;
+        }
+        .step-icon {
+            font-size: 2.5em;
+            color: #1abc9c;
+            margin-bottom: 10px;
+        }
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .profile-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .profile-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #1abc9c;
+        }
+        .profile-card h4 {
+            margin: 10px 0 5px;
+            color: #3498db;
+            font-size: 1.4em;
+        }
+        .compatibility-score {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #16a085;
+            margin: 10px 0;
+        }
+        .compatibility-score span {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #555;
+        }
+        .bio-markers ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9em;
+        }
+        .bio-markers li {
+            margin-bottom: 5px;
+            color: #555;
+            background-color: #eef;
+            padding: 3px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-right: 3px;
+        }
+        .guarantee {
+            background-color: #1abc9c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.4em;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .how-it-works-steps .step {
+                flex-basis: calc(50% - 20px); /* 2 steps per row */
+            }
+            .hero h2 { font-size: 2em; }
+            .hero p { font-size: 1.1em; }
+        }
+        @media (max-width: 480px) {
+            .how-it-works-steps .step {
+                flex-basis: 100%; /* 1 step per row */
+            }
+            nav a { display: block; margin: 5px 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BioMetric<span>Dating</span></h1>
+        <p>L'harmonie relationnelle, décodée par la science.</p>
+    </header>
+
+    <nav>
+        <a href="#home" class="active">Accueil</a>
+        <a href="#how-it-works">Comment ça Marche ?</a>
+        <a href="#profiles">Profils Compatibles</a>
+        <a href="#guarantee">Notre Promesse</a>
+        <a href="#signup">Inscription / Connexion</a>
+    </nav>
+
+    <div class="hero" id="home">
+        <h2>Trouvez Votre Partenaire Biologiquement Idéal</h2>
+        <p>Fini les doutes. Basée sur l'ADN, le rythme cardiaque, le microbiote et plus encore, notre technologie BioSynchro™ identifie votre âme sœur biologique.</p>
+        <a href="#signup" class="cta-button">Commencer Votre Analyse</a>
+    </div>
+
+    <div class="container">
+        <section id="how-it-works" class="section">
+            <h3>Comment BioMetricDating Révolutionne la Rencontre</h3>
+            <div class="how-it-works-steps">
+                <div class="step">
+                    <div class="step-icon">🧬</div>
+                    <h4>1. Kit Biométrique</h4>
+                    <p>Recevez notre kit sécurisé pour un prélèvement d'ADN salivaire, une capture de variabilité du rythme cardiaque (VRC) et un échantillon de microbiote.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🔬</div>
+                    <h4>2. Analyse Avancée</h4>
+                    <p>Nos laboratoires partenaires certifiés analysent vos marqueurs biologiques clés avec une précision inégalée.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">💻</div>
+                    <h4>3. Algorithme BioSynchro™</h4>
+                    <p>Notre algorithme propriétaire compare des millions de points de données pour calculer votre indice de compatibilité biologique.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">❤️</div>
+                    <h4>4. Connexion Optimale</h4>
+                    <p>Recevez une liste de profils avec les scores de compatibilité les plus élevés, pour une relation épanouie et durable.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="profiles" class="section">
+            <h3>Découvrez des Membres à Haute Compatibilité</h3>
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <!-- IMAGE MISE À JOUR ICI -->
+                    <img src="https://ui-avatars.com/api/?name=Elara&background=1ABC9C&color=fff&size=120&font-size=0.33&bold=true" alt="Photo de Elara">
+                    <h4>Elara, 32 ans</h4>
+                    <div class="compatibility-score">97.5% <span>Compatibilité Prédite</span></div>
+                    <p>"Je crois en la science pour trouver une connexion profonde et authentique."</p>
+                    <div class="bio-markers">
+                        <strong>Marqueurs Clés :</strong>
+                        <ul>
+                            <li>ADN Séquence Gamma-7</li>
+                            <li>VRC: Cohérence Optimale</li>
+                            <li>Microbiote Type Alpha</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="cta-button" style="font-size:0.9em; padding: 8px 15px; background-color: #3498db;">Voir Profil</a>
+                </div>
+
+                <div class="profile-card">
+                    <!-- IMAGE MISE À JOUR ICI -->
+                    <img src="https://ui-avatars.com/api/?name=Kael&background=3498DB&color=fff&size=120&font-size=0.33&bold=true" alt="Photo de Kael">
+                    <h4>Kael, 35 ans</h4>
+                    <div class="compatibility-score">95.2% <span>Compatibilité Prédite</span></div>
+                    <p>"Fatigué des rencontres superficielles. Prêt pour une relation basée sur une véritable harmonie biologique."</p>
+                    <div class="bio-markers">
+                        <strong>Marqueurs Clés :</strong>
+                        <ul>
+                            <li>Signature Phéromonale Élevée</li>
+                            <li>Profil Neurotransmetteur Stable</li>
+                            <li>ADN Séquence Delta-4</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="cta-button" style="font-size:0.9em; padding: 8px 15px; background-color: #3498db;">Voir Profil</a>
+                </div>
+
+                <div class="profile-card">
+                    <!-- IMAGE MISE À JOUR ICI -->
+                    <img src="https://ui-avatars.com/api/?name=Lyra&background=E67E22&color=fff&size=120&font-size=0.33&bold=true" alt="Photo de Lyra">
+                    <h4>Lyra, 29 ans</h4>
+                    <div class="compatibility-score">93.8% <span>Compatibilité Prédite</span></div>
+                    <p>"Curieuse de voir comment ma biologie peut m'aider à trouver le partenaire idéal."</p>
+                    <div class="bio-markers">
+                        <strong>Marqueurs Clés :</strong>
+                        <ul>
+                            <li>Réceptivité Ocytocine Forte</li>
+                            <li>Microbiote Type Bêta</li>
+                            <li>VRC: Adaptabilité Élevée</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="cta-button" style="font-size:0.9em; padding: 8px 15px; background-color: #3498db;">Voir Profil</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="guarantee" class="section">
+            <h3>Notre Promesse : Une Relation Optimale Garantie</h3>
+            <div class="guarantee">
+                Chez BioMetricDating, nous sommes tellement confiants dans notre approche scientifique que nous vous offrons une promesse de relation optimale. Si, après 6 mois de mise en relation avec un partenaire ayant un score de compatibilité supérieur à 90%, vous n'êtes pas sur la voie d'une relation épanouissante, nous réanalysons gratuitement vos données et affinons vos correspondances.
+                <br><small>(Termes et conditions applicables. L'optimisation relationnelle est un processus collaboratif.)</small>
+            </div>
+        </section>
+
+        <section id="signup" class="section">
+            <h3>Prêt à Décoder l'Amour ?</h3>
+            <p>Rejoignez BioMetricDating aujourd'hui et laissez la science vous guider vers votre partenaire biologiquement compatible. L'inscription est simple et le premier pas vers une relation plus profonde.</p>
+            <form style="text-align: center;">
+                <input type="email" placeholder="Votre adresse e-mail" style="padding: 10px; width: 60%; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ccc;">
+                <br>
+                <button type="submit" class="cta-button">S'inscrire et Recevoir Mon Kit</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 BioMetricDating Inc. Tous droits réservés.</p>
+        <p><a href="#" style="color:#1abc9c;">Politique de Confidentialité</a> | <a href="#" style="color:#1abc9c;">Termes et Conditions</a> | <a href="#" style="color:#1abc9c;">FAQ</a></p>
+    </footer>
+
+</body>
+</html>
