@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Espace - ThoughtSponsor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ThoughtSponsor - Espace Personnel</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil Public</a></li>
+                    <li><a href="#dashboard">Tableau de Bord</a></li>
+                    <li><a href="#contrats">Mes Contrats</a></li>
+                    <li><a href="#parametres">Paramètres</a></li>
+                    <li><a href="index.html?logout=true">Déconnexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <h2>Bienvenue, [NomUtilisateur] !</h2>
+            
+            <section id="dashboard" class="dashboard-section">
+                <h3>Votre Tableau de Bord</h3>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <h4>Pensées Monétisées (Aujourd'hui)</h4>
+                        <p class="counter" id="thoughts-today">42</p>
+                        <p><small>Dernière pensée : "Cola Incroyable" à 14:32</small></p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Total Pensées Monétisées</h4>
+                        <p class="counter" id="thoughts-total">13,876</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Gains Totaux</h4>
+                        <p class="counter" id="total-earnings">€ 693.80</p>
+                        <button class="cta-button-small">Retirer mes gains</button>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Contrats Actifs</h4>
+                        <p class="counter" id="active-contracts">5</p>
+                        <a href="#contrats">Gérer mes contrats</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contrats" class="dashboard-section">
+                <h3>Mes Contrats de Sponsoring Cérébral</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Marque/Produit</th>
+                            <th>Rémunération/Pensée</th>
+                            <th>Statut</th>
+                            <th>Pensées Enregistrées</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cola Incroyable</td>
+                            <td>€0.05</td>
+                            <td><span class="status-active">Actif</span></td>
+                            <td>2,345</td>
+                            <td><a href="#">Détails</a> | <a href="#">Suspendre</a></td>
+                        </tr>
+                        <tr>
+                            <td>ChronoMontres Futura</td>
+                            <td>€0.12</td>
+                            <td><span class="status-active">Actif</span></td>
+                            <td>876</td>
+                            <td><a href="#">Détails</a> | <a href="#">Suspendre</a></td>
+                        </tr>
+                        <tr>
+                            <td>CyberChips NeuronX</td>
+                            <td>€0.08</td>
+                            <td><span class="status-paused">En Pause</span></td>
+                            <td>5,102</td>
+                            <td><a href="#">Détails</a> | <a href="#">Réactiver</a></td>
+                        </tr>
+                        <tr>
+                            <td>Voyages Interstellaires Plus</td>
+                            <td>€0.20</td>
+                            <td><span class="status-pending">En attente d'activation cérébrale</span></td>
+                            <td>0</td>
+                            <td><a href="#">Activer</a> | <a href="#">Refuser</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#nouveaux-contrats" class="cta-button">Voir les nouveaux contrats disponibles</a>
+            </section>
+
+            <section id="parametres" class="dashboard-section">
+                <h3>Paramètres du Compte</h3>
+                <ul>
+                    <li><a href="#">Modifier mes informations personnelles</a></li>
+                    <li><a href="#">Configurer mon interface neuronale</a></li>
+                    <li><a href="#">Préférences de notification de pensées</a></li>
+                    <li><a href="#">Historique des paiements</a></li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 ThoughtSponsor. Votre esprit, notre sponsor.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Placeholder pour dynamiser les compteurs (nécessiterait un backend)
+        // document.getElementById('thoughts-today').innerText = Math.floor(Math.random() * 100);
+        // document.getElementById('thoughts-total').innerText = Math.floor(Math.random() * 20000);
+        // etc.
+    </script>
+</body>
+</html>

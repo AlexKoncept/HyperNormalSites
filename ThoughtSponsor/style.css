@@ -1,0 +1,320 @@
+/* Reset et styles de base */
+body, h1, h2, h3, h4, p, ul, li, table {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #77aaff 3px solid;
+}
+
+header h1 {
+    float: left;
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header ul {
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 15px;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header a:hover {
+    color: #77aaff;
+}
+
+/* Hero Section */
+.hero {
+    background: #506784 url('placeholder-hero-background.jpg') no-repeat center center/cover; /* Remplacez par une image pertinente */
+    color: #fff;
+    min-height: 400px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #fff; /* Assurer la lisibilité sur l'image de fond */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #eee; /* Assurer la lisibilité */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* CTA Button */
+.cta-button, .cta-button-small {
+    display: inline-block;
+    background: #77aaff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.cta-button-small {
+    font-size: 0.9em;
+    padding: 8px 15px;
+}
+.cta-button:hover, .cta-button-small:hover {
+    background: #5588dd;
+}
+
+/* Sections */
+section {
+    padding: 40px 0;
+    border-bottom: 1px solid #ddd;
+}
+section:last-of-type {
+    border-bottom: none;
+}
+section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #333;
+}
+
+/* Comment ça marche */
+.steps {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    gap: 20px;
+}
+.step {
+    flex-basis: 23%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+/* ... (tout le CSS précédent) ... */
+
+.step .icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    /* background-color: #eee; Supprimé car les SVG ont leur propre remplissage/contour */
+    /* border-radius: 50%; Supprimé car pas toujours adapté aux formes des SVG */
+    display: block; /* Pour un meilleur centrage si besoin */
+    margin-left: auto; /* Pour centrer horizontalement */
+    margin-right: auto; /* Pour centrer horizontalement */
+    color: #506784; /* Couleur par défaut des icônes (stroke/fill) */
+}
+.step .icon path, .step .icon circle, .step .icon polyline, .step .icon line {
+    /* Si l'attribut 'stroke' ou 'fill' est 'currentColor' dans le SVG,
+       cette couleur sera utilisée. Sinon, la couleur définie dans le SVG sera prioritaire. */
+}
+
+
+/* ... (tout le CSS suivant) ... */
+}
+.step h3 {
+    margin-bottom: 10px;
+    color: #506784;
+}
+
+/* Avantages */
+#avantages ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+#avantages li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* Inscription */
+.cta-section {
+    background: #e2e2e2;
+    text-align: center;
+}
+#signup-form input[type="email"] {
+    padding: 10px;
+    width: 60%;
+    max-width: 300px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#signup-form button {
+    margin-top: 10px; /* Pour mobile */
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+footer p {
+    margin-bottom: 5px;
+}
+footer a {
+    color: #77aaff;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Spécifique */
+.dashboard-main {
+    padding-top: 20px;
+}
+.dashboard-section {
+    background: #fff;
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.dashboard-section h3 {
+    color: #506784;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.stat-box {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+.stat-box h4 {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #555;
+}
+.stat-box .counter {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #77aaff;
+    margin-bottom: 5px;
+}
+.stat-box small {
+    font-size: 0.8em;
+    color: #777;
+}
+
+/* Tableau des contrats */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+table td a {
+    color: #77aaff;
+    text-decoration: none;
+    margin-right: 5px;
+}
+table td a:hover {
+    text-decoration: underline;
+}
+.status-active { color: green; font-weight: bold; }
+.status-paused { color: orange; font-weight: bold; }
+.status-pending { color: #555; font-style: italic; }
+
+/* Paramètres */
+#parametres ul {
+    list-style: none;
+}
+#parametres li {
+    margin-bottom: 10px;
+}
+#parametres a {
+    text-decoration: none;
+    color: #506784;
+}
+#parametres a:hover {
+    color: #77aaff;
+    text-decoration: underline;
+}
+
+/* Responsive (très basique) */
+@media(max-width: 768px){
+    header h1, header nav, header nav li {
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+    header nav ul {
+        padding-top: 10px;
+    }
+    header nav li {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .steps {
+        flex-direction: column;
+    }
+    .step {
+        margin-bottom: 20px;
+    }
+    #signup-form input[type="email"], #signup-form button {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr; /* Une colonne sur mobile */
+    }
+}
