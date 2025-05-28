@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-T">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepNanny - Votre Nounou Virtuelle Intelligente</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #0052D4, #4364F7, #6FB1FC);
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 0.8rem 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #6FB1FC;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .section {
+            background-color: #fff;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #0052D4;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            background-color: #e9f1ff;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .feature-item img {
+            max-width: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            color: #4364F7;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-placeholder {
+            background-color: #ddd;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            position: relative;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 1.2rem;
+        }
+        .video-placeholder::before {
+            content: "Vidéo Démo (Platzhalter)";
+        }
+
+        .routine-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .routine-list li {
+            background-color: #f0f8ff;
+            margin-bottom: 0.5rem;
+            padding: 0.8rem;
+            border-left: 4px solid #4364F7;
+            border-radius: 4px;
+        }
+
+        .discipline-options p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .discipline-options strong {
+            color: #D9534F; /* A cautious red */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #28a745;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+        }
+        
+        .testimonial {
+            background-color: #f9f9f9;
+            border-left: 5px solid #6FB1FC;
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            border-radius: 0 5px 5px 0;
+        }
+        .testimonial p {
+            margin: 0.5rem 0;
+        }
+        .testimonial .author {
+            text-align: right;
+            font-style: italic;
+            color: #555;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        footer p {
+            margin: 0.3rem 0;
+        }
+        footer a {
+            color: #6FB1FC;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DeepNanny</h1>
+        <p>La tranquillité d'esprit, réinventée. Votre nounou virtuelle propulsée par IA.</p>
+    </header>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#demos">Démonstrations</a>
+        <a href="#routines">Routines Personnalisées</a>
+        <a href="#discipline">Discipline Intelligente</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container" id="accueil">
+        <section class="section">
+            <h2>Bienvenue chez DeepNanny</h2>
+            <p>Imaginez une nounou toujours attentive, patiente et adaptable, disponible 24/7. DeepNanny utilise des modèles de langage avancés et s'intègre à vos caméras domestiques pour offrir une surveillance intelligente et interactive. Nous aidons à structurer la journée de vos enfants, à stimuler leur apprentissage et à assurer leur sécurité, tout en vous gardant connectés.</p>
+            <div style="text-align:center;">
+                 <a href="#demos" class="cta-button">Voir DeepNanny en Action</a>
+            </div>
+        </section>
+
+        <section class="section" id="demos">
+            <h2>Démonstrations Vidéo</h2>
+            <p>Découvrez comment DeepNanny interagit avec les enfants, gère les routines et assure un environnement sûr et stimulant. Nos vidéos montrent des scénarios réels (simulés) pour illustrer la puissance et la polyvalence de notre solution.</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Interaction Ludique</h3>
+                    <div class="video-placeholder"></div>
+                    <p>DeepNanny raconte des histoires, propose des jeux éducatifs et répond aux questions des enfants.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Surveillance Intelligente</h3>
+                    <div class="video-placeholder"></div>
+                    <p>Détection de situations inhabituelles et alertes en temps réel pour les parents.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Aide aux Devoirs</h3>
+                    <div class="video-placeholder"></div>
+                    <p>Accompagnement personnalisé pour les tâches scolaires, adapté au niveau de l'enfant.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="routines">
+            <h2>Routines Personnalisées par Enfant</h2>
+            <p>Chaque enfant est unique. DeepNanny apprend leurs préférences, leurs rythmes et vos directives pour créer des routines sur mesure. Fini les oublis et les négociations sans fin !</p>
+            <div class="feature-grid">
+                <div class="feature-item routine-list">
+                    <img src="https://img.icons8.com/fluency/96/children.png" alt="Icône Enfants">
+                    <h3>Pour Léo, 6 ans</h3>
+                    <ul>
+                        <li>7h30: Réveil en douceur avec sa musique préférée.</li>
+                        <li>8h00: Rappel pour le petit-déjeuner et brossage des dents.</li>
+                        <li>16h30: Aide aux devoirs interactive (lecture, calcul).</li>
+                        <li>18h00: Temps de jeu éducatif suggéré par DeepNanny.</li>
+                        <li>19h30: Histoire du soir personnalisée.</li>
+                    </ul>
+                </div>
+                <div class="feature-item routine-list">
+                     <img src="https://img.icons8.com/fluency/96/girl-and-dog.png" alt="Icône Fille">
+                    <h3>Pour Mia, 9 ans</h3>
+                    <ul>
+                        <li>7h45: Rappel de préparer son sac d'école.</li>
+                        <li>17h00: Suivi des leçons de piano (avec métronome IA).</li>
+                        <li>17h45: Suggestion d'activité créative (dessin, écriture).</li>
+                        <li>20h00: Temps calme, préparation au coucher.</li>
+                        <li>Rappels réguliers pour boire de l'eau.</li>
+                    </ul>
+                </div>
+            </div>
+             <p style="text-align: center; margin-top: 1.5rem;">Vous configurez les bases, DeepNanny s'adapte et apprend pour affiner les routines, toujours en accord avec vos valeurs éducatives.</p>
+        </section>
+
+        <section class="section" id="discipline">
+            <h2>Options de Discipline Automatisée et Encadrement Positif</h2>
+            <p>DeepNanny vous assiste dans l'application des règles de la maison, de manière cohérente et bienveillante. <strong>Toutes les options sont configurables et nécessitent votre approbation préalable.</strong> Vous gardez le contrôle total.</p>
+            
+            <div class="discipline-options">
+                <p>Notre philosophie est d'encourager les bons comportements par le renforcement positif. Cependant, pour les moments où des limites claires sont nécessaires, DeepNanny peut intervenir selon vos directives :</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <img src="https://img.icons8.com/fluency/96/voice-recognition-scan.png" alt="Icône Voix">
+                        <h3>Rappels Vocaux Doux</h3>
+                        <p>Un rappel calme pour ranger les jouets, parler poliment, ou respecter le temps d'écran imparti.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://img.icons8.com/fluency/96/rules.png" alt="Icône Règles">
+                        <h3>Système de "Conséquences Logiques"</h3>
+                        <p>Ex: Si le temps d'écran est dépassé malgré les rappels, DeepNanny peut mettre en pause temporairement l'accès Wi-Fi aux tablettes (selon votre configuration).</p>
+                    </div>
+                    <div class="feature-item">
+                         <img src="https://img.icons8.com/fluency/96/positive-dynamic.png" alt="Icône Positif">
+                        <h3>Renforcement Positif</h3>
+                        <p>Notification aux parents des bons comportements observés. Système de points virtuels pour récompenser les efforts (configurable).</p>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 1.5rem; font-weight: bold; color: #0052D4;">Vous définissez les règles, les seuils et les types d'intervention. DeepNanny exécute avec constance et sans énervement.</p>
+                <p style="text-align: center; font-size:0.9em; color:#555;"><em>Exemple : "Après 3 rappels pour baisser le volume sonore, DeepNanny peut envoyer une notification aux parents et, si configuré, émettre un son apaisant pour signaler la fin de l'activité bruyante."</em></p>
+            </div>
+        </section>
+
+        <section class="section" id="tarifs">
+            <h2>Nos Offres</h2>
+            <p>Choisissez le plan DeepNanny qui correspond le mieux aux besoins de votre famille.</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Essentiel</h3>
+                    <p><strong>19,99€ / mois</strong></p>
+                    <p>Surveillance 1 enfant, routines basiques, alertes parentales.</p>
+                    <a href="#" class="cta-button" style="background-color: #007bff;">Choisir Essentiel</a>
+                </div>
+                <div class="feature-item">
+                    <h3>Famille</h3>
+                    <p><strong>34,99€ / mois</strong></p>
+                    <p>Jusqu'à 3 enfants, routines avancées, options de discipline de base, aide aux devoirs.</p>
+                    <a href="#" class="cta-button">Choisir Famille</a>
+                </div>
+                <div class="feature-item">
+                    <h3>Premium Pro</h3>
+                    <p><strong>49,99€ / mois</strong></p>
+                    <p>Enfants illimités, toutes fonctionnalités, support prioritaire, rapports détaillés.</p>
+                    <a href="#" class="cta-button" style="background-color: #ffc107; color: #333;">Choisir Premium</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Ce que disent nos utilisateurs</h2>
+            <div class="testimonial">
+                <p>"DeepNanny a vraiment simplifié nos soirées. Les enfants adorent les histoires personnalisées et les routines sont enfin respectées sans cris ! C'est un vrai soulagement."</p>
+                <p class="author">- Famille Durand, Paris</p>
+            </div>
+            <div class="testimonial">
+                <p>"Au début, j'étais sceptique sur la 'discipline automatisée', mais la possibilité de configurer des rappels doux et des conséquences logiques que JE contrôle est géniale. Mon fils répond mieux à DeepNanny qu'à moi parfois !"</p>
+                <p class="author">- Sophie L., Lyon</p>
+            </div>
+        </section>
+
+
+        <section class="section" id="contact">
+            <h2>Contactez-Nous</h2>
+            <p>Une question ? Envie d'une démonstration personnalisée ? Notre équipe est à votre écoute.</p>
+            <form action="#" method="post" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: auto;">
+                <input type="text" placeholder="Votre Nom" required style="padding: 0.7rem; border: 1px solid #ddd; border-radius: 4px;">
+                <input type="email" placeholder="Votre Email" required style="padding: 0.7rem; border: 1px solid #ddd; border-radius: 4px;">
+                <textarea placeholder="Votre Message" rows="5" required style="padding: 0.7rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                <div style="text-align:center;">
+                    <button type="submit" class="cta-button">Envoyer le Message</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2023 DeepNanny Inc. Tous droits réservés.</p>
+        <p>
+            <a href="#">Politique de Confidentialité</a> | 
+            <a href="#">Conditions d'Utilisation</a> |
+            <a href="#">FAQ</a>
+        </p>
+        <p>DeepNanny - La technologie au service de votre famille.</p>
+    </footer>
+
+</body>
+</html>
