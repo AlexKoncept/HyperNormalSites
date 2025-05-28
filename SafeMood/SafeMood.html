@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeMood - Votre Bien-être, Redéfini</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        #showcase {
+            min-height: 400px;
+            /* Placeholder image actualisée */
+            background: url('https://via.placeholder.com/1500x400/507D8B/FFFFFF?text=Technologie+pour+le+Bien-être+Cérébral') no-repeat center center/cover;
+            text-align: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #showcase h1 {
+            font-size: 55px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        #showcase p {
+            font-size: 20px;
+            text-shadow: 1px 1px 2px #000000;
+        }
+        .button {
+            display: inline-block; /* Permet de centrer si parent a text-align: center */
+            height: auto; /* Ajustement auto de la hauteur */
+            line-height: 50px; /* Pour centrer verticalement le texte */
+            background: #0779e4;
+            border: none;
+            padding: 0 20px;
+            color: #ffffff;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background: #065fb3;
+        }
+        section {
+            padding: 30px 0; /* Augmentation du padding */
+            border-bottom: 1px #ddd solid;
+        }
+        section:last-of-type { /* Pas de bordure pour la dernière section */
+            border-bottom: none;
+        }
+        section h2 {
+            text-align: center;
+            color: #35424a;
+            font-size: 32px;
+            margin-bottom: 40px; /* Augmentation de la marge */
+        }
+        .modules-grid, .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; /* Augmentation du gap */
+        }
+        .module, .testimonial {
+            background: #ffffff;
+            padding: 25px; /* Augmentation du padding */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre plus prononcée */
+            text-align: center;
+        }
+        /* Styles pour les icônes SVG des modules */
+        .module svg {
+            width: 70px; /* Taille ajustée */
+            height: 70px;
+            margin-bottom: 20px;
+        }
+        /* Styles pour les images d'avatar des témoignages */
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+            background-color: #e0e0e0; /* Couleur de fond si l'image ne charge pas */
+            border: 2px solid #ddd; /* Petite bordure pour les avatars */
+        }
+        .module h3, .testimonial h4 {
+            color: #0779e4;
+            margin-top: 0; /* Suppression marge haute si besoin */
+            margin-bottom: 10px;
+        }
+        .testimonial p:first-of-type { /* La citation */
+            font-style: italic;
+            color: #555;
+            margin-bottom: 5px; /* Espace avant le nom */
+        }
+        .testimonial h4 { /* Nom de l'utilisateur */
+            font-size: 1.1em;
+            color: #333; /* Couleur plus neutre pour le nom */
+            margin-bottom: 15px;
+        }
+        .faq-item {
+            background: #fff;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .faq-item summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #35424a;
+            list-style: none; /* Enlève la flèche par défaut si besoin */
+            position: relative;
+            padding-left: 25px; /* Espace pour la flèche custom */
+        }
+        .faq-item summary::-webkit-details-marker { display: none; } /* Chrome/Safari */
+        .faq-item summary::before { /* Flèche custom */
+            content: '▶';
+            position: absolute;
+            left: 0;
+            font-size: 0.8em;
+            transform: rotate(0deg);
+            transition: transform 0.2s;
+        }
+        .faq-item[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .faq-item p {
+            margin-top: 10px;
+            padding-left: 25px; /* Indent answer */
+        }
+        footer {
+            padding: 30px 20px; /* Augmentation padding */
+            margin-top: 30px;
+            color: #ffffff;
+            background-color: #35424a;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span style="color: #0779e4;">Safe</span>Mood</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#">Accueil</a></li>
+                    <li><a href="#modules">Modules</a></li>
+                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Reprenez le contrôle de vos émotions.</h1>
+            <p>SafeMood est un système révolutionnaire d'auto-régulation émotionnelle basé sur un implant cérébral discret et connecté, conçu pour améliorer votre quotidien.</p>
+            <p><a href="#introduction" class="button">Découvrir SafeMood</a></p>
+        </div>
+    </section>
+
+    <section id="introduction" class="container">
+        <h2>Comment ça marche ?</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 30px auto;">
+            SafeMood utilise une technologie de neurostimulation adaptative. L'implant, biocompatible et de taille réduite, communique sans fil avec une application sur votre smartphone. Vous choisissez le module émotionnel désiré, et SafeMood ajuste subtilement votre activité cérébrale pour vous aider à atteindre l'état souhaité, de manière naturelle et contrôlée.
+        </p>
+    </section>
+
+    <section id="modules">
+        <div class="container">
+            <h2>Nos Modules d'Harmonisation</h2>
+            <div class="modules-grid">
+                <div class="module">
+                    <!-- Icône Calme SVG -->
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 40 Q 30 20, 50 40 T 90 40" stroke="#87CEEB" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <path d="M10 55 Q 30 35, 50 55 T 90 55" stroke="#87CEEB" stroke-width="6" fill="none" stroke-linecap="round" stroke-opacity="0.7"/>
+                        <path d="M10 70 Q 30 50, 50 70 T 90 70" stroke="#87CEEB" stroke-width="6" fill="none" stroke-linecap="round" stroke-opacity="0.4"/>
+                    </svg>
+                    <h3>Module Calme</h3>
+                    <p>Réduisez le stress et l'anxiété. Retrouvez une paix intérieure profonde et une sérénité durable, même dans les situations les plus exigeantes.</p>
+                </div>
+                <div class="module">
+                    <!-- Icône Focus SVG -->
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="40" stroke="#4682B4" stroke-width="6" fill="none"/>
+                        <circle cx="50" cy="50" r="25" stroke="#4682B4" stroke-width="6" fill="none" stroke-opacity="0.7"/>
+                        <circle cx="50" cy="50" r="10" fill="#4682B4"/>
+                    </svg>
+                    <h3>Module Focus</h3>
+                    <p>Améliorez votre concentration et votre productivité. Affûtez votre esprit, éliminez les distractions et atteignez vos objectifs avec une clarté mentale inégalée.</p>
+                </div>
+                <div class="module">
+                    <!-- Icône Bonheur SVG -->
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="40" stroke="#FFBF00" stroke-width="6" fill="#FFFACD"/>
+                        <circle cx="35" cy="40" r="5" fill="#5C3D00"/>
+                        <circle cx="65" cy="40" r="5" fill="#5C3D00"/>
+                        <path d="M30 60 Q 50 80, 70 60" stroke="#5C3D00" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    </svg>
+                    <h3>Module Bonheur</h3>
+                    <p>Cultivez un état de joie et d'optimisme. Augmentez votre sentiment de bien-être général et appréciez chaque instant avec une perspective positive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2>Ce que nos utilisateurs disent</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <img src="https://via.placeholder.com/80x80/E0E0E0/333333?text=SD" alt="Avatar Sophie D.">
+                    <p>"Depuis que j'utilise SafeMood, mes journées sont transformées. Le module 'Calme' m'aide à gérer la pression des deadlines sans me sentir submergée. C'est comme si j'avais retrouvé un interrupteur pour mon stress."</p>
+                    <h4>Sophie D., Chef de projet</h4>
+                </div>
+                <div class="testimonial">
+                    <img src="https://via.placeholder.com/80x80/E0E0E0/333333?text=ML" alt="Avatar Marc L.">
+                     <p>"Le module 'Focus' est incroyable pour ma créativité. Je peux me plonger dans mon travail pendant des heures. Et le module 'Bonheur' a vraiment éclairci ma vision du monde. Je me sens plus léger, plus inspiré."</p>
+                    <h4>Marc L., Artiste</h4>
+                </div>
+                <div class="testimonial">
+                    <img src="https://via.placeholder.com/80x80/E0E0E0/333333?text=AB" alt="Avatar Amélie B.">
+                    <p>"J'étais sceptique au début, mais SafeMood a dépassé toutes mes attentes. L'équilibre entre ma vie pro et perso est bien meilleur. Je recommande vivement à ceux qui cherchent à mieux maîtriser leur paysage émotionnel."</p>
+                    <h4>Amélie B., Entrepreneure</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2>Questions Fréquentes (FAQ)</h2>
+            <details class="faq-item">
+                <summary>Y a-t-il des effets secondaires connus avec l'implant SafeMood ?</summary>
+                <p>SafeMood a été soumis à des tests cliniques rigoureux. Les effets secondaires sont rares et généralement bénins. Certains utilisateurs rapportent une légère sensation de fatigue ou des maux de tête mineurs durant la première semaine d'adaptation, qui disparaissent ensuite. Toute préoccupation spécifique doit être discutée avec notre équipe médicale lors de la consultation pré-implantation.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Est-ce que SafeMood peut altérer ma personnalité ou mes émotions naturelles ?</summary>
+                <p>Non. SafeMood est conçu pour vous aider à réguler vos états émotionnels, pas à les supprimer ou les remplacer. Vous restez pleinement vous-même. L'objectif est de vous donner les outils pour mieux naviguer dans vos émotions, en amplifiant les états positifs souhaités ou en apaisant les états négatifs excessifs, toujours sous votre contrôle via l'application.</p>
+            </details>
+            <details class="faq-item">
+                <summary>L'implant est-il permanent ? Que se passe-t-il si je veux l'enlever ?</summary>
+                <p>L'implant est conçu pour une utilisation à long terme, mais il est réversible. Une procédure simple, similaire à celle de l'implantation, peut être effectuée pour le retirer si vous le souhaitez. Nous recommandons une discussion approfondie avec nos spécialistes pour évaluer cette décision.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Qu'en est-il de la sécurité et de la confidentialité de mes données cérébrales ?</summary>
+                <p>La sécurité et la confidentialité de vos données sont notre priorité absolue. Toutes les communications entre l'implant et l'application sont cryptées avec les protocoles les plus avancés. Les données sont anonymisées et ne sont utilisées que pour améliorer les algorithmes de SafeMood, avec votre consentement explicite. Vous avez un contrôle total sur vos données.</p>
+            </details>
+             <details class="faq-item">
+                <summary>SafeMood peut-il créer une dépendance ?</summary>
+                <p>SafeMood est un outil d'assistance. Bien qu'il vise à améliorer significativement votre bien-être, il n'est pas conçu pour créer une dépendance physiologique. L'objectif est de vous aider à développer vos propres capacités d'auto-régulation, SafeMood agissant comme un catalyseur. Des évaluations régulières avec nos spécialistes sont prévues pour s'assurer d'une utilisation saine et bénéfique.</p>
+            </details>
+        </div>
+    </section>
+
+    <section id="contact" class="container" style="text-align: center;">
+        <h2>Prêt à transformer votre vie émotionnelle ?</h2>
+        <p>Rejoignez la liste d'attente pour être parmi les premiers à bénéficier de SafeMood ou contactez-nous pour plus d'informations.</p>
+        <p>
+            <a href="#preorder" class="button" style="margin-right: 10px;">S'inscrire à la bêta</a>
+            <a href="#more-info" class="button" style="background-color: #555; hover: #444;">Demander une brochure</a>
+        </p>
+    </section>
+
+    <footer>
+        <p>SafeMood Technologies © 2024 - Tous droits réservés.</p>
+        <p><a href="#" style="color: #bbb; text-decoration: underline;">Politique de confidentialité</a> | <a href="#" style="color: #bbb; text-decoration: underline;">Conditions d'utilisation</a></p>
+    </footer>
+
+</body>
+</html>
