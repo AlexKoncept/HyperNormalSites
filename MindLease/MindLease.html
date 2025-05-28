@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindLease - Monétisez Votre Potentiel Inexploité</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5em 0;
+            text-align: center;
+            border-bottom: 5px solid #1abc9c;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        header p {
+            font-size: 1.1em;
+            margin-top: 0.5em;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 0.8em 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 1.5em;
+            font-weight: bold;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            background-color: #1abc9c;
+            color: #fff;
+        }
+        .container {
+            width: 85%;
+            margin: 2em auto;
+            padding: 1.5em;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            border-radius: 8px;
+        }
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.8)), url('https://via.placeholder.com/1200x400.png?text=Réseau+Neuronal+Abstrait') no-repeat center center/cover;
+            color: #fff;
+            padding: 4em 2em;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2em;
+        }
+        .hero h2 {
+            font-size: 2.8em;
+            margin-bottom: 0.5em;
+        }
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 1.5em;
+        }
+        .btn {
+            background-color: #1abc9c;
+            color: #fff;
+            padding: 0.8em 1.8em;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #16a085;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #e74c3c;
+        }
+        .btn-secondary:hover {
+            background-color: #c0392b;
+        }
+        .section-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 1em;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #1abc9c;
+            margin: 0.25em auto 0;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5em;
+            margin-top: 1em;
+        }
+        .card {
+            background-color: #ecf0f1;
+            padding: 1.5em;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .card h3 {
+            color: #1abc9c;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .card i { /* Pour les icônes FontAwesome (non inclus ici) */
+            font-size: 2.5em;
+            color: #1abc9c;
+            margin-bottom: 0.5em;
+            display: block;
+            text-align: center;
+        }
+        .testimonial {
+            background-color: #e8f6f3;
+            border-left: 5px solid #1abc9c;
+            padding: 1em 1.5em;
+            margin-bottom: 1em;
+            border-radius: 0 5px 5px 0;
+        }
+        .testimonial p {
+            font-style: italic;
+        }
+        .testimonial footer {
+            text-align: right;
+            font-weight: bold;
+            color: #555;
+            background: none; padding: 0; margin-top: 0.5em;
+        }
+        .faq-item {
+            margin-bottom: 1em;
+        }
+        .faq-item summary {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0.5em;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        .faq-item p {
+            padding: 0.5em 1em;
+            background-color: #fafafa;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2em 0;
+            margin-top: 2em;
+        }
+        footer p {
+            margin: 0.3em 0;
+        }
+        footer a {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 0.5em 0;
+            }
+            .hero h2 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+    <!-- Optionnel : Lien vers FontAwesome pour les icônes -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+</head>
+<body>
+
+    <header>
+        <h1>MindLease</h1>
+        <p>Monétisez Votre Potentiel Inexploité Pendant Votre Sommeil.</p>
+    </header>
+
+    <nav>
+        <a href="#hero" class="active">Accueil</a>
+        <a href="#how-it-works">Comment ça marche ?</a>
+        <a href="#benefits">Avantages</a>
+        <a href="#use-cases">Cas d'Usage</a>
+        <a href="#pricing">Tarifs (Loueurs)</a>
+        <a href="#security">Sécurité & Éthique</a>
+        <a href="#signup">S'inscrire</a>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero">
+            <h2>Libérez la Puissance de Votre Subconscient</h2>
+            <p>Rejoignez la révolution du calcul cognitif distribué. Offrez votre puissance cérébrale inutilisée pendant votre sommeil ou vos temps morts, et soyez récompensé.</p>
+            <a href="#signup" class="btn">Devenir Loueur d'Esprit</a>
+            <a href="#learn-more-clients" class="btn btn-secondary" style="margin-left: 10px;">Utiliser MindLease (Clients)</a>
+        </section>
+
+        <div class="container">
+            <section id="how-it-works">
+                <h2 class="section-title">Comment ça marche ?</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <!-- <i class="fas fa-user-plus"></i> Icône d'inscription -->
+                        <h3>1. Inscrivez-vous Facilement</h3>
+                        <p>Créez votre compte MindLease en quelques minutes. Un processus simple et sécurisé.</p>
+                    </div>
+                    <div class="card">
+                        <!-- <i class="fas fa-link"></i> Icône de connexion d'appareil -->
+                        <h3>2. Connectez Votre NeuroCapteur</h3>
+                        <p>Utilisez notre NeuroCapteur breveté (ou un appareil compatible) pour lier vos ondes cérébrales de manière non-invasive pendant votre sommeil.</p>
+                    </div>
+                    <div class="card">
+                        <!-- <i class="fas fa-bed"></i> Icône de sommeil -->
+                        <h3>3. Dormez (ou Détendez-vous)</h3>
+                        <p>Activez MindLease avant de dormir ou pendant un moment de repos. Votre cerveau travaille pour vous, sans effort conscient.</p>
+                    </div>
+                    <div class="card">
+                        <!-- <i class="fas fa-tasks"></i> Icône de tâches -->
+                        <h3>4. Traitement Cognitif Distribué</h3>
+                        <p>Des entreprises et chercheurs soumettent des tâches (résolution de problèmes, brainstorming, patterns) qui sont fragmentées et distribuées sur notre réseau de "loueurs".</p>
+                    </div>
+                    <div class="card">
+                        <!-- <i class="fas fa-brain"></i> Icône de cerveau -->
+                        <h3>5. Algorithmes d'Optimisation</h3>
+                        <p>Nos algorithmes intelligents allouent les micro-tâches cognitives en fonction des profils d'ondes cérébrales et de l'efficacité subconsciente.</p>
+                    </div>
+                    <div class="card">
+                        <!-- <i class="fas fa-coins"></i> Icône de récompenses -->
+                        <h3>6. Soyez Récompensé</h3>
+                        <p>Gagnez des crédits MindLease pour chaque session de "location", convertibles en monnaie ou en avantages exclusifs.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="container">
+            <section id="benefits">
+                <h2 class="section-title">Avantages Multiples</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Pour les Loueurs (Particuliers)</h3>
+                        <ul>
+                            <li><strong>Revenu Passif :</strong> Monétisez un temps autrement improductif.</li>
+                            <li><strong>Contribution :</strong> Participez à des avancées scientifiques et créatives.</li>
+                            <li><strong>Facilité d'Usage :</strong> Installation et utilisation simples.</li>
+                            <li><strong>Non-invasif :</strong> Technologie respectueuse et sûre.</li>
+                            <li><strong>Anonymat Garanti :</strong> Vos données personnelles sont protégées.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Pour les Utilisateurs (Entreprises/Chercheurs)</h3>
+                        <ul>
+                            <li><strong>Puissance Cognitive Massive :</strong> Accédez à des milliers d'esprits en parallèle.</li>
+                            <li><strong>Résolution Innovante :</strong> Bénéficiez de l'intuition et de la créativité subconsciente.</li>
+                            <li><strong>Coût-Efficacité :</strong> Une alternative puissante aux supercalculateurs pour certains types de tâches.</li>
+                            <li><strong>Brainstorming Élargi :</strong> Générez des idées nouvelles et diversifiées.</li>
+                            <li><strong>Entraînement IA Éthique :</strong> Utilisez des données cognitives pour affiner des modèles d'IA de manière responsable.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="container">
+            <section id="use-cases">
+                <h2 class="section-title">Cas d'Usage Potentiels</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <!-- <i class="fas fa-flask"></i> Icône science -->
+                        <h3>Recherche Scientifique</h3>
+                        <p>Analyse de données complexes, modélisation de phénomènes, identification de patterns subtils dans la recherche médicale ou climatique.</p>
+                    </div>
+                    <div class="card">
+                        <!-- <i class="fas fa-lightbulb"></i> Icône idée -->
+                        <h3>Innovation & Créativité</h3>
+                        <p>Brainstorming de concepts, génération de nouvelles idées pour produits, services, ou campagnes marketing. Résolution de problèmes créatifs.</p>
+                    </div>
+                    <div class="card">
+                        <!-- <i class="fas fa-robot"></i> Icône IA -->
+                        <h3>Entraînement d'IA</h3>
+                        <p>Affinement d'algorithmes d'apprentissage profond, génération de données d'entraînement pour des IA plus intuitives et "humaines".</p>
+                    </div>
+                    <div class="card">
+                        <!-- <i class="fas fa-palette"></i> Icône art -->
+                        <h3>Création Artistique Assistée</h3>
+                        <p>Inspiration pour des compositions musicales, des scénarios, des concepts visuels, en exploitant les associations d'idées subconscientes.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <div class="container" id="pricing">
+            <h2 class="section-title">Devenez Loueur : Nos Plans</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Découverte Nocturne</h3>
+                    <p style="font-size: 2em; color: #1abc9c; text-align: center; margin: 0.5em 0;"><strong>Gratuit</strong></p>
+                    <p>Louez jusqu'à 4 heures/nuit.</p>
+                    <p>Support communautaire.</p>
+                    <p>Accès aux statistiques de base.</p>
+                    <p style="text-align:center; margin-top:1em;"><a href="#signup" class="btn">Commencer</a></p>
+                </div>
+                <div class="card" style="border: 2px solid #1abc9c;">
+                    <p style="text-align: center; background-color: #1abc9c; color: white; padding: 0.3em; border-radius: 5px 5px 0 0; margin: -1.5em -1.5em 1em -1.5em;">Le Plus Populaire</p>
+                    <h3>Rêveur Pro</h3>
+                     <p style="font-size: 2em; color: #1abc9c; text-align: center; margin: 0.5em 0;"><strong>19.99€<small>/mois</small></strong></p>
+                    <p>Location illimitée (8h+ par nuit).</p>
+                    <p>NeuroCapteur MindLease Lite offert (après 3 mois).</p>
+                    <p>Support prioritaire.</p>
+                    <p>Statistiques avancées et insights.</p>
+                    <p>Paiements accélérés.</p>
+                    <p style="text-align:center; margin-top:1em;"><a href="#signup" class="btn">Choisir Pro</a></p>
+                </div>
+                <div class="card">
+                    <h3>Visionnaire</h3>
+                     <p style="font-size: 2em; color: #1abc9c; text-align: center; margin: 0.5em 0;"><strong>49.99€<small>/mois</small></strong></p>
+                    <p>Tous les avantages Pro.</p>
+                    <p>NeuroCapteur MindLease Premium immédiat.</p>
+                    <p>Accès bêta aux nouvelles fonctionnalités.</p>
+                    <p>Consultation personnalisée pour optimiser les gains.</p>
+                    <p style="text-align:center; margin-top:1em;"><a href="#signup" class="btn">Devenir Visionnaire</a></p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2em;">Pour les entreprises et chercheurs souhaitant utiliser la puissance de MindLease, <a href="#contact">contactez-nous pour une démo personnalisée</a>.</p>
+        </div>
+
+        <div class="container">
+            <section id="testimonials">
+                <h2 class="section-title">Ce qu'ils en disent</h2>
+                <div class="testimonial">
+                    <p>"Au début, j'étais sceptique, mais MindLease est incroyable ! Je gagne un peu d'argent en dormant et j'ai l'impression de contribuer à quelque chose de grand. Le NeuroCapteur est confortable."</p>
+                    <footer>- Sophie D., Étudiante</footer>
+                </div>
+                <div class="testimonial">
+                    <p>"Notre équipe R&D utilise MindLease pour des phases exploratoires de brainstorming. Les résultats sont souvent surprenants et ouvrent des pistes que nous n'aurions pas envisagées. C'est un outil complémentaire fascinant."</p>
+                    <footer>- Dr. Alain Moreau, Chef de projet Innovation</footer>
+                </div>
+                 <div class="testimonial">
+                    <p>"En tant qu'artiste, MindLease m'aide à débloquer des idées créatives pendant mes phases de repos. C'est comme si mon subconscient continuait de travailler sur mes projets."</p>
+                    <footer>- Marc L., Artiste Digital</footer>
+                </div>
+            </section>
+        </div>
+
+        <div class="container">
+            <section id="security">
+                <h2 class="section-title">Sécurité & Éthique : Notre Engagement</h2>
+                <p>Chez MindLease, la confiance, la sécurité et l'éthique sont au cœur de nos préoccupations. Nous nous engageons à :</p>
+                <ul>
+                    <li><strong>Anonymat et Confidentialité :</strong> Aucune donnée personnelle identifiable n'est associée aux tâches cognitives. Les processus sont agrégés et anonymisés.</li>
+                    <li><strong>Sécurité des Données :</strong> Cryptage de bout-en-bout pour toutes les transmissions et le stockage des données.</li>
+                    <li><strong>Non-Intrusivité :</strong> Notre technologie est conçue pour être utilisée pendant le sommeil naturel ou les temps morts, sans perturber vos cycles ou votre bien-être.</li>
+                    <li><strong>Consentement Éclairé :</strong> Vous avez le contrôle total sur quand et comment votre potentiel cognitif est utilisé.</li>
+                    <li><strong>Cadre Éthique Strict :</strong> Nous adhérons à des directives éthiques rigoureuses et collaborons avec des experts pour garantir une utilisation responsable de cette technologie. Les tâches à caractère illégal, immoral ou nuisible sont strictement interdites.</li>
+                    <li><strong>Transparence :</strong> Nous sommes transparents sur la manière dont notre plateforme fonctionne et comment les données sont traitées.</li>
+                </ul>
+                <p>Votre bien-être et la protection de votre intégrité sont notre priorité absolue.</p>
+            </section>
+        </div>
+        
+        <div class="container" id="learn-more-clients">
+             <h2 class="section-title">Pour les Entreprises et Chercheurs</h2>
+            <p>MindLease offre une nouvelle dimension pour aborder des problèmes complexes et stimuler l'innovation. En accédant à un réseau distribué de capacités cognitives subconscientes, vous pouvez :</p>
+            <ul>
+                <li>Accélérer la recherche et le développement.</li>
+                <li>Générer des solutions "out-of-the-box" pour des défis complexes.</li>
+                <li>Optimiser des algorithmes d'IA avec des données d'intuition humaine.</li>
+                <li>Mener des brainstormings à une échelle sans précédent.</li>
+                <li>Réduire les coûts par rapport à certaines méthodes de calcul intensif traditionnelles.</li>
+            </ul>
+            <p>Notre plateforme pour clients professionnels inclut des outils d'analyse avancés, une API pour l'intégration, et un support dédié pour vous aider à formuler et soumettre vos requêtes cognitives.</p>
+            <p style="text-align:center; margin-top:1em;"><a href="#contact" class="btn">Demander une Démo</a></p>
+        </div>
+
+        <div class="container">
+            <section id="faq">
+                <h2 class="section-title">Questions Fréquentes (FAQ)</h2>
+                <details class="faq-item">
+                    <summary>Est-ce que MindLease peut "lire dans mes pensées" ?</summary>
+                    <p>Absolument pas. MindLease ne décode pas les pensées, les rêves ou les souvenirs. Le NeuroCapteur détecte des schémas d'activité cérébrale globale associés à certains types de traitement cognitif subconscient. Ces signaux sont ensuite utilisés pour optimiser l'allocation de micro-tâches. Votre vie privée mentale est intégralement préservée.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Quel type de "calcul" mon cerveau effectue-t-il ?</summary>
+                    <p>Il ne s'agit pas de calcul mathématique au sens traditionnel. Votre cerveau participe à la reconnaissance de formes, à la génération d'idées divergentes, à l'association libre, ou à l'évaluation intuitive de solutions. Ces tâches sont décomposées en micro-fragments distribués sur le réseau.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Cela affecte-t-il la qualité de mon sommeil ?</summary>
+                    <p>Le NeuroCapteur est conçu pour être le moins intrusif possible. La stimulation, si elle est utilisée par une tâche, est minime et conçue pour s'intégrer aux phases de sommeil léger ou paradoxal sans perturber les cycles de repos profond. Nous surveillons en continu l'impact et optimisons pour le confort.</p>
+                </details>
+                 <details class="faq-item">
+                    <summary>Combien puis-je espérer gagner ?</summary>
+                    <p>Les gains varient en fonction de la demande sur le réseau, de la durée de vos sessions, du type de tâches traitées et de votre abonnement. Notre objectif est de fournir un complément de revenu attractif pour un effort minimal de votre part. Des estimations plus précises sont disponibles dans votre tableau de bord après inscription.</p>
+                </details>
+            </section>
+        </div>
+
+        <section id="signup" class="container" style="text-align: center; background-color: #1abc9c; color: white; padding: 2em; border-radius: 8px;">
+            <h2 style="color: white; font-size: 2em;">Prêt à Libérer Votre Potentiel ?</h2>
+            <p style="font-size: 1.2em;">Rejoignez des milliers de pionniers qui façonnent l'avenir du calcul cognitif.</p>
+            <form style="margin-top: 1.5em;">
+                <input type="email" placeholder="Votre adresse e-mail" required style="padding: 0.8em; border-radius: 20px; border: 1px solid #ddd; width: 60%; margin-right:10px; min-width:200px;">
+                <button type="submit" class="btn btn-secondary">S'inscrire Maintenant</button>
+            </form>
+            <p style="font-size: 0.9em; margin-top: 1em;">En vous inscrivant, vous acceptez nos <a href="#terms" style="color: #ecf0f1; text-decoration:underline;">Termes et Conditions</a>.</p>
+        </section>
+        
+        <section id="contact" class="container">
+            <h2 class="section-title">Contactez-Nous</h2>
+            <p style="text-align:center;">Pour toute question, partenariat, ou demande de démo pour les entreprises, n'hésitez pas à nous joindre.</p>
+            <form style="display: flex; flex-direction: column; gap: 1em; max-width: 600px; margin: 1em auto;">
+                <input type="text" placeholder="Votre Nom" required style="padding: 0.7em; border: 1px solid #ccc; border-radius: 4px;">
+                <input type="email" placeholder="Votre Email" required style="padding: 0.7em; border: 1px solid #ccc; border-radius: 4px;">
+                <textarea placeholder="Votre Message" rows="5" required style="padding: 0.7em; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                <button type="submit" class="btn" style="align-self: center;">Envoyer le Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2024 MindLease Inc. Tous droits réservés.</p>
+        <p>
+            <a href="#privacy">Politique de Confidentialité</a> | 
+            <a href="#terms">Conditions d'Utilisation</a> |
+            <a href="#contact">Contact</a>
+        </p>
+        <p>Suivez-nous sur : 
+            <a href="#">X (Twitter)</a> | 
+            <a href="#">LinkedIn</a> |
+            <a href="#">NeuroForums</a>
+        </p>
+    </footer>
+
+</body>
+</html>
