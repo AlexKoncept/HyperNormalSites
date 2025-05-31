@@ -1,1 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CancelMeNow - Reprenez le Contrôle de Votre Narration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
 
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 4px solid #e74c3c;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #bdc3c7;
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #e74c3c;
+        }
+
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .section {
+            background-color: #fff;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .planning-tool, .notoriety-tracker, .fake-content-generator {
+            margin-top: 20px;
+        }
+
+        .planning-tool label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .planning-tool input[type="text"],
+        .planning-tool input[type="date"],
+        .planning-tool select,
+        .planning-tool textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .planning-tool button, .cta-button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .planning-tool button:hover, .cta-button:hover {
+            background-color: #c0392b;
+        }
+
+        .tweet-card {
+            border: 1px solid #ccd6dd;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #ffffff;
+        }
+
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .tweet-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #7f8c8d; /* Placeholder color */
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .tweet-user strong {
+            font-size: 1rem;
+            color: #14171a;
+        }
+        .tweet-user span {
+            font-size: 0.9rem;
+            color: #657786;
+        }
+
+        .tweet-content {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: #14171a;
+        }
+
+        .tweet-actions span {
+            margin-right: 20px;
+            color: #657786;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .tweet-actions span:hover {
+            color: #e74c3c;
+        }
+
+        .notoriety-graph {
+            width: 100%;
+            height: 200px;
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .graph-bar {
+            background-color: #3498db;
+            width: 15%;
+            transition: height 0.5s ease-out;
+        }
+        .bar-label {
+            text-align: center;
+            font-size: 0.8em;
+            color: #2c3e50;
+        }
+        .notoriety-metrics p {
+            font-size: 0.9em;
+        }
+        .notoriety-metrics strong {
+            color: #e74c3c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 2rem;
+        }
+        footer p {
+            margin: 0;
+        }
+        footer a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CancelMeNow</h1>
+        <p>Votre Disparition Numérique, Orchestrée avec Précision.</p>
+    </header>
+
+    <nav>
+        <a href="#services">Nos Services</a>
+        <a href="#planning">Outils de Planification</a>
+        <a href="#simulation">Simulation & Suivi</a>
+        <a href="#contact">Contactez-Nous</a>
+    </nav>
+
+    <div class="container">
+        <section id="hero" class="section">
+            <h2>Fatigué(e) de la Vie Publique ? Reprenez le Contrôle.</h2>
+            <p>À l'ère de l'hyper-connectivité, choisir de disparaître est un acte de courage. CancelMeNow vous offre les outils et la stratégie pour orchestrer votre "annulation sociale" de manière contrôlée, que vous souhaitiez simplement quitter Internet, vous retirer discrètement de la scène publique, ou même simuler un scandale pour un nouveau départ.</p>
+            <p>Nous comprenons la nuance et le besoin de discrétion. Nos experts vous accompagnent à chaque étape.</p>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView();">Discutons de votre projet</button>
+        </section>
+
+        <section id="services" class="section">
+            <h2>Nos Services Sur Mesure</h2>
+            <ul>
+                <li><strong>Planification Stratégique de Disparition :</strong> Consultation personnalisée pour définir vos objectifs et élaborer un calendrier de "déconstruction" de votre image publique.</li>
+                <li><strong>Génération de Contenu "Annulant" :</strong> Création de faux messages, tweets, ou simulation de "fuites" contrôlées pour modeler la perception publique selon vos souhaits.</li>
+                <li><strong>Suivi de "Dé-Notoriété" :</strong> Tableaux de bord en temps réel pour visualiser la baisse de votre visibilité et l'évolution du sentiment public.</li>
+                <li><strong>Gestion de Crise Simulée :</strong> Pour ceux qui optent pour la stratégie du "scandale contrôlé", nous orchestrons les événements pour un impact maximal et une récupération rapide (de votre anonymat).</li>
+                <li><strong>Nettoyage Numérique Post-Annulation :</strong> Assistance pour la suppression de comptes, la gestion du droit à l'oubli et le maintien de votre nouvelle discrétion.</li>
+            </ul>
+        </section>
+
+        <section id="planning" class="section">
+            <h2>Outils de Planification de Votre "Annulation"</h2>
+            <p>Commencez à esquisser votre stratégie avec nos outils interactifs. Vos données restent confidentielles.</p>
+            <div class="planning-tool">
+                <label for="cancellation-type">Type d'Annulation Souhaité :</label>
+                <select id="cancellation-type" name="cancellation-type">
+                    <option value="silent_exit">Disparition Silencieuse (Retrait progressif)</option>
+                    <option value="public_retreat">Retrait de la Vie Publique (Annonce formelle)</option>
+                    <option value="controlled_scandal">Scandale Contrôlé (Impact rapide)</option>
+                    <option value="digital_detox">Déconnexion Totale d'Internet</option>
+                </select>
+
+                <label for="target-date">Date Cible pour la "Disparition" :</label>
+                <input type="date" id="target-date" name="target-date">
+
+                <label for="key-platforms">Plateformes Sociales Clés à Cibler :</label>
+                <input type="text" id="key-platforms" name="key-platforms" placeholder="Ex: Twitter, Instagram, LinkedIn...">
+
+                <label for="objectives">Objectifs Spécifiques / Notes :</label>
+                <textarea id="objectives" name="objectives" rows="4" placeholder="Décrivez ce que vous attendez de votre 'annulation'..."></textarea>
+
+                <button type="button" onclick="alert('Plan soumis pour analyse préliminaire. Un conseiller vous contactera sous 24h.')">Soumettre pour Analyse Préliminaire</button>
+            </div>
+        </section>
+
+        <section id="simulation" class="section">
+            <h2>Simulation & Suivi en Temps Réel</h2>
+
+            <div class="fake-content-generator">
+                <h3>Générateur de Faux Contenu (Exemples)</h3>
+                <p>Notre IA peut générer des messages ambigus ou controversés (toujours dans les limites légales et éthiques définies avec vous) pour initier ou accélérer le processus.</p>
+                
+                <div class="tweet-card">
+                    <div class="tweet-header">
+                        <div class="tweet-avatar">VO</div>
+                        <div class="tweet-user">
+                            <strong>VotreNomIci</strong><br>
+                            <span>@VotrePseudo</span>
+                        </div>
+                    </div>
+                    <div class="tweet-content">
+                        Je pense que j'ai besoin de prendre du recul sur certaines choses. Il est temps de réévaluer mes priorités. 🤔 #reflexion #changement
+                    </div>
+                    <div class="tweet-actions">
+                        <span>💬 23</span>
+                        <span>🔁 12</span>
+                        <span>❤️ 58</span>
+                        <span>🔗</span>
+                    </div>
+                </div>
+
+                <div class="tweet-card">
+                    <div class="tweet-header">
+                        <div class="tweet-avatar">VO</div>
+                        <div class="tweet-user">
+                            <strong>VotreNomIci</strong><br>
+                            <span>@VotrePseudo</span>
+                        </div>
+                    </div>
+                    <div class="tweet-content">
+                        Parfois, la meilleure façon de dire quelque chose est de ne rien dire du tout. Le silence peut être puissant.
+                    </div>
+                    <div class="tweet-actions">
+                        <span>💬 101</span>
+                        <span>🔁 76</span>
+                        <span>❤️ 250</span>
+                        <span>🔗</span>
+                    </div>
+                </div>
+                 <button type="button" style="margin-top:10px;" onclick="alert('Fonctionnalité en développement. Aperçu uniquement.')">Générer plus d'exemples</button>
+            </div>
+
+            <div class="notoriety-tracker">
+                <h3>Suivi de Votre "Dé-Notoriété"</h3>
+                <p>Visualisez l'impact de nos actions sur votre présence en ligne.</p>
+                <div class="notoriety-graph">
+                    <div style="height: 80%;" class="graph-bar" title="Semaine -4"></div>
+                    <div style="height: 65%;" class="graph-bar" title="Semaine -3"></div>
+                    <div style="height: 40%;" class="graph-bar" title="Semaine -2"></div>
+                    <div style="height: 20%;" class="graph-bar" title="Semaine -1"></div>
+                    <div style="height: 5%;" class="graph-bar" title="Actuel"></div>
+                </div>
+                <div class="bar-label-container" style="display: flex; justify-content: space-around; padding: 0 10px;">
+                    <span class="bar-label">S-4</span>
+                    <span class="bar-label">S-3</span>
+                    <span class="bar-label">S-2</span>
+                    <span class="bar-label">S-1</span>
+                    <span class="bar-label">Now</span>
+                </div>
+                <div class="notoriety-metrics">
+                    <p>Indice de Visibilité Globale : <strong>12% (Chute de -88%)</strong></p>
+                    <p>Sentiment Négatif Public (si applicable) : <strong>Contrôlé à 15%</strong></p>
+                    <p>Mentions sur les réseaux sociaux : <strong>-95% par rapport au pic</strong></p>
+                    <p>Statut de Disparition : <strong>Quasi-Total (Objectif atteint à 90%)</strong></p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="section">
+            <h2>Prêt à Disparaître avec Élégance ?</h2>
+            <p>Chaque situation est unique. Contactez-nous pour une consultation confidentielle et sans engagement afin de discuter de vos besoins spécifiques. La discrétion est notre maître-mot.</p>
+            <form action="#" method="POST"> <!-- Action fictive -->
+                <label for="name">Nom (ou pseudonyme) :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email sécurisé :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Votre demande / Situation :</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Soyez aussi vague ou précis que vous le souhaitez initialement."></textarea>
+
+                <button type="submit" class="cta-button" onclick="event.preventDefault(); alert('Merci pour votre message. Nous vous contacterons discrètement via l_email fourni sous 24-48h.'); this.form.reset();">Envoyer Demande Confidentielle</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2024 CancelMeNow. Tous droits réservés (pour l'instant).</p>
+        <p><a href="#">Politique de Confidentialité</a> | <a href="#">Termes de Service (Très Spéciaux)</a></p>
+        <p><em>CancelMeNow est un concept fictif. Ce site est une démonstration.</em></p>
+    </footer>
+
+    <script>
+        // Petite animation pour le graphique (juste pour l'effet)
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.notoriety-graph .graph-bar');
+            bars.forEach(bar => {
+                const originalHeight = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.height = originalHeight;
+                }, 100);
+            });
+        });
+    </script>
+
+</body>
+</html>
