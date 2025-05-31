@@ -5,18 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HyperNormalSites – par Alex Koncept</title>
   <style>
+    :root {
+      --bg-gradient-start: #f1f4f8;
+      --bg-gradient-end: #e0f7fa;
+      --text-color: #333;
+      --card-bg: #ffffffdd;
+      --card-shadow: rgba(0, 0, 0, 0.1);
+      --link-color: #007acc;
+      --header-shadow-color: rgba(0,0,0,0.15);
+      --button-bg: #007acc;
+      --button-text-color: #fff;
+      --button-hover-bg: #005fa3;
+      --theme-toggle-icon: "☀️"; /* Sun icon for light mode */
+    }
+
+    body.dark-mode {
+      --bg-gradient-start: #232526;
+      --bg-gradient-end: #414345;
+      --text-color: #f0f0f0;
+      --card-bg: #3a3a3add;
+      --card-shadow: rgba(255, 255, 255, 0.08);
+      --link-color: #61dafb;
+      --header-shadow-color: rgba(255,255,255,0.1);
+      --button-bg: #61dafb;
+      --button-text-color: #222;
+      --button-hover-bg: #3aa8c7;
+      --theme-toggle-icon: "🌙"; /* Moon icon for dark mode */
+    }
+
     body {
       margin: 0;
       padding: 2rem;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f1f4f8, #e0f7fa);
-      color: #333;
+      background: linear-gradient(to right, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: var(--text-color);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .header-container {
+      text-align: center;
+      margin-bottom: 2rem;
     }
 
     h1 {
-      text-align: center;
       font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .action-buttons {
       margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .action-button {
+      background-color: var(--button-bg);
+      color: var(--button-text-color);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .action-button:hover {
+      background-color: var(--button-hover-bg);
+    }
+
+    .video-container {
+      max-width: 960px;
+      margin: 0 auto 2rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 8px 20px var(--header-shadow-color);
     }
 
     .site-grid {
@@ -29,11 +94,11 @@
     .site-card {
       width: 300px;
       max-width: 90vw;
-      background-color: #ffffffdd;
+      background-color: var(--card-bg);
       border-radius: 1rem;
       padding: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 15px var(--card-shadow);
+      transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .site-card:hover {
@@ -51,7 +116,7 @@
     }
 
     .site-card a {
-      color: #007acc;
+      color: var(--link-color);
       text-decoration: none;
       font-weight: bold;
     }
@@ -60,21 +125,62 @@
       text-decoration: underline;
     }
 
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--text-color);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 5px var(--card-shadow);
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      z-index: 1000;
+    }
+    .theme-toggle::before {
+      content: var(--theme-toggle-icon);
+    }
+
     @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
       .site-grid {
         flex-direction: column;
         align-items: center;
       }
-
       .site-card {
         width: 90%;
+      }
+      .theme-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <h1>HyperNormalSites – by Alex Koncept</h1>
-  <div style="max-width: 960px; margin: 0 auto 2rem; border-radius: 1rem; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+
+  <button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème"></button>
+
+  <div class="header-container">
+    <h1>HyperNormalSites – by Alex Koncept</h1>
+    <div class="action-buttons">
+      <button id="surprise-btn" class="action-button">🎲 Me Surprendre !</button>
+    </div>
+  </div>
+
+  <div class="video-container">
     <video controls autoplay muted loop style="width: 100%; height: auto; display: block;">
       <source src="HNS_video.mp4" type="video/mp4">
       Votre navigateur ne supporte pas la lecture vidéo.
@@ -83,101 +189,149 @@
 
   <div class="site-grid">
     <div class="site-card">
-      <h2>🔗 <a href="https://alexkoncept.github.io/HyperNormalSites/EternaLink/">EternaLink</a></h2>
+      <h2>🔗 <a href="https://alexkoncept.github.io/HyperNormalSites/EternaLink/" target="_blank" rel="noopener noreferrer">EternaLink</a></h2>
       <p>Connecté pour toujours. Le lien numérique qui ne meurt jamais… même après vous.</p>
     </div>
     <div class="site-card">
-      <h2>🌾 <a href="https://alexkoncept.github.io/HyperNormalSites/DreamHarvest/">DreamHarvest</a></h2>
+      <h2>🌾 <a href="https://alexkoncept.github.io/HyperNormalSites/DreamHarvest/" target="_blank" rel="noopener noreferrer">DreamHarvest</a></h2>
       <p>Vos rêves ne vous appartiennent plus. Mais ils peuvent être monétisés !</p>
     </div>
     <div class="site-card">
-      <h2>😀 <a href="https://alexkoncept.github.io/HyperNormalSites/HappyHuman/">HappyHuman</a></h2>
+      <h2>😀 <a href="https://alexkoncept.github.io/HyperNormalSites/HappyHuman/" target="_blank" rel="noopener noreferrer">HappyHuman</a></h2>
       <p>Un algorithme pour veiller à votre bonheur… que ça vous plaise ou non.</p>
     </div>
     <div class="site-card">
-      <h2>🚪 <a href="https://alexkoncept.github.io/HyperNormalSites/Echappatoire/">Échappatoire</a></h2>
+      <h2>🚪 <a href="https://alexkoncept.github.io/HyperNormalSites/Echappatoire/" target="_blank" rel="noopener noreferrer">Échappatoire</a></h2>
       <p>Une porte de sortie… mais pour aller où ?</p>
     </div>
     <div class="site-card">
-      <h2>🏢 <a href="https://alexkoncept.github.io/HyperNormalSites/MatriceCorp/">MatriceCorp</a></h2>
+      <h2>🏢 <a href="https://alexkoncept.github.io/HyperNormalSites/MatriceCorp/" target="_blank" rel="noopener noreferrer">MatriceCorp</a></h2>
       <p>La vie simulée par excellence. Qui a besoin de la réalité ?</p>
     </div>
     <div class="site-card">
-      <h2>⚖️ <a href="https://alexkoncept.github.io/HyperNormalSites/MyKarmaScore/">MyKarmaScore</a></h2>
+      <h2>⚖️ <a href="https://alexkoncept.github.io/HyperNormalSites/MyKarmaScore/" target="_blank" rel="noopener noreferrer">MyKarmaScore</a></h2>
       <p>Votre karma est votre nouvelle monnaie sociale. Faites attention à vos choix.</p>
     </div>
     <div class="site-card">
-      <h2>🔮 <a href="https://alexkoncept.github.io/HyperNormalSites/OracleAI/">OracleAI</a></h2>
+      <h2>🔮 <a href="https://alexkoncept.github.io/HyperNormalSites/OracleAI/" target="_blank" rel="noopener noreferrer">OracleAI</a></h2>
       <p>Pourquoi choisir quand une IA peut décider pour vous ?</p>
     </div>
     <div class="site-card">
-      <h2>👁 <a href="https://alexkoncept.github.io/HyperNormalSites/ParentOptik/">ParentOptik</a></h2>
+      <h2>👁 <a href="https://alexkoncept.github.io/HyperNormalSites/ParentOptik/" target="_blank" rel="noopener noreferrer">ParentOptik</a></h2>
       <p>Surveillez vos enfants, même dans leurs pensées.</p>
     </div>
     <div class="site-card">
-      <h2>⚖️ <a href="https://alexkoncept.github.io/HyperNormalSites/InstaJustice/">InstaJustice</a></h2>
+      <h2>⚖️ <a href="https://alexkoncept.github.io/HyperNormalSites/InstaJustice/" target="_blank" rel="noopener noreferrer">InstaJustice</a></h2>
       <p>La justice instantanée, par sondage populaire. Vous êtes jugé, maintenant.</p>
     </div>
     <div class="site-card">
-      <h2>🧬 <a href="https://alexkoncept.github.io/HyperNormalSites/SoulSync/">SoulSync</a></h2>
+      <h2>🧬 <a href="https://alexkoncept.github.io/HyperNormalSites/SoulSync/" target="_blank" rel="noopener noreferrer">SoulSync</a></h2>
       <p>Fusionnez vos âmes, vos données, vos destins. Pourquoi être seul ?</p>
     </div>
     <div class="site-card">
-      <h2>🧠 <a href="https://alexkoncept.github.io/HyperNormalSites/EchoTwin/">EchoTwin</a></h2>
+      <h2>🧠 <a href="https://alexkoncept.github.io/HyperNormalSites/EchoTwin/" target="_blank" rel="noopener noreferrer">EchoTwin</a></h2>
       <p>Un clone numérique qui pense pour vous. Mieux que vous ?</p>
     </div>
     <div class="site-card">
-      <h2>🔍 <a href="https://alexkoncept.github.io/HyperNormalSites/PrecrimAnalytics/">PrecrimAnalytics</a></h2>
+      <h2>🔍 <a href="https://alexkoncept.github.io/HyperNormalSites/PrecrimAnalytics/" target="_blank" rel="noopener noreferrer">PrecrimAnalytics</a></h2>
       <p>Anticipez les crimes… ou créez-les, selon l’analyse prédictive.</p>
     </div>
     <div class="site-card">
-      <h2>📢 <a href="https://alexkoncept.github.io/HyperNormalSites/ThoughtSponsor/">ThoughtSponsor</a></h2>
+      <h2>📢 <a href="https://alexkoncept.github.io/HyperNormalSites/ThoughtSponsor/" target="_blank" rel="noopener noreferrer">ThoughtSponsor</a></h2>
       <p>Des pubs directement dans vos pensées. Intégré. Subliminal. Efficace.</p>
     </div>
     <div class="site-card">
-      <h2>💘 <a href="https://alexkoncept.github.io/HyperNormalSites/BioMetricDating/">BioMetricDating</a></h2>
+      <h2>💘 <a href="https://alexkoncept.github.io/HyperNormalSites/BioMetricDating/" target="_blank" rel="noopener noreferrer">BioMetricDating</a></h2>
       <p>L’amour, validé par vos données biologiques. L’algorithme ne se trompe jamais.</p>
     </div>
     <div class="site-card">
-      <h2>🚫 <a href="https://alexkoncept.github.io/HyperNormalSites/CancelMeNow/">CancelMeNow</a></h2>
+      <h2>🚫 <a href="https://alexkoncept.github.io/HyperNormalSites/CancelMeNow/" target="_blank" rel="noopener noreferrer">CancelMeNow</a></h2>
       <p>Vous avez été annulé avant même d’avoir existé.</p>
     </div>
     <div class="site-card">
-      <h2>👶 <a href="https://alexkoncept.github.io/HyperNormalSites/DeepNanny/">DeepNanny</a></h2>
+      <h2>👶 <a href="https://alexkoncept.github.io/HyperNormalSites/DeepNanny/" target="_blank" rel="noopener noreferrer">DeepNanny</a></h2>
       <p>Une nounou connectée. Elle voit tout. Elle sait tout. Elle juge…</p>
     </div>
     <div class="site-card">
-      <h2>👼 <a href="https://alexkoncept.github.io/HyperNormalSites/EchoBaby/">EchoBaby</a></h2>
+      <h2>👼 <a href="https://alexkoncept.github.io/HyperNormalSites/EchoBaby/" target="_blank" rel="noopener noreferrer">EchoBaby</a></h2>
       <p>Un bébé numérique, reflet de vos envies. Grandit avec vous (et vos likes).</p>
     </div>
     <div class="site-card">
-      <h2>🔄 <a href="https://alexkoncept.github.io/HyperNormalSites/LifeSwap/">LifeSwap</a></h2>
+      <h2>🔄 <a href="https://alexkoncept.github.io/HyperNormalSites/LifeSwap/" target="_blank" rel="noopener noreferrer">LifeSwap</a></h2>
       <p>Échangez votre vie avec un inconnu. Pour une heure. Pour toujours.</p>
     </div>
     <div class="site-card">
-      <h2>🧠 <a href="https://alexkoncept.github.io/HyperNormalSites/MindLease/">MindLease</a></h2>
+      <h2>🧠 <a href="https://alexkoncept.github.io/HyperNormalSites/MindLease/" target="_blank" rel="noopener noreferrer">MindLease</a></h2>
       <p>Vous pouvez louer votre esprit. Oui, vraiment. Pourquoi pas rentabiliser ?</p>
     </div>
     <div class="site-card">
-      <h2>⏪ <a href="https://alexkoncept.github.io/HyperNormalSites/RewindMe/">RewindMe</a></h2>
+      <h2>⏪ <a href="https://alexkoncept.github.io/HyperNormalSites/RewindMe/" target="_blank" rel="noopener noreferrer">RewindMe</a></h2>
       <p>Rejouez votre vie. Mais cette fois, faites-le "mieux".</p>
     </div>
     <div class="site-card">
-      <h2>😌 <a href="https://alexkoncept.github.io/HyperNormalSites/SafeMood/">SafeMood</a></h2>
+      <h2>😌 <a href="https://alexkoncept.github.io/HyperNormalSites/SafeMood/" target="_blank" rel="noopener noreferrer">SafeMood</a></h2>
       <p>Votre humeur est surveillée. Pour votre sécurité… bien sûr.</p>
     </div>
     <div class="site-card">
-      <h2>🩻 <a href="https://alexkoncept.github.io/HyperNormalSites/SecondSkin/">SecondSkin</a></h2>
+      <h2>🩻 <a href="https://alexkoncept.github.io/HyperNormalSites/SecondSkin/" target="_blank" rel="noopener noreferrer">SecondSkin</a></h2>
       <p>Une peau intelligente. Littéralement. Elle vous écoute. Elle vous parle.</p>
     </div>
     <div class="site-card">
-      <h2>❤️‍🔥 <a href="https://alexkoncept.github.io/HyperNormalSites/SimuPartner/">SimuPartner</a></h2>
+      <h2>❤️‍🔥 <a href="https://alexkoncept.github.io/HyperNormalSites/SimuPartner/" target="_blank" rel="noopener noreferrer">SimuPartner</a></h2>
       <p>Un.e partenaire parfait.e, généré.e par IA. Mieux que la réalité ?</p>
     </div>
     <div class="site-card">
-      <h2>🌐 <a href="https://alexkoncept.github.io/HyperNormalSites/SiteRealiteAlternative/">Réalité Alternative</a></h2>
+      <h2>🌐 <a href="https://alexkoncept.github.io/HyperNormalSites/SiteRealiteAlternative/" target="_blank" rel="noopener noreferrer">Réalité Alternative</a></h2>
       <p>Choisissez votre version du monde. Qui a dit que la vérité devait être unique ?</p>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const surpriseBtn = document.getElementById('surprise-btn');
+      const siteLinks = document.querySelectorAll('.site-card a');
+
+      // --- Theme Toggle ---
+      const currentTheme = localStorage.getItem('theme') || 
+                           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      
+      if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        let theme = 'light';
+        if (document.body.classList.contains('dark-mode')) {
+          theme = 'dark';
+        }
+        localStorage.setItem('theme', theme);
+      });
+
+      // --- Surprise Me Button ---
+      if (surpriseBtn && siteLinks.length > 0) {
+        surpriseBtn.addEventListener('click', () => {
+          const randomIndex = Math.floor(Math.random() * siteLinks.length);
+          const randomSiteUrl = siteLinks[randomIndex].href;
+          // Ouvre dans un nouvel onglet (comme les liens de la carte)
+          window.open(randomSiteUrl, '_blank', 'noopener,noreferrer'); 
+          // Si vous préférez naviguer dans le même onglet :
+          // window.location.href = randomSiteUrl;
+        });
+      } else if (surpriseBtn) {
+        surpriseBtn.disabled = true;
+        surpriseBtn.textContent = "Aucun site à découvrir";
+      }
+
+      // --- Open links in new tab ---
+      // (Déjà fait avec target="_blank" dans le HTML, mais si ce n'était pas le cas)
+      // siteLinks.forEach(link => {
+      //   link.target = "_blank";
+      //   link.rel = "noopener noreferrer";
+      // });
+    });
+  </script>
+
 </body>
 </html>
