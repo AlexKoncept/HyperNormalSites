@@ -1,1 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoBaby - Concevez l'Avenir, Aujourd'hui</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #17a2b8;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+            --light-text: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1em 2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo-placeholder { /* MODIFIÉ: Remplacement de l'image du logo */
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 50%; /* Cercle */
+            margin-right: 10px;
+            font-size: 1.2em; /* Pour le texte "E" */
+        }
+
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 300;
+        }
+        header h1 strong { font-weight: 600; }
+
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { color: var(--light-text); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+        nav ul li a:hover, nav ul li a.active { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
+
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+
+        .hero {
+            /* Si via.placeholder ne marche pas, on met une couleur de fond solide */
+            background-color: var(--primary-color);
+            /* background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 80, 180, 0.8)), url('https://via.placeholder.com/1200x400/007bff/FFFFFF?text=Futur') no-repeat center center/cover; */
+            color: var(--light-text);
+            padding: 80px 40px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+        }
+        .hero h2 { font-size: 3em; margin-bottom: 20px; }
+        .hero p { font-size: 1.2em; margin-bottom: 30px; }
+
+        .cta-button { background-color: var(--accent-color); color: var(--light-text); padding: 15px 30px; text-decoration: none; font-size: 1.1em; border-radius: var(--border-radius); transition: background-color 0.3s ease; border: none; cursor: pointer; }
+        .cta-button:hover { background-color: #138496; }
+
+        .section { background-color: var(--light-text); padding: 40px; margin-bottom: 30px; border-radius: var(--border-radius); box-shadow: var(--box-shadow); }
+        .section h3 { color: var(--primary-color); font-size: 2em; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-item { background-color: var(--light-bg); padding: 25px; border-radius: var(--border-radius); text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        
+        .icon-placeholder { /* MODIFIÉ: Style pour les spans remplaçant les images d'icônes */
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px; /* Pour centrer le texte verticalement */
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            font-size: 1.8em; /* Taille du texte/symbole de l'icône */
+            font-weight: bold;
+        }
+        .dna-option .icon-placeholder { /* Taille plus petite pour la boutique ADN */
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1.5em;
+        }
+
+        .feature-item h4 { font-size: 1.3em; margin-bottom: 10px; color: var(--primary-color); }
+
+        .simulator-interface { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; align-items: flex-start; }
+        .simulator-controls { background-color: var(--light-bg); padding: 25px; border-radius: var(--border-radius); box-shadow: var(--box-shadow); }
+        .simulator-controls label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--secondary-color); }
+        .simulator-controls input[type="text"], .simulator-controls select, .simulator-controls input[type="range"] { width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .simulator-controls input[type="range"] { padding: 0; }
+
+        .simulator-output { background-color: #e9ecef; padding: 25px; border-radius: var(--border-radius); min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
+        
+        .avatar-placeholder { /* MODIFIÉ: Remplacement de l'image de l'avatar */
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-bottom: 20px;
+            border: 5px solid var(--light-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-text);
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .simulator-output p { text-align: center; font-style: italic; color: var(--secondary-color); }
+        #simulated-age-display { font-weight: bold; color: var(--primary-color); }
+        .simulation-details { width: 100%; margin-top: 20px; font-size: 0.9em; }
+        .simulation-details strong { color: var(--dark-text); }
+
+        .dna-shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .dna-option { background-color: var(--light-text); border: 1px solid #eee; border-radius: var(--border-radius); padding: 20px; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .dna-option:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .dna-option h4 { font-size: 1.2em; color: var(--primary-color); margin-bottom: 10px; }
+        .dna-option .price { font-weight: bold; color: var(--accent-color); margin-bottom: 15px; font-size: 1.1em; }
+        .dna-option .description { font-size: 0.9em; color: var(--secondary-color); margin-bottom: 15px; min-height: 60px; }
+
+        footer { background-color: var(--dark-text); color: var(--light-text); text-align: center; padding: 25px; margin-top: 40px; }
+        footer p { margin: 5px 0; }
+        footer a { color: var(--accent-color); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            .logo-area { margin-bottom: 10px; }
+            nav ul { margin-top: 15px; justify-content: center; }
+            nav ul li { margin: 0 10px; }
+            .hero h2 { font-size: 2.5em; }
+            .simulator-interface { grid-template-columns: 1fr; }
+            .simulator-output { min-height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <span class="header-logo-placeholder" aria-label="EchoBaby Logo">E</span> <!-- MODIFIÉ -->
+            <h1>Echo<strong>Baby</strong></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Accueil</a></li>
+                <li><a href="#simulator">Simulateur</a></li>
+                <li><a href="#dna-shop">Boutique ADN</a></li>
+                <li><a href="#how-it-works">Comment ça marche ?</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h2>Concevez l'Avenir, Aujourd'hui.</h2>
+            <p>Avec EchoBaby, explorez le potentiel de votre futur enfant grâce à notre technologie de simulation avancée et nos options d'optimisation génétique de pointe.</p>
+            <a href="#simulator" class="cta-button">Démarrer la Simulation</a>
+        </section>
+
+        <div class="container">
+            <section id="how-it-works" class="section">
+                <h3>Notre Processus Révolutionnaire</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <span class="icon-placeholder" aria-label="Icône ADN">🧬</span> <!-- MODIFIÉ: Utilisation d'Emoji ou texte-->
+                        <h4>1. Conception Virtuelle</h4>
+                        <p>Fournissez vos profils génétiques parentaux pour créer la base de votre enfant numérique.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon-placeholder" aria-label="Icône Graphique">📈</span> <!-- MODIFIÉ -->
+                        <h4>2. Simulation de Vie</h4>
+                        <p>Notre IA simule les étapes clés du développement et les potentiels de votre enfant numérique.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon-placeholder" aria-label="Icône Étoile">⭐</span> <!-- MODIFIÉ -->
+                        <h4>3. Optimisation Génétique</h4>
+                        <p>Explorez notre Boutique ADN pour sélectionner des améliorations et façonner un avenir brillant.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="simulator" class="section">
+                <h3>Le Simulateur EchoBaby™</h3>
+                <div class="simulator-interface">
+                    <div class="simulator-controls">
+                        <h4>Paramètres de Simulation</h4>
+                        <label for="parent1-dna">Profil ADN Parent 1 (Fictif):</label>
+                        <select id="parent1-dna">
+                            <option value="profilA">Profil Alpha</option>
+                            <option value="profilB">Profil Beta</option>
+                            <option value="profilC">Profil Gamma</option>
+                        </select>
+
+                        <label for="parent2-dna">Profil ADN Parent 2 (Fictif):</label>
+                        <select id="parent2-dna">
+                            <option value="profilD">Profil Delta</option>
+                            <option value="profilE">Profil Epsilon</option>
+                            <option value="profilF">Profil Zeta</option>
+                        </select>
+
+                        <label for="age-slider">Âge de Simulation: <span id="simulated-age-display">0</span> ans</label>
+                        <input type="range" id="age-slider" min="0" max="18" value="0" oninput="updateSimulatedAge(this.value)">
+
+                        <label for="environnement-sim">Environnement socio-éducatif:</label>
+                        <select id="environnement-sim">
+                            <option value="optimal">Optimal</option>
+                            <option value="moyen">Moyen</option>
+                            <option value="difficile">Difficile</option>
+                        </select>
+                        
+                        <button class="cta-button" style="width: 100%; margin-top: 10px;" onclick="runSimulation()">Lancer la Simulation</button>
+                    </div>
+                    <div class="simulator-output" id="simulation-results">
+                        <div class="avatar-placeholder" id="baby-avatar-placeholder">Avatar</div> <!-- MODIFIÉ -->
+                        <h4>Votre EchoBaby™</h4>
+                        <p>Ajustez les paramètres et lancez la simulation pour visualiser les projections.</p>
+                        <div class="simulation-details">
+                            <p><strong>Traits dominants :</strong> <span id="trait-dominant">-</span></p>
+                            <p><strong>Potentiel académique (à 18 ans) :</strong> <span id="potential-academic">-</span></p>
+                            <p><strong>Prédisposition santé :</strong> <span id="health-predisposition">-</span></p>
+                            <p><strong>Scénario de vie marquant (simulé) :</strong> <span id="life-event">-</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dna-shop" class="section">
+                <h3>Boutique ADN Optimisé™</h3>
+                <p>Sélectionnez des améliorations pour affiner le potentiel de votre EchoBaby. Chaque option a été rigoureusement testée.</p>
+                <div class="dna-shop-grid">
+                    <div class="dna-option">
+                        <span class="icon-placeholder" aria-label="Icône Intelligence">💡</span> <!-- MODIFIÉ -->
+                        <h4>Intelligence Augmentée (Niv. 1)</h4>
+                        <p class="description">Améliore les capacités cognitives et la mémoire.</p>
+                        <p class="price">15,000 €</p>
+                        <button class="cta-button" style="background-color: var(--secondary-color);">Ajouter</button>
+                    </div>
+                    <div class="dna-option">
+                        <span class="icon-placeholder" aria-label="Icône Santé">🛡️</span> <!-- MODIFIÉ -->
+                        <h4>Résistance Immunitaire Supérieure</h4>
+                        <p class="description">Renforce le système immunitaire contre les maladies.</p>
+                        <p class="price">22,000 €</p>
+                        <button class="cta-button" style="background-color: var(--secondary-color);">Ajouter</button>
+                    </div>
+                    <div class="dna-option">
+                        <span class="icon-placeholder" aria-label="Icône Talent Artistique">🎨</span> <!-- MODIFIÉ -->
+                        <h4>Prédisposition Artistique (Musique)</h4>
+                        <p class="description">Favorise le développement de l'oreille musicale.</p>
+                        <p class="price">12,500 €</p>
+                        <button class="cta-button" style="background-color: var(--secondary-color);">Ajouter</button>
+                    </div>
+                    <div class="dna-option">
+                        <span class="icon-placeholder" aria-label="Icône Athlétisme">🏃</span> <!-- MODIFIÉ -->
+                        <h4>Endurance Athlétique Optimisée</h4>
+                        <p class="description">Améliore la capacité cardiovasculaire.</p>
+                        <p class="price">18,000 €</p>
+                        <button class="cta-button" style="background-color: var(--secondary-color);">Ajouter</button>
+                    </div>
+                    <div class="dna-option">
+                        <span class="icon-placeholder" aria-label="Icône Vision">👁️</span> <!-- MODIFIÉ -->
+                        <h4>Vision Parfaite Garantie</h4>
+                        <p class="description">Assure une acuité visuelle 20/20 à vie.</p>
+                        <p class="price">10,000 €</p>
+                        <button class="cta-button" style="background-color: var(--secondary-color);">Ajouter</button>
+                    </div>
+                     <div class="dna-option">
+                        <span class="icon-placeholder" aria-label="Icône Longévité">⏳</span> <!-- MODIFIÉ -->
+                        <h4>Longévité Cellulaire Améliorée</h4>
+                        <p class="description">Ralentit le vieillissement cellulaire.</p>
+                        <p class="price">35,000 €</p>
+                        <button class="cta-button" style="background-color: var(--secondary-color);">Ajouter</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact" class="section">
+                <h3>Prêt à façonner l'avenir ?</h3>
+                <p>Contactez-nous pour une consultation personnalisée ou pour obtenir un devis détaillé.</p>
+                <form style="margin-top: 20px;">
+                    <input type="text" placeholder="Votre Nom" style="width: calc(50% - 10px); margin-right:10px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <input type="email" placeholder="Votre Email" style="width: calc(50% - 10px); padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <textarea placeholder="Votre message..." rows="5" style="width: 100%; margin-top:10px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                    <button type="submit" class="cta-button" style="margin-top:15px;">Envoyer</button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2042 EchoBaby Inc. Tous droits réservés. Façonner l'avenir, une simulation à la fois.</p>
+        <p><a href="#">Politique de confidentialité</a> | <a href="#">Termes et Conditions</a> | <a href="#">FAQ Éthique</a></p>
+    </footer>
+
+    <script>
+        function updateSimulatedAge(value) {
+            document.getElementById('simulated-age-display').textContent = value;
+        }
+
+        function runSimulation() {
+            const parent1 = document.getElementById('parent1-dna').value;
+            const parent2 = document.getElementById('parent2-dna').value;
+            const age = document.getElementById('age-slider').value;
+            const env = document.getElementById('environnement-sim').value;
+
+            let traitDominant = "Équilibré";
+            let potentialAcademic = "Moyen Supérieur";
+            let healthPredisposition = "Bonne";
+            let lifeEvent = "Scolarité standard.";
+            let avatarText = "Avatar"; 
+
+            if (parent1 === "profilA" || parent2 === "profilD") {
+                traitDominant = "Intellectuel"; potentialAcademic = "Excellent";
+            }
+            if (parent1 === "profilB" || parent2 === "profilE") {
+                traitDominant = (traitDominant === "Intellectuel") ? "Intellectuel & Robuste" : "Robuste";
+                healthPredisposition = "Excellente";
+            }
+             if (parent1 === "profilC" || parent2 === "profilF") {
+                traitDominant = (traitDominant !== "Équilibré" && !traitDominant.includes("&")) ? traitDominant + " & Créatif" : "Créatif & Social";
+            }
+
+            if (env === "optimal") {
+                if (potentialAcademic.includes("Excellent")) potentialAcademic += " (optimal)";
+                else potentialAcademic = "Très Bon";
+            } else if (env === "difficile") {
+                potentialAcademic = "Moyen (défis)";
+                lifeEvent = "Défis surmontés."; healthPredisposition = "Bonne (stress)";
+            }
+            
+            if (age == 0) avatarText = `Nouveau-Né`;
+            else if (age > 0 && age <=3) avatarText = `Bébé ${age}a`;
+            else if (age > 3 && age <= 10) avatarText = `Enfant ${age}a`;
+            else if (age > 10) avatarText = `Ado ${age}a`;
+            
+            document.getElementById('baby-avatar-placeholder').textContent = avatarText; // MODIFIÉ pour mettre à jour le texte du placeholder
+            document.getElementById('simulation-results').getElementsByTagName('h4')[0].textContent = `EchoBaby™ - Simulation à ${age} ans`;
+            document.getElementById('trait-dominant').textContent = traitDominant;
+            document.getElementById('potential-academic').textContent = potentialAcademic;
+            document.getElementById('health-predisposition').textContent = healthPredisposition;
+            document.getElementById('life-event').textContent = lifeEvent;
+            
+            const resultsDiv = document.getElementById('simulation-results');
+            resultsDiv.style.transition = 'opacity 0.3s ease-in-out';
+            resultsDiv.style.opacity = '0.7';
+            setTimeout(() => { resultsDiv.style.opacity = '1'; }, 300);
+        }
+
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if(targetElement){
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
