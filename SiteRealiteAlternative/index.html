@@ -1,1 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réalité Augmentée Alternative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glitch {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00ff;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00ffff;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            10% { clip: rect(112px, 9999px, 76px, 0); }
+            20% { clip: rect(85px, 9999px, 77px, 0); }
+            30% { clip: rect(27px, 9999px, 97px, 0); }
+            40% { clip: rect(64px, 9999px, 98px, 0); }
+            50% { clip: rect(61px, 9999px, 85px, 0); }
+            60% { clip: rect(99px, 9999px, 114px, 0); }
+            70% { clip: rect(34px, 9999px, 115px, 0); }
+            80% { clip: rect(98px, 9999px, 129px, 0); }
+            90% { clip: rect(43px, 9999px, 96px, 0); }
+            100% { clip: rect(82px, 9999px, 64px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(65px, 9999px, 119px, 0); }
+            10% { clip: rect(79px, 9999px, 66px, 0); }
+            20% { clip: rect(101px, 9999px, 114px, 0); }
+            30% { clip: rect(87px, 9999px, 82px, 0); }
+            40% { clip: rect(107px, 9999px, 58px, 0); }
+            50% { clip: rect(39px, 9999px, 103px, 0); }
+            60% { clip: rect(82px, 9999px, 40px, 0); }
+            70% { clip: rect(107px, 9999px, 8px, 0); }
+            80% { clip: rect(34px, 9999px, 14px, 0); }
+            90% { clip: rect(91px, 9999px, 53px, 0); }
+            100% { clip: rect(7px, 9999px, 99px, 0); }
+        }
+        .scanlines {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanlines::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 51%,
+                rgba(0, 0, 0, 0.1) 52%,
+                rgba(0, 0, 0, 0.1) 100%
+            );
+            background-size: 100% 4px;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .reality-overlay {
+            mix-blend-mode: overlay;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff00ff 0%, #00ffff 50%, #ffff00 100%);
+            opacity: 0.3;
+            animation: hue-rotate 10s infinite alternate;
+        }
+        @keyframes hue-rotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        .flicker {
+            animation: flicker 3s infinite alternate;
+        }
+        @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+                opacity: 1;
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+                opacity: 0.4;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-mono min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden">
+    <div class="max-w-4xl w-full relative">
+        <!-- Main container with CRT TV effect -->
+        <div class="scanlines border-4 border-purple-500 rounded-lg p-8 bg-gray-900 relative overflow-hidden">
+            <!-- Reality overlay effect -->
+            <div class="reality-overlay"></div>
+            
+            <!-- Glitchy title -->
+            <h1 class="glitch text-5xl font-bold mb-8 text-center text-purple-400 flicker" data-text="RÉALITÉ ALTERNATIVE">
+                RÉALITÉ ALTERNATIVE
+            </h1>
+            
+            <!-- Main content -->
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <!-- Left column - text content -->
+                <div class="flex-1">
+                    <p class="text-lg mb-6 text-cyan-200 leading-relaxed">
+                        <i class="fas fa-quote-left text-purple-400 mr-2"></i>
+                        Votre réalité actuelle vous déçoit ? Vous sentez que vous méritez mieux ? 
+                        Notre technologie de pointe peut vous montrer ce que votre vie pourrait être...
+                        <i class="fas fa-quote-right text-purple-400 ml-2"></i>
+                    </p>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg mb-6 border-l-4 border-cyan-400">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2 flex items-center">
+                            <i class="fas fa-info-circle mr-2"></i> Comment ça marche ?
+                        </h3>
+                        <ol class="list-decimal list-inside text-cyan-100 space-y-2">
+                            <li>Autorisez l'accès à votre webcam</li>
+                            <li>Notre algorithme analysera votre environnement</li>
+                            <li>Nous superposerons une réalité améliorée</li>
+                            <li>Explorez ce que votre vie pourrait être</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-pink-400">
+                        <h3 class="text-xl font-bold text-purple-300 mb-2 flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-2"></i> Avertissement
+                        </h3>
+                        <p class="text-pink-200">
+                            Certains utilisateurs ont eu du mal à revenir à leur réalité d'origine. 
+                            La beauté de ce que vous verrez pourrait rendre votre vie actuelle... 
+                            difficile à supporter.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Right column - webcam feed -->
+                <div class="flex-1 flex flex-col items-center">
+                    <div class="relative w-full aspect-video bg-gray-800 rounded-lg overflow-hidden border-2 border-purple-400 mb-4">
+                        <!-- Webcam feed placeholder -->
+                        <div id="webcam-placeholder" class="w-full h-full flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-camera text-5xl text-gray-600 mb-2"></i>
+                                <p class="text-gray-500">Flux de la webcam</p>
+                            </div>
+                        </div>
+                        <!-- Actual webcam feed (hidden by default) -->
+                        <video id="webcam" autoplay playsinline class="hidden w-full h-full object-cover"></video>
+                        <!-- AR overlay canvas -->
+                        <canvas id="ar-overlay" class="hidden absolute top-0 left-0 w-full h-full"></canvas>
+                    </div>
+                    
+                    <!-- Access button -->
+                    <button id="access-btn" class="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/50 flex items-center">
+                        <i class="fas fa-unlock mr-2"></i> Accéder à la réalité alternative
+                    </button>
+                    
+                    <!-- Loading indicator (hidden by default) -->
+                    <div id="loading" class="hidden mt-4 text-center">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purple-500 mb-2"></div>
+                        <p class="text-purple-300">Accès à la dimension alternative...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center text-gray-500 text-sm">
+                <p>© 2023 AltReality Corp. | <span class="text-purple-400">v4.2.0</span> | <span class="text-cyan-400">Département des réalités parallèles</span></p>
+                <p class="mt-1 text-xs">Cette expérience peut altérer définitivement votre perception de la réalité</p>
+            </div>
+        </div>
+        
+        <!-- CRT corner decorations -->
+        <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-purple-500 rounded-tl-lg"></div>
+        <div class="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-purple-500 rounded-tr-lg"></div>
+        <div class="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-purple-500 rounded-bl-lg"></div>
+        <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-purple-500 rounded-br-lg"></div>
+    </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accessBtn = document.getElementById('access-btn');
+            const webcamPlaceholder = document.getElementById('webcam-placeholder');
+            const webcamVideo = document.getElementById('webcam');
+            const arCanvas = document.getElementById('ar-overlay');
+            const loadingIndicator = document.getElementById('loading');
+            
+            let realityActivated = false;
+            
+            // Button click handler
+            accessBtn.addEventListener('click', async () => {
+                if (realityActivated) {
+                    // Already activated - show message
+                    alert("Vous êtes déjà dans la réalité alternative. Revenir en arrière pourrait être... douloureux.");
+                    return;
+                }
+                
+                try {
+                    // Show loading
+                    accessBtn.disabled = true;
+                    loadingIndicator.classList.remove('hidden');
+                    
+                    // Get webcam access
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    webcamVideo.srcObject = stream;
+                    
+                    // Hide placeholder and show video
+                    webcamPlaceholder.classList.add('hidden');
+                    webcamVideo.classList.remove('hidden');
+                    
+                    // Wait for video to play
+                    webcamVideo.onplaying = () => {
+                        // Set canvas dimensions
+                        arCanvas.width = webcamVideo.videoWidth;
+                        arCanvas.height = webcamVideo.videoHeight;
+                        arCanvas.classList.remove('hidden');
+                        
+                        // Start AR effect
+                        startRealityOverlay();
+                        
+                        // Update UI
+                        loadingIndicator.classList.add('hidden');
+                        accessBtn.innerHTML = '<i class="fas fa-lock-open mr-2"></i> Réalité alternative active';
+                        accessBtn.classList.remove('from-purple-600', 'to-blue-500');
+                        accessBtn.classList.add('from-green-500', 'to-teal-400');
+                        realityActivated = true;
+                    };
+                    
+                } catch (err) {
+                    console.error("Error accessing webcam:", err);
+                    loadingIndicator.classList.add('hidden');
+                    accessBtn.disabled = false;
+                    
+                    // Show error message with glitch effect
+                    const originalText = accessBtn.innerHTML;
+                    accessBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> ACCÈS REFUSÉ';
+                    accessBtn.classList.add('bg-red-600', 'animate-pulse');
+                    
+                    setTimeout(() => {
+                        accessBtn.innerHTML = originalText;
+                        accessBtn.classList.remove('bg-red-600', 'animate-pulse');
+                    }, 2000);
+                }
+            });
+            
+            // AR overlay effect
+            function startRealityOverlay() {
+                const ctx = arCanvas.getContext('2d');
+                
+                function draw() {
+                    // Draw video frame
+                    ctx.drawImage(webcamVideo, 0, 0, arCanvas.width, arCanvas.height);
+                    
+                    // Get image data
+                    const imageData = ctx.getImageData(0, 0, arCanvas.width, arCanvas.height);
+                    const data = imageData.data;
+                    
+                    // Apply reality distortion
+                    for (let i = 0; i < data.length; i += 4) {
+                        // Random color shifts
+                        if (Math.random() > 0.7) {
+                            data[i] = data[i] * 1.2;     // R
+                            data[i+1] = data[i+1] * 0.8; // G
+                            data[i+2] = data[i+2] * 1.5; // B
+                        }
+                        
+                        // Add scanlines
+                        if (Math.floor(i / (arCanvas.width * 4)) % 4 === 0) {
+                            data[i] = data[i] * 0.8;
+                            data[i+1] = data[i+1] * 0.8;
+                            data[i+2] = data[i+2] * 0.8;
+                        }
+                    }
+                    
+                    // Put modified data back
+                    ctx.putImageData(imageData, 0, 0);
+                    
+                    // Add glitch effect occasionally
+                    if (Math.random() > 0.95) {
+                        applyGlitchEffect();
+                    }
+                    
+                    // Add floating "reality artifacts"
+                    addRealityArtifacts();
+                    
+                    requestAnimationFrame(draw);
+                }
+                
+                function applyGlitchEffect() {
+                    // Save current state
+                    ctx.save();
+                    
+                    // Apply random offset
+                    const offsetX = (Math.random() - 0.5) * 20;
+                    const offsetY = (Math.random() - 0.5) * 10;
+                    ctx.drawImage(arCanvas, offsetX, offsetY);
+                    
+                    // Restore
+                    ctx.restore();
+                }
+                
+                function addRealityArtifacts() {
+                    // Random chance to add artifacts
+                    if (Math.random() > 0.8) {
+                        const x = Math.random() * arCanvas.width;
+                        const y = Math.random() * arCanvas.height;
+                        const size = 10 + Math.random() * 40;
+                        
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.arc(x, y, size, 0, Math.PI * 2);
+                        
+                        // Random gradient
+                        const gradient = ctx.createRadialGradient(x, y, 0, x, y, size);
+                        gradient.addColorStop(0, `hsl(${Math.random() * 360}, 100%, 50%)`);
+                        gradient.addColorStop(1, 'transparent');
+                        
+                        ctx.fillStyle = gradient;
+                        ctx.globalCompositeOperation = 'lighter';
+                        ctx.filter = 'blur(5px)';
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                }
+                
+                // Start the effect
+                draw();
+                
+                // Add occasional full-screen glitch
+                setInterval(() => {
+                    if (Math.random() > 0.7) {
+                        document.querySelector('.scanlines').style.animation = 'none';
+                        setTimeout(() => {
+                            document.querySelector('.scanlines').style.animation = 'flicker 0.3s';
+                        }, 10);
+                    }
+                }, 5000);
+            }
+            
+            // Add terminal-like blinking cursor effect to some elements
+            const blinkElements = document.querySelectorAll('.blink');
+            setInterval(() => {
+                blinkElements.forEach(el => {
+                    el.style.opacity = el.style.opacity === '0' ? '1' : '0';
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>
