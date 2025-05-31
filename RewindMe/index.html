@@ -1,1 +1,401 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RewindMe - Revivez Chaque Instant</title>
+    <!-- Ajout de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Styles de base pour la démo - dans un vrai site, ce serait dans un fichier CSS séparé */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            float: right;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        .hero {
+            min-height: 400px;
+            background: url('https://via.placeholder.com/1500x500?text=RewindMe+Cloud+Memories') no-repeat 0 -200px; /* Image de fond fictive */
+            background-size: cover;
+            text-align: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 20px;
+        }
+        .button {
+            display: inline-block;
+            background: #0779e4;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        section {
+            padding: 40px 0;
+            border-bottom: 1px #ddd solid;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #35424a;
+        }
+        .feature-box {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .feature-box h3 {
+            color: #0779e4;
+        }
+        /* Style pour les icônes Font Awesome */
+        .feature-icon {
+            font-size: 48px; /* Taille de l'icône */
+            color: #0779e4;   /* Couleur de l'icône, assortie au thème */
+            margin-bottom: 15px;
+            display: block; /* Pour que le text-align:center du parent fonctionne */
+        }
+
+        /* Styles spécifiques pour les démos */
+        .timeline-demo {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .timeline-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .timeline-controls input[type="date"], .timeline-controls input[type="time"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .timeline-bar-container {
+            width: 100%;
+            height: 20px;
+            background: #ccc;
+            border-radius: 10px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .timeline-progress {
+            width: 60%; /* Exemple de progression */
+            height: 100%;
+            background: #0779e4;
+            border-radius: 10px;
+        }
+        .timeline-event {
+            position: absolute;
+            top: -25px; /* Ajuster pour être au-dessus de la barre */
+            background: #35424a;
+            color: white;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+        .timeline-event.event1 { left: 20%; }
+        .timeline-event.event2 { left: 50%; }
+        .timeline-event.event3 { left: 80%; }
+        .timeline-preview {
+            width: 100%;
+            height: 200px;
+            background: #000 url('https://via.placeholder.com/400x200?text=Aperçu+du+Souvenir') center center no-repeat;
+            background-size: contain;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 1px 1px 2px black;
+        }
+        .emotion-search, .ai-editor {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .emotion-search input[type="text"], .ai-editor textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .emotion-buttons button {
+            background: #5cb85c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .emotion-buttons button.sad { background: #f0ad4e; }
+        .emotion-buttons button.surprised { background: #5bc0de; }
+        .search-results, .edit-preview {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            min-height: 50px;
+        }
+        footer {
+            background: #35424a;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><a href="#">RewindMe</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#">Accueil</a></li>
+                    <li><a href="#how-it-works">Comment ça marche ?</a></li>
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#pricing">Tarifs</a></li>
+                    <li><a href="#">Connexion</a></li>
+                    <li><a href="#" class="button" style="margin-top: -5px; padding: 8px 15px;">S'inscrire</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Revivez Chaque Instant de Votre Vie.</h1>
+            <p>Avec RewindMe, vos souvenirs sont enregistrés en continu grâce à nos lentilles discrètes et accessibles à tout moment sur notre cloud sécurisé.</p>
+            <a href="#features" class="button">Découvrir les Fonctionnalités</a>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Comment RewindMe Transforme Votre Vie</h2>
+            <div style="display: flex; justify-content: space-around; text-align: center;">
+                <div class="feature-box" style="flex-basis: 30%;">
+                    <!-- Icône pour Lentilles -->
+                    <i class="fas fa-eye feature-icon" aria-hidden="true"></i>
+                    <h3>1. Portez les Lentilles</h3>
+                    <p>Nos lentilles de contact de haute technologie enregistrent discrètement votre champ de vision, 24h/24, 7j/7, avec une qualité HD.</p>
+                </div>
+                <div class="feature-box" style="flex-basis: 30%;">
+                    <!-- Icône pour Cloud -->
+                    <i class="fas fa-cloud-upload-alt feature-icon" aria-hidden="true"></i>
+                    <h3>2. Stockage Cloud Sécurisé</h3>
+                    <p>Vos enregistrements sont cryptés et transférés en temps réel vers votre espace personnel RewindMe Cloud, illimité et sécurisé.</p>
+                </div>
+                <div class="feature-box" style="flex-basis: 30%;">
+                    <!-- Icône pour Relecture -->
+                    <i class="fas fa-history feature-icon" aria-hidden="true"></i>
+                    <h3>3. Revivez & Partagez</h3>
+                    <p>Accédez à n'importe quel moment de votre vie via notre interface intuitive, revivez-le, analysez-le ou partagez-le avec vos proches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Fonctionnalités Uniques</h2>
+
+            <!-- Démo de la Timeline -->
+            <div class="feature-box">
+                <h3>Timeline Interactive : Votre Vie à Portée de Main</h3>
+                <p>Naviguez à travers vos souvenirs avec une précision inégalée. Zoomez sur une journée, une heure, une minute précise.</p>
+                <div class="timeline-demo">
+                    <h4>Démo de la Timeline</h4>
+                    <div class="timeline-controls">
+                        <div>
+                            <label for="date-select">Date:</label>
+                            <input type="date" id="date-select" value="2023-07-15">
+                            <input type="time" id="time-select" value="14:30">
+                        </div>
+                        <div>
+                            <button><i class="fas fa-backward"></i> Précédent</button>
+                            <button><i class="fas fa-play"></i> Lecture</button>
+                            <button><i class="fas fa-forward"></i> Suivant</button>
+                        </div>
+                    </div>
+                    <div class="timeline-bar-container">
+                        <div class="timeline-progress"></div>
+                        <span class="timeline-event event1">Anniversaire Chloé</span>
+                        <span class="timeline-event event2">Déjeuner Pro</span>
+                        <span class="timeline-event event3">Cinéma</span>
+                    </div>
+                    <div class="timeline-preview">
+                        Aperçu du souvenir sélectionné (vidéo/image)
+                    </div>
+                    <small style="display:block; text-align:center; margin-top:10px;">Ceci est une simulation. L'interface réelle offre une navigation fluide et des aperçus instantanés.</small>
+                </div>
+            </div>
+
+            <!-- Outil de Recherche par Émotion -->
+            <div class="feature-box">
+                <h3>Recherche par Émotion et Mots-Clés</h3>
+                <p>Retrouvez des moments spécifiques en fonction des émotions détectées (joie, surprise, tristesse...) ou par des mots-clés que vous définissez.</p>
+                <div class="emotion-search">
+                    <h4>Démo de la Recherche Émotionnelle</h4>
+                    <input type="text" placeholder="Rechercher 'vacances à la mer', 'discussion importante'...">
+                    <div class="emotion-buttons">
+                        Filtrer par émotion :
+                        <button><i class="far fa-smile-beam"></i> Joie</button>
+                        <button class="sad"><i class="far fa-sad-tear"></i> Tristesse</button>
+                        <button class="surprised"><i class="far fa-surprise"></i> Surprise</button>
+                        <button><i class="far fa-angry"></i> Colère</button>
+                        <button><i class="far fa-heart"></i> Amour</button>
+                    </div>
+                    <div class="search-results">
+                        <p><strong>Résultats pour "Joie" :</strong></p>
+                        <ul>
+                            <li>15 Juillet 2023, 14:32 - Anniversaire de Chloé (forte détection de joie)</li>
+                            <li>2 Février 2024, 09:15 - Réussite examen (pic de joie et surprise)</li>
+                        </ul>
+                        <small>Ceci est une simulation. Les résultats affichent des liens directs vers les moments.</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assistant IA d'Édition -->
+            <div class="feature-box">
+                <h3>Assistant d'Édition IA "Memoria"</h3>
+                <p>Notre IA vous aide à créer des montages, isoler des séquences, supprimer des passages ou même flouter des visages pour plus de confidentialité.</p>
+                <div class="ai-editor">
+                    <h4>Démo de l'Assistant "Memoria"</h4>
+                    <textarea rows="3" placeholder="Décrivez votre demande : Ex: 'Crée un résumé de mes vacances en Italie en 2023', 'Isole le moment où j'ai reçu mon diplôme', 'Floute le visage de mon ex-collègue le 10 mars 2024 entre 10h et 11h'"></textarea>
+                    <button class="button" style="background-color: #35424a;"><i class="fas fa-magic-wand-sparkles"></i> Lancer l'Édition IA</button>
+                    <div class="edit-preview">
+                        <p><strong>Prévisualisation de l'édition demandée :</strong></p>
+                        <p><em>[Ici s'afficherait une prévisualisation vidéo ou une confirmation de l'action]</em></p>
+                        <p>Ex: "Montage 'Vacances en Italie 2023' créé. Durée : 3min 45s."</p>
+                        <small>Ceci est une simulation. L'IA traite votre demande et propose une prévisualisation avant validation.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title">Nos Offres</h2>
+            <p style="text-align:center; margin-bottom:30px;">Choisissez le plan qui correspond à votre besoin de mémoire. Tous nos plans incluent les lentilles RewindMe et un stockage cloud illimité.</p>
+            <div style="display: flex; justify-content: space-around; text-align: center;">
+                <div class="feature-box" style="flex-basis: 30%; border: 1px solid #0779e4;">
+                    <h3>Plan Essentiel</h3>
+                    <h4>49€ / mois</h4>
+                    <p>Enregistrement HD</p>
+                    <p>Accès Timeline Standard</p>
+                    <p>Recherche par mots-clés</p>
+                    <a href="#" class="button">Choisir ce Plan</a>
+                </div>
+                <div class="feature-box" style="flex-basis: 30%; border: 2px solid #0779e4; transform: scale(1.05);">
+                    <h3>Plan Premium <span style="font-size:0.7em; background: #0779e4; color:white; padding:2px 5px; border-radius:3px;">Populaire</span></h3>
+                    <h4>79€ / mois</h4>
+                    <p>Enregistrement Full HD</p>
+                    <p>Accès Timeline Avancé</p>
+                    <p>Recherche Émotionnelle</p>
+                    <p>Assistant IA "Memoria" Basique</p>
+                    <a href="#" class="button">Choisir ce Plan</a>
+                </div>
+                <div class="feature-box" style="flex-basis: 30%; border: 1px solid #0779e4;">
+                    <h3>Plan Ultimate</h3>
+                    <h4>129€ / mois</h4>
+                    <p>Enregistrement 4K</p>
+                    <p>Toutes les fonctionnalités Premium</p>
+                    <p>Assistant IA "Memoria" Avancé</p>
+                    <p>Support prioritaire</p>
+                    <a href="#" class="button">Choisir ce Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" style="background-color: #35424a; color: #fff; text-align:center;">
+        <div class="container">
+            <h2>Prêt à ne plus jamais oublier un instant ?</h2>
+            <p>Rejoignez RewindMe aujourd'hui et commencez à construire votre archive de vie personnelle.</p>
+            <a href="#" class="button" style="background-color: #0779e4; font-size:20px;">S'inscrire Gratuitement (Période d'essai 30 jours)</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 RewindMe Technologies. Tous droits réservés.</p>
+            <p><a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Contact</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
